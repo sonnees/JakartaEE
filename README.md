@@ -1,3 +1,3 @@
 # JakartaEE_Lab01
 week01_lab_NguyenVanSon_20049891
-[Lab01](week1.pdf)
+![Page 1](lab01.jpg)
