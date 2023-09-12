@@ -1,11 +1,27 @@
 package vn.edu.iuh.fit.entities;
 
-public class Account {
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+import java.io.Serializable;
+
+@Entity
+@Table(name = "account")
+public class Account implements Serializable {
+    @Id
+    @Column(columnDefinition = "varchar(50)")
     private String account_id;
+    @Column(columnDefinition = "varchar(50)")
     private String full_name;
+    @Column(columnDefinition = "varchar(50)")
     private String password;
+    @Column(columnDefinition = "varchar(50)")
     private String email;
+    @Column(columnDefinition = "varchar(50)")
     private String phone;
+    @Column(columnDefinition = "tinyint(1)")
     private byte status;
 
     public Account() {
@@ -79,4 +95,5 @@ public class Account {
                 ", status=" + status +
                 '}';
     }
+
 }

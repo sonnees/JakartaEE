@@ -1,27 +1,33 @@
 package vn.edu.iuh.fit.entities;
 
+import jakarta.persistence.*;
+
+import java.util.Objects;
+
+@Entity
+@Table(name = "grant_access")
 public class GrantAccess {
-    private String account_id;
-    private String role_id  ;
+    @Column(columnDefinition = "bit")
     private boolean is_grant;
+    @Column(columnDefinition = "varchar(250)")
     private String note;
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
 
     public GrantAccess() {
     }
 
-    public GrantAccess(String account_id, String role_id, boolean is_grant, String note) {
-        this.account_id = account_id;
-        this.role_id = role_id;
+    public GrantAccess(boolean is_grant, String note, Account account, Role role) {
         this.is_grant = is_grant;
         this.note = note;
-    }
-
-    public String getAccount_id() {
-        return account_id;
-    }
-
-    public String getRole_id() {
-        return role_id;
+        this.account = account;
+        this.role = role;
     }
 
     public boolean isIs_grant() {
@@ -32,12 +38,12 @@ public class GrantAccess {
         return note;
     }
 
-    public void setAccount_id(String account_id) {
-        this.account_id = account_id;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setRole_id(String role_id) {
-        this.role_id = role_id;
+    public Role getRole() {
+        return role;
     }
 
     public void setIs_grant(boolean is_grant) {
@@ -48,13 +54,34 @@ public class GrantAccess {
         this.note = note;
     }
 
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
         return "GrantAccess{" +
-                "account_id='" + account_id + '\'' +
-                ", role_id='" + role_id + '\'' +
-                ", is_grant=" + is_grant +
+                "is_grant=" + is_grant +
                 ", note='" + note + '\'' +
+                ", account=" + account +
+                ", role=" + role +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GrantAccess that = (GrantAccess) o;
+        return Objects.equals(account, that.account) && Objects.equals(role, that.role);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(account, role);
     }
 }

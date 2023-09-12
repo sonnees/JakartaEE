@@ -1,9 +1,23 @@
 package vn.edu.iuh.fit.entities;
 
-public class Role {
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+import java.io.Serializable;
+
+@Entity
+@Table(name = "role")
+public class Role implements Serializable {
+    @Id
+    @Column(columnDefinition = "varchar(50)")
     private String role_id;
+    @Column(columnDefinition = "varchar(50)")
     private String role_name;
+    @Column(columnDefinition = "varchar(50)")
     private String description;
+    @Column(columnDefinition = "tinyint")
     private byte status;
 
     public Role() {

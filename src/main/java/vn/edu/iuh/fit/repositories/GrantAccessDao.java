@@ -2,22 +2,24 @@ package vn.edu.iuh.fit.repositories;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
-import vn.edu.iuh.fit.entities.Account;
+import vn.edu.iuh.fit.entities.GrantAccess;
+import vn.edu.iuh.fit.entities.Role;
 
 import java.util.List;
 
-public class AccountDao {
+public class GrantAccessDao {
     private EntityManager em;
 
-    public AccountDao() {
+    public GrantAccessDao() {
         em = DbConnect.getInstance().getEmf().createEntityManager();
     }
 
-    public void insertAccount(Account account){
+    public void insertGrantAccess(GrantAccess grantAccess){
         EntityTransaction tr = em.getTransaction();
         tr.begin();
         try {
-            em.persist(account);
+            System.out.println(grantAccess);
+            em.persist(grantAccess);
             tr.commit();
         } catch (Exception e){
             tr.rollback();
@@ -25,12 +27,12 @@ public class AccountDao {
         }
     }
 
-    public List<Account> getAccounts(){
+    public List<GrantAccess> getListGrantAccess(){
         EntityTransaction tr = em.getTransaction();
         tr.begin();
         try {
-            String sql ="select * from Account";
-            List<Account> rl = em.createNativeQuery(sql, Account.class).getResultList();
+            String sql ="select * from grant_access";
+            List<GrantAccess> rl = em.createNativeQuery(sql, GrantAccess.class).getResultList();
 
             tr.commit();
             return rl;
@@ -40,6 +42,4 @@ public class AccountDao {
         }
         return null;
     }
-
-
 }

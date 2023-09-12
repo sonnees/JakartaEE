@@ -1,20 +1,32 @@
 package vn.edu.iuh.fit.entities;
 
+import jakarta.persistence.*;
+
 import java.sql.Date;
 
+@Entity
+@Table(name = "log")
 public class Log {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(columnDefinition = "bigint")
     private long id;
-    private String account_id;
+    @ManyToOne
+    @Column(columnDefinition = "varchar(50)", name = "account_id")
+    private Account Account;
+    @Column(columnDefinition = "datetime")
     private Date login_time;
+    @Column(columnDefinition = "datetime")
     private Date logout_time;
+    @Column(columnDefinition = "varchar(250)")
     private String notes;
 
     public Log() {
     }
 
-    public Log(long id, String account_id, Date login_time, Date logout_time, String notes) {
+    public Log(long id, vn.edu.iuh.fit.entities.Account account, Date login_time, Date logout_time, String notes) {
         this.id = id;
-        this.account_id = account_id;
+        Account = account;
         this.login_time = login_time;
         this.logout_time = logout_time;
         this.notes = notes;
@@ -24,8 +36,8 @@ public class Log {
         return id;
     }
 
-    public String getAccount_id() {
-        return account_id;
+    public vn.edu.iuh.fit.entities.Account getAccount() {
+        return Account;
     }
 
     public Date getLogin_time() {
@@ -44,8 +56,8 @@ public class Log {
         this.id = id;
     }
 
-    public void setAccount_id(String account_id) {
-        this.account_id = account_id;
+    public void setAccount(vn.edu.iuh.fit.entities.Account account) {
+        Account = account;
     }
 
     public void setLogin_time(Date login_time) {
@@ -64,7 +76,7 @@ public class Log {
     public String toString() {
         return "Log{" +
                 "id=" + id +
-                ", account_id='" + account_id + '\'' +
+                ", Account=" + Account +
                 ", login_time=" + login_time +
                 ", logout_time=" + logout_time +
                 ", notes='" + notes + '\'' +
