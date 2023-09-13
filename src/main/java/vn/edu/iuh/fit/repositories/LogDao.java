@@ -17,7 +17,7 @@ public class LogDao {
         EntityTransaction tr = em.getTransaction();
         tr.begin();
         try {
-            em.persist(log);
+            em.merge(log);
             tr.commit();
         } catch (Exception e){
             tr.rollback();

@@ -10,5 +10,7 @@ public class AccountServices {
     public static  void insertAccount(Account account){
         accountDao.insertAccount(account);
     }
+    public static Account searchAccount(String id){return accountDao.searchAccount(id);}
+    public static void dellAccount(String id){accountDao.dellAccount(id);}
     public static List<Account> getAccounts(){return accountDao.getAccounts();}
 }

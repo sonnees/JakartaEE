@@ -3,6 +3,7 @@ package vn.edu.iuh.fit.entities;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "log")
@@ -11,22 +12,20 @@ public class Log {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(columnDefinition = "bigint")
     private long id;
-    @ManyToOne
-    @Column(columnDefinition = "varchar(50)", name = "account_id")
-    private Account Account;
+    @Column(columnDefinition = "varchar(50)")
+    private String account_id;
     @Column(columnDefinition = "datetime")
-    private Date login_time;
+    private Timestamp login_time;
     @Column(columnDefinition = "datetime")
-    private Date logout_time;
+    private Timestamp logout_time;
     @Column(columnDefinition = "varchar(250)")
     private String notes;
 
     public Log() {
     }
 
-    public Log(long id, vn.edu.iuh.fit.entities.Account account, Date login_time, Date logout_time, String notes) {
-        this.id = id;
-        Account = account;
+    public Log(String account_id, Timestamp login_time, Timestamp logout_time, String notes) {
+        this.account_id = account_id;
         this.login_time = login_time;
         this.logout_time = logout_time;
         this.notes = notes;
@@ -36,15 +35,15 @@ public class Log {
         return id;
     }
 
-    public vn.edu.iuh.fit.entities.Account getAccount() {
-        return Account;
+    public String getAccount_id() {
+        return account_id;
     }
 
-    public Date getLogin_time() {
+    public Timestamp getLogin_time() {
         return login_time;
     }
 
-    public Date getLogout_time() {
+    public Timestamp getLogout_time() {
         return logout_time;
     }
 
@@ -56,15 +55,15 @@ public class Log {
         this.id = id;
     }
 
-    public void setAccount(vn.edu.iuh.fit.entities.Account account) {
-        Account = account;
+    public void setAccount_id(String account_id) {
+        this.account_id = account_id;
     }
 
-    public void setLogin_time(Date login_time) {
+    public void setLogin_time(Timestamp login_time) {
         this.login_time = login_time;
     }
 
-    public void setLogout_time(Date logout_time) {
+    public void setLogout_time(Timestamp logout_time) {
         this.logout_time = logout_time;
     }
 
@@ -76,7 +75,7 @@ public class Log {
     public String toString() {
         return "Log{" +
                 "id=" + id +
-                ", Account=" + Account +
+                ", account_id='" + account_id + '\'' +
                 ", login_time=" + login_time +
                 ", logout_time=" + logout_time +
                 ", notes='" + notes + '\'' +

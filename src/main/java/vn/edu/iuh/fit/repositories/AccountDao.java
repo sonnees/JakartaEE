@@ -17,13 +17,41 @@ public class AccountDao {
         EntityTransaction tr = em.getTransaction();
         tr.begin();
         try {
-            em.persist(account);
+            em.merge(account);
             tr.commit();
         } catch (Exception e){
             tr.rollback();
             System.out.println(e.getMessage());
         }
     }
+
+    public Account searchAccount(String id){
+        EntityTransaction tr = em.getTransaction();
+        tr.begin();
+        try {
+            Account account = em.find(Account.class, id);
+            tr.commit();
+            return account;
+        } catch (Exception e){
+            tr.rollback();
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    public void dellAccount(String id){
+        EntityTransaction tr = em.getTransaction();
+        tr.begin();
+        try {
+            Account account = em.find(Account.class, id);
+            em.remove(account);
+            tr.commit();
+        } catch (Exception e){
+            tr.rollback();
+            System.out.println(e.getMessage());
+        }
+    }
+
 
     public List<Account> getAccounts(){
         EntityTransaction tr = em.getTransaction();

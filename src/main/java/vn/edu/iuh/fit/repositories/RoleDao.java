@@ -17,7 +17,7 @@ public class RoleDao {
         EntityTransaction tr = em.getTransaction();
         tr.begin();
         try {
-            em.persist(role);
+            em.merge(role);
             tr.commit();
         } catch (Exception e){
             tr.rollback();

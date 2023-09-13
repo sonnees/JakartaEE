@@ -8,5 +8,6 @@ import java.util.List;
 public class GrantAccessServices {
     private static GrantAccessDao grantAccessDao = new GrantAccessDao();
     public static void insertGrantAccess(GrantAccess grantAccess){grantAccessDao.insertGrantAccess(grantAccess);}
+    public static GrantAccess searchGrantAccessByAccountId(String id){return grantAccessDao.searchGrantAccessByAccountId(id);}
     public static List<GrantAccess> getListGrantAccess(){return grantAccessDao.getListGrantAccess();}
 }

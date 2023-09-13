@@ -17,6 +17,8 @@ public class ConnectDB_test {
             } catch (Exception e){
                 tr.rollback();
                 System.out.println(e.getMessage());
+            } finally {
+                emf.close();
             }
 
             System.out.println("done");
