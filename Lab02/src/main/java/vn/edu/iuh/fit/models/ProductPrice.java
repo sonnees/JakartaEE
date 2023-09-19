@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-@NamedNativeQuery(name = "findAll",query = "select * from product_price")
 @Table(name = "product_price")
 @Entity
 public class ProductPrice {

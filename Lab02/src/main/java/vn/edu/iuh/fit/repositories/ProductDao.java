@@ -5,27 +5,24 @@ import jakarta.persistence.EntityTransaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import vn.edu.iuh.fit.models.Product;
-import vn.edu.iuh.fit.models.ProductPrice;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
-public class ProductPriceDao {
-    @SuppressWarnings("unchecked")
+public class ProductDao {
+
     private EntityManager em= null;
     Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
-    public ProductPriceDao() {
+    public ProductDao() {
         this.em = DBConnect.getInstance().getEmf().createEntityManager();
     }
 
-    public boolean addProductPrice(ProductPrice productPrice){
+    public boolean add(Product product){
         EntityTransaction tr = em.getTransaction();
         try {
             tr.begin();
 
-            em.merge(productPrice);
+            em.merge(product);
 
             tr.commit();
             return true;
@@ -36,13 +33,12 @@ public class ProductPriceDao {
         return false;
     }
 
-    public boolean delProductPrice(long productId,LocalDateTime priceDateTime){
+    public boolean del(long id){
         EntityTransaction tr = em.getTransaction();
         try {
             tr.begin();
 
-            ProductPrice productPrice = new ProductPrice(priceDateTime,em.find(Product.class,productId));
-            em.remove(this.searchProductPriceById(productId,priceDateTime));
+            em.remove(searchById(id));
 
             tr.commit();
             return true;
@@ -53,16 +49,15 @@ public class ProductPriceDao {
         return false;
     }
 
-    public ProductPrice searchProductPriceById(long productId,LocalDateTime priceDateTime){
+    public Product searchById(long id){
         EntityTransaction tr = em.getTransaction();
         try {
             tr.begin();
 
-            ProductPrice productPriceId = new ProductPrice(priceDateTime,em.find(Product.class,productId));
-            ProductPrice productPrice = em.find(ProductPrice.class, productPriceId);
+            Product product = em.find(Product.class, id);
 
             tr.commit();
-            return productPrice;
+            return product;
         } catch (Exception e){
             logger.info(e.getMessage());
             tr.rollback();
@@ -70,12 +65,12 @@ public class ProductPriceDao {
         return null;
     }
 
-    public List<ProductPrice> getAll(){
+    public List<Product> getAll(){
         EntityTransaction tr = em.getTransaction();
         try {
             tr.begin();
 
-            List<ProductPrice> list = em.createNativeQuery("findAll", ProductPrice.class).getResultList();
+            List<Product> list = em.createNativeQuery("select * from product", Product.class).getResultList();
 
             tr.commit();
             return list;

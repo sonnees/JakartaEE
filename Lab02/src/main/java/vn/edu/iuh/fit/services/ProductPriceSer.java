@@ -9,8 +9,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class ProductPriceSer {
-    @Inject
+
     private  ProductPriceDao productPriceDao;
+
+    public ProductPriceSer() {
+        productPriceDao = new ProductPriceDao();
+    }
 
     public boolean addProductPrice(ProductPrice productPrice){
         return productPriceDao.addProductPrice(productPrice);

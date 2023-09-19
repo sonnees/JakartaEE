@@ -11,8 +11,11 @@ import java.util.List;
 
 @Path("/ProductPrice")
 public class ProductPriceResource {
-    @Inject
     private ProductPriceSer productPriceSer;
+
+    public ProductPriceResource() {
+        productPriceSer = new ProductPriceSer();
+    }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -25,10 +28,6 @@ public class ProductPriceResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<ProductPrice> getAll(){
-        List<ProductPrice> all = productPriceSer.getAll();
-        return all;
+        return productPriceSer.getAll();
     }
-
-
-
 }

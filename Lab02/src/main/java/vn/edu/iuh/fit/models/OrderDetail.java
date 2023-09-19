@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 
 import java.util.Objects;
 
-@Table(name = "order_detail")
 @Entity
+@Table(name = "order_detail")
 public class OrderDetail {
     private Double quantity;
     private Double price;

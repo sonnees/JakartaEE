@@ -2,7 +2,6 @@ package vn.edu.iuh.fit.repositories;
 
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-
 public class DBConnect {
     private static DBConnect instance;
     private EntityManagerFactory emf;
