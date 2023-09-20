@@ -21,11 +21,14 @@
   đăng nhập cùng các quyền mà người đó có.
   >
   > Ghi log mỗi lần account đăng nhập, đăng xuất.
+-  Entity Relationship Diagram:
   
-*[code tại đây](https://github.com/sonnees/JakartaEE/tree/Lab01)*
-```git
-git clone -b Lab01 --single-branch https://github.com/sonnees/JakartaEE.git
-```
+    ![ERD](/img/ERD_lab01.png)
+<br> <br>
+> *[code tại đây](https://github.com/sonnees/JakartaEE/tree/Lab01)*
+> ```git
+> git clone -b Lab01 --single-branch https://github.com/sonnees/JakartaEE.git
+> ```
 </details>
 <details>
   <summary><h3>👇 Lab02</h3> </summary>
@@ -37,11 +40,14 @@ git clone -b Lab01 --single-branch https://github.com/sonnees/JakartaEE.git
   > Các thao tác CRUD cho các đối tượng, lập order.
   > Thống kê order theo ngày, theo khoảng thời gian.
   > Thống kê order theo nhân viên bán hàng trong 1 khoảng thời gian.
+-  Entity Relationship Diagram:
   
-*[code tại đây](https://github.com/sonnees/JakartaEE/tree/Lab02)*
-```git
-git clone -b Lab02 --single-branch https://github.com/sonnees/JakartaEE.git
-```
+    ![ERD](/img/ERD_lab02.png)
+<br> <br>
+> *[code tại đây](https://github.com/sonnees/JakartaEE/tree/Lab02)*
+> ```git
+> git clone -b Lab02 --single-branch https://github.com/sonnees/JakartaEE.git
+> ```
 </details>
 
 
