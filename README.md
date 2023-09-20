@@ -1,4 +1,4 @@
-# Lab 2
+# Quản Lý Đăng Nhập
 - Sinh viên: **Nguyễn Văn Sơn**
 - Hướng dẫn: **TS. Võ Văn Hải**
 
