@@ -1,22 +1,21 @@
 package vn.edu.iuh.fit.services;
 
 import jakarta.inject.Inject;
+import jakarta.persistence.Id;
 import vn.edu.iuh.fit.models.Product;
-import vn.edu.iuh.fit.models.ProductPrice;
 import vn.edu.iuh.fit.repositories.ProductDao;
-import vn.edu.iuh.fit.repositories.ProductPriceDao;
 
-import java.time.LocalDateTime;
 import java.util.List;
 public class ProductSer {
+    @Inject
     private ProductDao productDao;
 
-    public ProductSer() {
-        productDao = new ProductDao();
+    @Inject
+    public ProductSer(ProductDao productDao) {
+        this.productDao = productDao;
     }
 
     public boolean add(Product product){
-
         return productDao.add(product);
     }
     public boolean del(long id){
@@ -26,7 +25,7 @@ public class ProductSer {
         return productDao.searchById(id);
     }
     public List<Product> getAll(){
-
         return productDao.getAll();
     }
+    public List<Product> getFromXToY(int x, int y){return productDao.getFromXToY(x,y);};
 }

@@ -12,12 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductPriceDao {
-    @SuppressWarnings("unchecked")
-    private EntityManager em= null;
+    private EntityManager em;
     Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
-    public ProductPriceDao() {
-        this.em = DBConnect.getInstance().getEmf().createEntityManager();
+    public ProductPriceDao() {em = DBConnect.getInstance().getEmf().createEntityManager();
     }
 
     public boolean addProductPrice(ProductPrice productPrice){
@@ -75,7 +73,7 @@ public class ProductPriceDao {
         try {
             tr.begin();
 
-            List<ProductPrice> list = em.createNativeQuery("findAll", ProductPrice.class).getResultList();
+            List<ProductPrice> list = em.createNativeQuery("select * from product_price", ProductPrice.class).getResultList();
 
             tr.commit();
             return list;

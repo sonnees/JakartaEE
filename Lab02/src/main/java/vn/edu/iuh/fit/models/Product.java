@@ -8,6 +8,7 @@ import vn.edu.iuh.fit.enums.ProductStatus;
 public class Product {
     @Id
     @Column(name = "product_id")
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(columnDefinition = "varchar(150)")
@@ -19,6 +20,7 @@ public class Product {
     @Column(name = "manufacturer_name", columnDefinition = "varchar(100)")
     private String manufacturer;
     @Enumerated(EnumType.ORDINAL)
+    @Column(columnDefinition="int")
     private ProductStatus status;
 
     public Product() {

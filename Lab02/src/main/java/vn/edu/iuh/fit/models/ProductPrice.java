@@ -1,5 +1,13 @@
 package vn.edu.iuh.fit.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -10,6 +18,9 @@ import java.util.Objects;
 public class ProductPrice {
     @Id
     @Column(name = "price_date_time")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime priceDateTime;
     private Double price;
     private String note;
@@ -37,6 +48,7 @@ public class ProductPrice {
         return priceDateTime;
     }
 
+    @JsonSetter
     public void setPriceDateTime(LocalDateTime priceDateTime) {
         this.priceDateTime = priceDateTime;
     }
@@ -81,10 +93,5 @@ public class ProductPrice {
         if (!(o instanceof ProductPrice)) return false;
         ProductPrice that = (ProductPrice) o;
         return Objects.equals(priceDateTime, that.priceDateTime) && Objects.equals(product, that.product);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(priceDateTime, product);
     }
 }

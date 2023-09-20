@@ -9,7 +9,13 @@ import vn.edu.iuh.fit.repositories.DBConnect;
 public class Mapping {
     public static void main(String[] args) {
         EntityManager en = DBConnect.getInstance().getEmf().createEntityManager();
+        EntityTransaction tr = en.getTransaction();
+        tr.begin();
+        try {
+            tr.commit();
+        } catch (Exception e){
+            tr.rollback();
+        }
 
-        en.close();
     }
 }

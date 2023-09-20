@@ -10,23 +10,19 @@ import vn.edu.iuh.fit.services.ProductPriceSer;
 import java.util.List;
 
 @Path("/ProductPrice")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class ProductPriceResource {
+    @Inject
     private ProductPriceSer productPriceSer;
 
-    public ProductPriceResource() {
-        productPriceSer = new ProductPriceSer();
-    }
-
     @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
     public Response addProductPrice(ProductPrice productPrice){
         productPriceSer.addProductPrice(productPrice);
         return Response.ok(productPrice).build();
     }
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
     public List<ProductPrice> getAll(){
         return productPriceSer.getAll();
     }
