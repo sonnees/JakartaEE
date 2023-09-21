@@ -12,8 +12,8 @@
 - Ý tưởng: Lập 1 API cho trang web bán hàng.
 - Sử dụng: REST API Jakarta EE, CRUD JPA
 - Mô tả:
-  > Các thao tác CRUD cho các đối tượng, lập order.
-  > Thống kê order theo ngày, theo khoảng thời gian.
+  > Các thao tác CRUD cho các đối tượng, lập order. <br>
+  > Thống kê order theo ngày, theo khoảng thời gian.<br>
   > Thống kê order theo nhân viên bán hàng trong 1 khoảng thời gian.
 -  Entity Relationship Diagram:
   
