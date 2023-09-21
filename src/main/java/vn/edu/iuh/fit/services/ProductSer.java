@@ -8,24 +8,34 @@ import vn.edu.iuh.fit.repositories.ProductDao;
 import java.util.List;
 public class ProductSer {
     @Inject
-    private ProductDao productDao;
+    private ProductDao dao;
 
     @Inject
     public ProductSer(ProductDao productDao) {
-        this.productDao = productDao;
+        this.dao = productDao;
     }
 
+    public List<Product> getAll(){
+        return dao.getAll();
+    }
+
+    public Product searchById(long id){
+        return dao.searchById(id);
+    }
+
+    public List<Product> getFromXToY(int x, int y){
+        return dao.getFromXToY(x,y);
+    };
+
     public boolean add(Product product){
-        return productDao.add(product);
+        return dao.add(product);
+    }
+
+    public boolean update(long id, String nameField, String newValue){
+        return dao.update(id,nameField,newValue);
     }
     public boolean del(long id){
-        return productDao.del(id);
+        return dao.del(id);
     }
-    public Product searchById(long id){
-        return productDao.searchById(id);
-    }
-    public List<Product> getAll(){
-        return productDao.getAll();
-    }
-    public List<Product> getFromXToY(int x, int y){return productDao.getFromXToY(x,y);};
+
 }

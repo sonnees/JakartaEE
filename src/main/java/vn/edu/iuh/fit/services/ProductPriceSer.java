@@ -10,23 +10,24 @@ import java.util.List;
 
 public class ProductPriceSer {
     @Inject
-    private  ProductPriceDao productPriceDao;
+    private  ProductPriceDao dao;
     @Inject
     public ProductPriceSer(ProductPriceDao productPriceDao) {
-        this.productPriceDao = productPriceDao;
+        this.dao = productPriceDao;
     }
 
 
-    public boolean addProductPrice(ProductPrice productPrice){
-        return productPriceDao.addProductPrice(productPrice);
+    public boolean add(ProductPrice productPrice){
+        return dao.add(productPrice);
     }
-    public boolean delProductPrice(long productId, LocalDateTime priceDateTime){
-        return productPriceDao.delProductPrice(productId,priceDateTime);
+    public boolean del(long productId, LocalDateTime priceDateTime){
+        return dao.del(productId,priceDateTime);
     }
-    public ProductPrice searchProductPriceById(long productId,LocalDateTime priceDateTime){
-        return productPriceDao.searchProductPriceById(productId,priceDateTime);
+    public ProductPrice searchById(long productId,LocalDateTime priceDateTime){
+        return dao.searchById(productId,priceDateTime);
     }
     public List<ProductPrice> getAll(){
-        return productPriceDao.getAll();
+        return dao.getAll();
     }
+    public List<ProductPrice> getFromXToY(int x, int y){return dao.getFromXToY(x,y);}
 }

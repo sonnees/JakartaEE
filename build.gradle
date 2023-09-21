@@ -24,17 +24,20 @@ tasks.withType(JavaCompile) {
 dependencies {
     compileOnly('jakarta.platform:jakarta.jakartaee-web-api:10.0.0')
 
-    implementation 'org.eclipse.persistence:org.eclipse.persistence.jpa:4.0.2'
-//    implementation('org.hibernate:hibernate-core:6.0.2.Final')
+//    implementation 'org.eclipse.persistence:org.eclipse.persistence.jpa:4.0.2' // open when run api
+    implementation('org.hibernate:hibernate-core:6.2.0.Final') // open when mapping
+    implementation 'org.hibernate:hibernate-validator:8.0.1.Final'
     implementation 'org.mariadb.jdbc:mariadb-java-client:3.2.0'
 
     implementation('org.glassfish.jersey.containers:jersey-container-servlet:3.1.2')
     implementation('org.glassfish.jersey.media:jersey-media-json-jackson:3.1.2')
     implementation('org.glassfish.jersey.inject:jersey-cdi2-se:3.1.2')
     implementation('org.jboss.weld.se:weld-se-core:5.1.0.Final')
+    implementation 'org.glassfish.jaxb:jaxb-runtime:4.0.2'
 
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.2'
     implementation 'com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.15.2'
+    implementation 'jakarta.xml.bind:jakarta.xml.bind-api:4.0.0'
 
     implementation 'org.slf4j:slf4j-api:2.0.9'
     testImplementation 'org.slf4j:slf4j-simple:2.0.9'

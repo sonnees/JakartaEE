@@ -18,14 +18,14 @@ import java.util.Objects;
 public class ProductPrice {
     @Id
     @Column(name = "price_date_time")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime priceDateTime;
     private Double price;
     private String note;
-    @ManyToOne
     @Id
+    @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
 
@@ -93,5 +93,10 @@ public class ProductPrice {
         if (!(o instanceof ProductPrice)) return false;
         ProductPrice that = (ProductPrice) o;
         return Objects.equals(priceDateTime, that.priceDateTime) && Objects.equals(product, that.product);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(priceDateTime, product);
     }
 }

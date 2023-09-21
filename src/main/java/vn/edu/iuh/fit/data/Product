@@ -1,13 +1,5 @@
 [
   {
-    "id": 0,
-    "name": "Chicken Meat",
-    "description": "100% Fresh Chicken Meat",
-    "unit": "kg",
-    "manufacturer": "Food Company",
-    "status": 1
-  },
-  {
     "id": 1,
     "name": "Onions",
     "description": "Fresh Green Onions",
@@ -158,5 +150,13 @@
     "unit": "box",
     "manufacturer": "Chocolate Delights",
     "status": 1
-  }
+  },
+  {
+        "id": 20,
+        "name": "Chicken Meat",
+        "description": "100% Fresh Chicken Meat",
+        "unit": "kg",
+        "manufacturer": "Food Company",
+        "status": 1
+      }
 ]

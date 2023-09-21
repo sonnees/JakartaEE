@@ -8,17 +8,15 @@ import vn.edu.iuh.fit.models.Product;
 import vn.edu.iuh.fit.models.ProductPrice;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProductPriceDao {
     private EntityManager em;
     Logger logger = LoggerFactory.getLogger(this.getClass().getName());
-
     public ProductPriceDao() {em = DBConnect.getInstance().getEmf().createEntityManager();
     }
 
-    public boolean addProductPrice(ProductPrice productPrice){
+    public boolean add(ProductPrice productPrice){
         EntityTransaction tr = em.getTransaction();
         try {
             tr.begin();
@@ -34,13 +32,13 @@ public class ProductPriceDao {
         return false;
     }
 
-    public boolean delProductPrice(long productId,LocalDateTime priceDateTime){
+    public boolean del(long productId,LocalDateTime priceDateTime){
         EntityTransaction tr = em.getTransaction();
         try {
             tr.begin();
 
             ProductPrice productPrice = new ProductPrice(priceDateTime,em.find(Product.class,productId));
-            em.remove(this.searchProductPriceById(productId,priceDateTime));
+            em.remove(this.searchById(productId,priceDateTime));
 
             tr.commit();
             return true;
@@ -51,16 +49,17 @@ public class ProductPriceDao {
         return false;
     }
 
-    public ProductPrice searchProductPriceById(long productId,LocalDateTime priceDateTime){
+    public ProductPrice searchById(long productId,LocalDateTime priceDateTime){
         EntityTransaction tr = em.getTransaction();
+        Product product = em.find(Product.class, productId);
+
         try {
             tr.begin();
 
-            ProductPrice productPriceId = new ProductPrice(priceDateTime,em.find(Product.class,productId));
-            ProductPrice productPrice = em.find(ProductPrice.class, productPriceId);
+//            ProductPrice productPrice = em.find(ProductPrice.class, productPriceID);
 
             tr.commit();
-            return productPrice;
+            return null;
         } catch (Exception e){
             logger.info(e.getMessage());
             tr.rollback();
@@ -74,6 +73,27 @@ public class ProductPriceDao {
             tr.begin();
 
             List<ProductPrice> list = em.createNativeQuery("select * from product_price", ProductPrice.class).getResultList();
+
+            tr.commit();
+            return list;
+        } catch (Exception e){
+            logger.info(e.getMessage());
+            tr.rollback();
+        }
+        return null;
+    }
+
+    public List<ProductPrice> getFromXToY(int x, int y){
+        EntityTransaction tr = em.getTransaction();
+        try {
+            tr.begin();
+
+            int from = y-x+1;
+            int to = x-1;
+
+            String sql = "SELECT * FROM product_price  where status = 2 LIMIT "+from +" OFFSET "+to;
+
+            List<ProductPrice> list = em.createNativeQuery(sql, ProductPrice.class).getResultList();
 
             tr.commit();
             return list;

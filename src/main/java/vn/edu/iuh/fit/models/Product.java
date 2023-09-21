@@ -3,13 +3,15 @@ package vn.edu.iuh.fit.models;
 import jakarta.persistence.*;
 import vn.edu.iuh.fit.enums.ProductStatus;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "product")
-public class Product {
+public class Product implements Serializable {
     @Id
     @Column(name = "product_id")
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
     @Column(columnDefinition = "varchar(150)")
     private String name;
