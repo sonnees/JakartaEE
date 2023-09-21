@@ -36,7 +36,7 @@ public class LogoutControl extends HttpServlet {
                 ""
         );
         LogServices.insertLog(log);
-        resp.sendRedirect("/JakartaEE_Lab01/login.html");
+        resp.sendRedirect("/JakartaEE/login.html");
     }
 
     @Override

@@ -44,13 +44,13 @@
                     <td>${account.phone}</td>
                     <td>${account.status}</td>
                     <td>
-                        <a href="/Lab01/DelAccountCtrl?id=${account.account_id}"><i class="fas fa-trash-alt"></i></a>
+                        <a href="/JakartaEE/DelAccountCtrl?id=${account.account_id}"><i class="fas fa-trash-alt"></i></a>
                     </td>
                 </tr>
             </c:forEach>
 
             <tr>
-                <form action="/Lab01/AddAccountCtrl">
+                <form action="/JakartaEE/AddAccountCtrl">
                     <td><input style="width: 100px" type="text" name="id"></td>
                     <td><input style="width: 200px" type="text" name="name"></td>
                     <td><input style="width: 200px" type="text" name="email"></td>

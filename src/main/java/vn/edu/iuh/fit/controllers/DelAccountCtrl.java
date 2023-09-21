@@ -17,7 +17,7 @@ public class DelAccountCtrl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         AccountServices.dellAccount(req.getParameter("id"));
-        resp.sendRedirect("/JakartaEE_Lab01/ViewAccountCtrl");
+        resp.sendRedirect("/JakartaEE/ViewAccountCtrl");
     }
 
     @Override

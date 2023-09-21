@@ -27,9 +27,9 @@
                     <a class="navbar-brand" href="#">Son Nees</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li id="account"><a href="/Lab01/ViewAccountCtrl">Manager Account</a></li>
-                    <li id="log"><a href="/Lab01/ViewLogCtrl">Manager Log</a></li>
-                    <li ><a href="/Lab01/LogoutControl"><i class="fas fa-sign-out-alt"></i> LogOut</a></li>
+                    <li id="account"><a href="/JakartaEE/ViewAccountCtrl">Manager Account</a></li>
+                    <li id="log"><a href="/JakartaEE/ViewLogCtrl">Manager Log</a></li>
+                    <li ><a href="/JakartaEE/LogoutControl"><i class="fas fa-sign-out-alt"></i> LogOut</a></li>
                 </ul>
             </div>
         </nav>

@@ -28,7 +28,7 @@ public class AddAccountCtrl extends HttpServlet {
 
         AccountServices.insertAccount(account);
 
-        resp.sendRedirect("/JakartaEE_Lab01/ViewAccountCtrl");
+        resp.sendRedirect("/JakartaEE/ViewAccountCtrl");
     }
 
     @Override
