@@ -24,6 +24,13 @@
 > git clone -b Lab02 --single-branch https://github.com/sonnees/JakartaEE.git
 > ```
 
+<hr>
+
+with open('/java/vn/edu/iuh/fit/resources/NoteLinkAPI.txt', 'r', encoding='utf-8') as file:
+    api = file.read()
+# Print the Markdown content
+print(api)
+
 
 
 

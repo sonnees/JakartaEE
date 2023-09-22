@@ -1,34 +1,34 @@
-Product:
----GET
+1. Product:
+- GET
 .../api/Product
 .../api/Product/{id}
 .../api/Product/{x}-{y}
 
----POST
+- POST
 .../api/Product
 .../api/Product/add-list
 
----PUT
+- PUT
 .../api/Product/{id}
 .../api/Product/{id}/update-field
 
----DELETE
+- DELETE
 .../api/Product/{id}
 .../api/Product/delete-multiple
 
-ProductPrice:
----GET
+2. ProductPrice:
+- GET
 .../api/ProductPrice/{product_id}
 .../api/ProductPrice/{product_id}/{x}-{y}
 
----POST
+- POST
 .../api/ProductPrice
 .../api/ProductPrice/add-list
 
----PUT
+- PUT
 .../api/ProductPrice/{product_id}/update-field
 
----DELETE
+- DELETE
 .../api/Product
 .../api/Product/delete-multiple
 
