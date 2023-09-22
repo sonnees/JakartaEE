@@ -24,7 +24,7 @@
 > git clone -b Lab02 --single-branch https://github.com/sonnees/JakartaEE.git
 > ```
 
-    <hr>
+<hr>
 
 1. Product:
     > GET <br>
