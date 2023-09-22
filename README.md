@@ -24,12 +24,43 @@
 > git clone -b Lab02 --single-branch https://github.com/sonnees/JakartaEE.git
 > ```
 
-<hr>
+    <hr>
 
-with open('/java/vn/edu/iuh/fit/resources/NoteLinkAPI.txt', 'r', encoding='utf-8') as file:
-    api = file.read()
-# Print the Markdown content
-print(api)
+1. Product:
+- GET
+  .../api/Product
+  .../api/Product/{id}
+  .../api/Product/{x}-{y}
+
+- POST
+  .../api/Product
+  .../api/Product/add-list
+
+- PUT
+  .../api/Product/{id}
+  .../api/Product/{id}/update-field
+
+- DELETE
+  .../api/Product/{id}
+  .../api/Product/delete-multiple
+
+2. ProductPrice:
+- GET
+  .../api/ProductPrice/{product_id}
+  .../api/ProductPrice/{product_id}/{x}-{y}
+
+- POST
+  .../api/ProductPrice
+  .../api/ProductPrice/add-list
+
+- PUT
+  .../api/ProductPrice/{product_id}/update-field
+
+- DELETE
+  .../api/Product
+  .../api/Product/delete-multiple
+
+
 
 
 
