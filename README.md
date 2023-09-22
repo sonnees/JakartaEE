@@ -27,38 +27,38 @@
     <hr>
 
 1. Product:
-  > GET <br>
-  >> .../api/Product  <br>
-  >> .../api/Product/{id}  <br>
-  >>.../api/Product/{x}-{y}  <br>
+    > GET <br>
+    >> .../api/Product  <br>
+    >> .../api/Product/{id}  <br>
+    >>.../api/Product/{x}-{y}  <br>
 
-  > POST <br>
-  >> .../api/Product  <br>
-  >> .../api/Product/add-list  <br>
+    > POST <br>
+    >> .../api/Product  <br>
+    >> .../api/Product/add-list  <br>
 
-  > PUT <br>
-  >> .../api/Product/{id}  <br>
-  >> .../api/Product/{id}/update-field  <br>
+    > PUT <br>
+    >> .../api/Product/{id}  <br>
+    >> .../api/Product/{id}/update-field  <br>
 
-  >DELETE <br>
-  >> .../api/Product/{id}  <br>
-  >> .../api/Product/delete-multiple  <br>
+    >DELETE <br>
+    >> .../api/Product/{id}  <br>
+    >> .../api/Product/delete-multiple  <br>
 
 2. ProductPrice:
-  >GET <br>
-  >> .../api/ProductPrice/{product_id}  <br>
-  >> .../api/ProductPrice/{product_id}/{x}-{y}  <br>
+    >GET <br>
+    >> .../api/ProductPrice/{product_id}  <br>
+    >> .../api/ProductPrice/{product_id}/{x}-{y}  <br>
 
-  >POST <br>
-  >> .../api/ProductPrice  <br>
-  >> .../api/ProductPrice/add-list  <br>
+    >POST <br>
+    >> .../api/ProductPrice  <br>
+    >> .../api/ProductPrice/add-list  <br>
 
-  >PUT <br>
-  >> .../api/ProductPrice/{product_id}/update-field  <br>
+    > PUT <br>
+    >> .../api/ProductPrice/{product_id}/update-field  <br>
 
-  >DELETE <br>
-  >> .../api/Product  <br>
-  >> .../api/Product/delete-multiple  <br>
+    >DELETE <br>
+    >> .../api/Product  <br>
+    >> .../api/Product/delete-multiple  <br>
 
 
 
