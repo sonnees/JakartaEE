@@ -60,6 +60,23 @@
     >> .../api/Product  <br>
     >> .../api/Product/delete-multiple  <br>
 
+3. ProductImage:
+   > GET <br>
+   >> .../api/ProductImage  <br>
+   >> .../api/ProductImage/{id}  <br>
+
+   > POST <br>
+   >> .../api/ProductImage  <br>
+   >> .../api/ProductImage/add-list  <br>
+
+   > PUT <br>
+   >> .../api/ProductImage/{id}  <br>
+   >> .../api/ProductImage/{id}/update-field  <br>
+
+   >DELETE <br>
+   >> .../api/ProductImage/{id}  <br>
+   >> .../api/ProductImage/delete-multiple  <br>
+
 
 
 
