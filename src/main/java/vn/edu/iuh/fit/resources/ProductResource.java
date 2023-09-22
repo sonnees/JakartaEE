@@ -5,7 +5,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import vn.edu.iuh.fit.models.Product;
-import vn.edu.iuh.fit.models.ReqObjectUpdate;
+import vn.edu.iuh.fit.models.ReqObject2Field;
 import vn.edu.iuh.fit.services.ProductSer;
 
 import java.util.ArrayList;
@@ -92,10 +92,10 @@ public class ProductResource {
     @Path("/{id}/update-field")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response updateField(@PathParam("id") long id, ReqObjectUpdate reqObjectUpdate){
-        boolean update = productSer.update(id, reqObjectUpdate.getKey(), reqObjectUpdate.getValue());
+    public Response updateField(@PathParam("id") long id, ReqObject2Field reqObject2Field){
+        boolean update = productSer.updateField(id, reqObject2Field.getField_1(), reqObject2Field.getField_2());
         if(!update) return Response.status(Response.Status.NOT_FOUND).build();
-        return Response.ok(reqObjectUpdate).build();
+        return Response.ok(reqObject2Field).build();
     }
 
     @DELETE
@@ -117,8 +117,8 @@ public class ProductResource {
         List<Long> listDel = new ArrayList<>();
 
         list.forEach(i->{
-            boolean del = productSer.del(i);
-            if(!del) return;
+            Response del = del(i);
+            if(del.getStatus()!=200) return;
             else listDel.add(i);
         });
 

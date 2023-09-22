@@ -16,3 +16,19 @@ Product:
 .../api/Product/{id}
 .../api/Product/delete-multiple
 
+ProductPrice:
+---GET
+.../api/ProductPrice/{product_id}
+.../api/ProductPrice/{product_id}/{x}-{y}
+
+---POST
+.../api/ProductPrice
+.../api/ProductPrice/add-list
+
+---PUT
+.../api/ProductPrice/{product_id}/update-field
+
+---DELETE
+.../api/Product
+.../api/Product/delete-multiple
+

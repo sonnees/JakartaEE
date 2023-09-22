@@ -16,18 +16,21 @@ public class ProductPriceSer {
         this.dao = productPriceDao;
     }
 
+    public ProductPrice searchById(ProductPrice productPrice){
+        return dao.searchById(productPrice);
+    }
+    public List<ProductPrice> getAll(long id){
+        return dao.getAll(id);
+    }
+    public List<ProductPrice> getFromXToY(long id, int x, int y){return dao.getFromXToY(id,x,y);}
+    public boolean add(ProductPrice id){
+        return dao.add(id);
+    }
+    public boolean updateField(ProductPrice id, String nameField, String newValue){
+        return dao.updateField(id,nameField,newValue);
+    }
+    public boolean del(ProductPrice id){
+        return dao.del(id);
+    }
 
-    public boolean add(ProductPrice productPrice){
-        return dao.add(productPrice);
-    }
-    public boolean del(long productId, LocalDateTime priceDateTime){
-        return dao.del(productId,priceDateTime);
-    }
-    public ProductPrice searchById(long productId,LocalDateTime priceDateTime){
-        return dao.searchById(productId,priceDateTime);
-    }
-    public List<ProductPrice> getAll(){
-        return dao.getAll();
-    }
-    public List<ProductPrice> getFromXToY(int x, int y){return dao.getFromXToY(x,y);}
 }

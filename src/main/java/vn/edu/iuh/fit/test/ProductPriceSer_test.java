@@ -26,7 +26,7 @@ public class ProductPriceSer_test {
 //
 //        System.out.println(hi);
         LocalDateTime dateTime = LocalDateTime.of(2012,12,21,6,30);
-        ProductPrice productPrice = productPriceSer.searchById(1, dateTime);
-        System.out.println(productPrice);
+//        ProductPrice productPrice = productPriceSer.searchById(1, dateTime);
+//        System.out.println(productPrice);
     }
 }

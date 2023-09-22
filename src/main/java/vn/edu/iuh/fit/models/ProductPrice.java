@@ -32,11 +32,6 @@ public class ProductPrice {
     public ProductPrice() {
     }
 
-    public ProductPrice(LocalDateTime priceDateTime, Product product) {
-        this.priceDateTime = priceDateTime;
-        this.product = product;
-    }
-
     public ProductPrice(LocalDateTime priceDateTime, Double price, String note, Product product) {
         this.priceDateTime = priceDateTime;
         this.price = price;
@@ -44,11 +39,15 @@ public class ProductPrice {
         this.product = product;
     }
 
+    public ProductPrice(LocalDateTime priceDateTime, Product product) {
+        this.priceDateTime = priceDateTime;
+        this.product = product;
+    }
+
     public LocalDateTime getPriceDateTime() {
         return priceDateTime;
     }
 
-    @JsonSetter
     public void setPriceDateTime(LocalDateTime priceDateTime) {
         this.priceDateTime = priceDateTime;
     }

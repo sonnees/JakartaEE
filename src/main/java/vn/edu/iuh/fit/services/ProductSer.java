@@ -31,8 +31,8 @@ public class ProductSer {
         return dao.add(product);
     }
 
-    public boolean update(long id, String nameField, String newValue){
-        return dao.update(id,nameField,newValue);
+    public boolean updateField(long id, String nameField, String newValue){
+        return dao.updateField(id,nameField,newValue);
     }
     public boolean del(long id){
         return dao.del(id);

@@ -15,51 +15,16 @@ public class ProductPriceDao {
     Logger logger = LoggerFactory.getLogger(this.getClass().getName());
     public ProductPriceDao() {em = DBConnect.getInstance().getEmf().createEntityManager();
     }
-
-    public boolean add(ProductPrice productPrice){
+    public ProductPrice searchById(ProductPrice id){
         EntityTransaction tr = em.getTransaction();
-        try {
-            tr.begin();
-
-            em.merge(productPrice);
-
-            tr.commit();
-            return true;
-        } catch (Exception e){
-            logger.info(e.getMessage());
-            tr.rollback();
-        }
-        return false;
-    }
-
-    public boolean del(long productId,LocalDateTime priceDateTime){
-        EntityTransaction tr = em.getTransaction();
-        try {
-            tr.begin();
-
-            ProductPrice productPrice = new ProductPrice(priceDateTime,em.find(Product.class,productId));
-            em.remove(this.searchById(productId,priceDateTime));
-
-            tr.commit();
-            return true;
-        } catch (Exception e){
-            logger.info(e.getMessage());
-            tr.rollback();
-        }
-        return false;
-    }
-
-    public ProductPrice searchById(long productId,LocalDateTime priceDateTime){
-        EntityTransaction tr = em.getTransaction();
-        Product product = em.find(Product.class, productId);
 
         try {
             tr.begin();
 
-//            ProductPrice productPrice = em.find(ProductPrice.class, productPriceID);
+            ProductPrice productPrice = em.find(ProductPrice.class, id);
 
             tr.commit();
-            return null;
+            return productPrice;
         } catch (Exception e){
             logger.info(e.getMessage());
             tr.rollback();
@@ -67,12 +32,12 @@ public class ProductPriceDao {
         return null;
     }
 
-    public List<ProductPrice> getAll(){
+    public List<ProductPrice> getAll(long id){
         EntityTransaction tr = em.getTransaction();
         try {
             tr.begin();
 
-            List<ProductPrice> list = em.createNativeQuery("select * from product_price", ProductPrice.class).getResultList();
+            List<ProductPrice> list = em.createNativeQuery("select * from product_price where product_id = "+id+" order by price_date_time DESC", ProductPrice.class).getResultList();
 
             tr.commit();
             return list;
@@ -83,7 +48,7 @@ public class ProductPriceDao {
         return null;
     }
 
-    public List<ProductPrice> getFromXToY(int x, int y){
+    public List<ProductPrice> getFromXToY(long id, int x, int y){
         EntityTransaction tr = em.getTransaction();
         try {
             tr.begin();
@@ -91,11 +56,12 @@ public class ProductPriceDao {
             int from = y-x+1;
             int to = x-1;
 
-            String sql = "SELECT * FROM product_price  where status = 2 LIMIT "+from +" OFFSET "+to;
+            String sql = "SELECT * FROM product_price  where product_id = "+id+" order by price_date_time DESC LIMIT "+from +" OFFSET "+to;
 
             List<ProductPrice> list = em.createNativeQuery(sql, ProductPrice.class).getResultList();
 
             tr.commit();
+            if(list==null || list.size()==0)  return null;
             return list;
         } catch (Exception e){
             logger.info(e.getMessage());
@@ -103,4 +69,65 @@ public class ProductPriceDao {
         }
         return null;
     }
+
+    public boolean add(ProductPrice productPrice){
+        EntityTransaction tr = em.getTransaction();
+        ProductPrice id = new ProductPrice(productPrice.getPriceDateTime(),productPrice.getProduct());
+        ProductPrice temp = searchById(id);
+        try {
+            tr.begin();
+            if(temp!=null)
+                em.merge(productPrice);
+            else
+                em.persist(productPrice);
+            tr.commit();
+            return true;
+        } catch (Exception e){
+            logger.info(e.getMessage());
+            tr.rollback();
+        }
+        return false;
+    }
+
+    public boolean updateField(ProductPrice id, String nameField, String newValue){
+        EntityTransaction tr = em.getTransaction();
+        ProductPrice productPrice = searchById(id);
+        System.out.println(productPrice);
+        if (productPrice == null) return false;
+        try {
+            tr.begin();
+
+            switch (nameField){
+                case "note":
+                    productPrice.setNote(newValue);
+                    break;
+            }
+
+            tr.commit();
+            return true;
+        } catch (Exception e){
+            logger.info(e.getMessage());
+            tr.rollback();
+        }
+        return false;
+    }
+
+    public boolean del(ProductPrice id){
+        EntityTransaction tr = em.getTransaction();
+        ProductPrice productPrice = searchById(id);
+        if(productPrice==null) return false;
+        try {
+            tr.begin();
+
+            em.remove(productPrice);
+
+            tr.commit();
+            return true;
+        } catch (Exception e){
+            logger.info(e.getMessage());
+            tr.rollback();
+        }
+        return false;
+    }
+
 }

@@ -76,11 +76,13 @@ public class ProductDao {
 
     public boolean add(Product product){
         EntityTransaction tr = em.getTransaction();
+        Product temp = searchById(product.getId());
         try {
             tr.begin();
-
-            em.merge(product);
-
+            if(temp!=null)
+                em.merge(product);
+            else
+                em.persist(product);
             tr.commit();
             return true;
         } catch (Exception e){
@@ -90,7 +92,7 @@ public class ProductDao {
         return false;
     }
 
-    public boolean update(long id, String nameField, String newValue){
+    public boolean updateField(long id, String nameField, String newValue){
         EntityTransaction tr = em.getTransaction();
         Product product = searchById(id);
         if(product==null) return false;
