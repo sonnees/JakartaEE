@@ -28,37 +28,37 @@
 
 1. Product:
 - GET <br>
-  > .../api/Product
-  > .../api/Product/{id}
-  > .../api/Product/{x}-{y}
+  > .../api/Product  <br>
+  > .../api/Product/{id}  <br>
+  > .../api/Product/{x}-{y}  <br>
 
 - POST <br>
-  > .../api/Product
-  > .../api/Product/add-list
+  > .../api/Product  <br>
+  > .../api/Product/add-list  <br>
 
 - PUT <br>
-  > .../api/Product/{id}
-  > .../api/Product/{id}/update-field
+  > .../api/Product/{id}  <br>
+  > .../api/Product/{id}/update-field  <br>
 
 - DELETE <br>
-  > .../api/Product/{id}
-  > .../api/Product/delete-multiple
+  > .../api/Product/{id}  <br>
+  > .../api/Product/delete-multiple  <br>
 
 2. ProductPrice:
 - GET <br>
-  > .../api/ProductPrice/{product_id}
-  > .../api/ProductPrice/{product_id}/{x}-{y}
+  > .../api/ProductPrice/{product_id}  <br>
+  > .../api/ProductPrice/{product_id}/{x}-{y}  <br>
 
 - POST <br>
-  > .../api/ProductPrice
-  > .../api/ProductPrice/add-list
+  > .../api/ProductPrice  <br>
+  > .../api/ProductPrice/add-list  <br>
 
 - PUT <br>
-  > .../api/ProductPrice/{product_id}/update-field
+  > .../api/ProductPrice/{product_id}/update-field  <br>
 
 - DELETE <br>
-  > .../api/Product
-  > .../api/Product/delete-multiple
+  > .../api/Product  <br>
+  > .../api/Product/delete-multiple  <br>
 
 
 
