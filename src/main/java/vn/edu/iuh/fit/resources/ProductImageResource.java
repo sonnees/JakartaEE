@@ -5,21 +5,24 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import vn.edu.iuh.fit.models.Product;
+import vn.edu.iuh.fit.models.ProductImage;
 import vn.edu.iuh.fit.models.ReqObject2Field;
+import vn.edu.iuh.fit.services.ProductImageSer;
 import vn.edu.iuh.fit.services.ProductSer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Path("/Product")
-public class ProductResource {
+@Path("/ProductImage")
+public class ProductImageResource {
     @Inject
-    private ProductSer productSer;
+    private ProductImageSer productImageSer;
+
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll(){
-        List<Product> all = productSer.getAll();
+        List<ProductImage> all = productImageSer.getAll();
         return Response.ok(all).build();
     }
 
@@ -28,64 +31,44 @@ public class ProductResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response getByID(@PathParam("id") int id){
-        Product product = productSer.searchById(id);
-        if(product==null)
+        ProductImage productImage = productImageSer.searchById(id);
+        if(productImage==null)
             return Response.status(Response.Status.NOT_FOUND).build();
 
-        return Response.ok(product).build();
-    }
-
-    /**
-     * Lấy các Product từ x đến y.
-     * Theo dòng trong cơ sở dữ liệu, không phải theo id
-     *
-     * @param x: là vị trí bắt đầu. x > 0 vì trong cơ sở dữ liệu dòng bắt đầu bằng 1
-     * @param y: là vị trí kết thúc. y > x vì dòng đến không thể bé hơn dòng đi.
-     * @return [dòng x, dòng y]
-     */
-    @GET
-    @Path("/{x}-{y}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getFromXToY(@PathParam("x") int x,@PathParam("y") int y){
-        if(x <= 0 || y<x)
-            return Response.status(Response.Status.BAD_REQUEST).build();
-
-        List<Product> fromXToY = productSer.getFromXToY(x, y);
-        return Response.ok(fromXToY).build();
+        return Response.ok(productImage).build();
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response add(Product product){
-        boolean add = productSer.add(product);
+    public Response add(ProductImage productImage){
+        boolean add = productImageSer.add(productImage);
         if(!add) return Response.status(Response.Status.BAD_REQUEST).build();
 
-        return Response.ok(product).build();
+        return Response.ok(productImage).build();
     }
 
     @POST()
     @Path("/add-list")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response addList(List<Product> products){
-        products.forEach(p->{
-            boolean add = productSer.add(p);
+    public Response addList(List<ProductImage> productImages){
+        productImages.forEach(p->{
+            boolean add = productImageSer.add(p);
         });
-        return Response.ok(products).build();
+        return Response.ok(productImages).build();
     }
 
     @PUT()
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response update(@PathParam("id") long id, Product product){
-        Product temp = productSer.searchById(id);
+    public Response update(@PathParam("id") long id, ProductImage productImage){
+        ProductImage temp = productImageSer.searchById(id);
         if(temp == null) return Response.status(Response.Status.NOT_FOUND).build();
-        boolean update = productSer.add(product);
+        boolean update = productImageSer.add(productImage);
         if(!update) return Response.status(Response.Status.NOT_FOUND).build();
-        return Response.ok(product).build();
+        return Response.ok(productImage).build();
     }
 
     @PUT()
@@ -93,7 +76,7 @@ public class ProductResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateField(@PathParam("id") long id, ReqObject2Field reqObject2Field){
-        boolean update = productSer.updateField(id, reqObject2Field.getField_1(), reqObject2Field.getField_2());
+        boolean update = productImageSer.updateField(id, reqObject2Field.getField_1(), reqObject2Field.getField_2());
         if(!update) return Response.status(Response.Status.NOT_FOUND).build();
         return Response.ok(reqObject2Field).build();
     }
@@ -103,7 +86,7 @@ public class ProductResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response del(@PathParam("id") long id){
-        boolean del = productSer.del(id);
+        boolean del = productImageSer.del(id);
         if(!del) return Response.status(Response.Status.NOT_FOUND).build();
 
         return  Response.ok(id).build();

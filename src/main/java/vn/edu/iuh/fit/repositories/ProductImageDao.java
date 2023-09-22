@@ -6,24 +6,25 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import vn.edu.iuh.fit.enums.ProductStatus;
 import vn.edu.iuh.fit.models.Product;
+import vn.edu.iuh.fit.models.ProductImage;
 
 import java.util.List;
 
-public class ProductDao {
+public class ProductImageDao {
 
     private EntityManager em= null;
     Logger logger = LoggerFactory.getLogger(this.getClass().getName());
-
-    public ProductDao() {
+    private ProductDao productDao = new ProductDao();
+    public ProductImageDao() {
         this.em = DBConnect.getInstance().getEmf().createEntityManager();
     }
 
-    public List<Product> getAll() {
+    public List<ProductImage> getAll() {
         EntityTransaction tr = em.getTransaction();
         try {
             tr.begin();
 
-            List<Product> list = em.createNativeQuery("SELECT * from product where status = 2 OR status = 1 ORDER BY name", Product.class).getResultList();
+            List<ProductImage> list = em.createNativeQuery("SELECT * from product_image", ProductImage.class).getResultList();
 
             tr.commit();
             return list;
@@ -35,15 +36,15 @@ public class ProductDao {
     }
 
 
-    public Product searchById(long id){
+    public ProductImage searchById(long id){
         EntityTransaction tr = em.getTransaction();
         try {
             tr.begin();
 
-            Product product = em.find(Product.class, id);
+            ProductImage productImage = em.find(ProductImage.class, id);
 
             tr.commit();
-            return product;
+            return productImage;
         } catch (Exception e){
             logger.info(e.getMessage());
             tr.rollback();
@@ -51,41 +52,19 @@ public class ProductDao {
         return null;
     }
 
-
-    public List<Product> getFromXToY(int x, int y){
+    public boolean add(ProductImage productImage){
         EntityTransaction tr = em.getTransaction();
+        ProductImage temp = searchById(productImage.getId());
         try {
             tr.begin();
 
-            int from = y-x+1;
-            int to = x-1;
-
-            String sql = "SELECT * FROM product  where status = 2 OR status = 1 ORDER BY name LIMIT "+from +" OFFSET "+to;
-
-            List<Product> list = em.createNativeQuery(sql, Product.class).getResultList();
-
-            tr.commit();
-            return list;
-        } catch (Exception e){
-            logger.info(e.getMessage());
-            tr.rollback();
-        }
-        return null;
-    }
-
-    public boolean add(Product product){
-        EntityTransaction tr = em.getTransaction();
-        Product temp = searchById(product.getId());
-        try {
-            tr.begin();
-
-            em.merge(product);
+            em.merge(productImage);
 
 //            if(temp!=null){
-//                em.merge(product);
+//                em.merge(productImage);
 //            }
 //            else{
-//                em.persist(product);
+//                em.persist(productImage);
 //            }
 
             tr.commit();
@@ -99,29 +78,19 @@ public class ProductDao {
 
     public boolean updateField(long id, String nameField, String newValue){
         EntityTransaction tr = em.getTransaction();
-        Product product = searchById(id);
-        if(product==null) return false;
+        ProductImage productImage = searchById(id);
+        if(productImage==null) return false;
         try {
             tr.begin();
             switch (nameField){
-                case "name":
-                    product.setName(newValue);
+                case "path":
+                    productImage.setPath(newValue);
                     break;
-                case "description":
-                    product.setDescription(newValue);
+                case "alternative":
+                    productImage.setAlternative(newValue);
                     break;
-                case "unit":
-                    product.setUnit(newValue);
-                    break;
-                case "manufacturer":
-                    product.setManufacturer(newValue);
-                    break;
-                case "status":
-                    if (newValue.equals("-1")) {
-                        product.setStatus(ProductStatus.terminal);
-                    } else if (newValue.equals("0")){
-                        product.setStatus(ProductStatus.noActive);
-                    } else product.setStatus(ProductStatus.active);
+                case "product":
+                    productImage.setProduct(productDao.searchById(Long.parseLong(newValue)));
                     break;
             }
             tr.commit();
@@ -136,12 +105,12 @@ public class ProductDao {
     public boolean del(long id){
         EntityTransaction tr = em.getTransaction();
         System.out.println(id);
-        Product product = searchById(id);
-        if(product==null) return false;
+        ProductImage productImage = searchById(id);
+        if(productImage==null) return false;
         try {
             tr.begin();
 
-            product.setStatus(ProductStatus.terminal);
+            em.remove(productImage);
 
             tr.commit();
             return true;
@@ -151,6 +120,5 @@ public class ProductDao {
         }
         return false;
     }
-
 
 }

@@ -7,11 +7,11 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "product")
-public class Product implements Serializable {
+public class Product{
     @Id
     @Column(name = "product_id")
 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(columnDefinition = "varchar(150)")
     private String name;

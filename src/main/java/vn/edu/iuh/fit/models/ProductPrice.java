@@ -13,8 +13,8 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-@Table(name = "product_price")
 @Entity
+@Table(name = "product_price")
 public class ProductPrice {
     @Id
     @Column(name = "price_date_time")
