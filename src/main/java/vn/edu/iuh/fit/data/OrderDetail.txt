@@ -1,0 +1,35 @@
+[
+  {
+    "quantity":1,
+    "price":960.0,
+    "note":"hi",
+    "orders":{
+      "id":1,
+      "orderDate":"2023-09-20T15:45",
+      "employee":{
+        "id":1,
+        "address":"123 ABC Street, Cityville, USA",
+        "dob":"1990-05-15T10:30",
+        "email":"johnsmith@example.com",
+        "fullName":"John Smith",
+        "phone":"1234567890",
+        "status":1
+      },
+      "customer":{
+        "id":1,
+        "name":"John Smith",
+        "email":"johnsmith@example.com",
+        "phone":"0123456789",
+        "address":"123 ABC Street, District 1, Ho Chi Minh City"
+      }
+    },
+    "product":{
+      "id":1,
+      "name":"Onions",
+      "description":"Fresh Green Onions",
+      "unit":"kg",
+      "manufacturer":"Green Garden Farms",
+      "status":1
+    }
+  }
+]

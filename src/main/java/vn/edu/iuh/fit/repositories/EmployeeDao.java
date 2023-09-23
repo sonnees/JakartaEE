@@ -4,26 +4,26 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import vn.edu.iuh.fit.enums.ProductStatus;
-import vn.edu.iuh.fit.models.Product;
+import vn.edu.iuh.fit.enums.EmployeeStatus;
+import vn.edu.iuh.fit.models.Employee;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
-public class ProductDao {
-
+public class EmployeeDao {
     private EntityManager em= null;
     Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
-    public ProductDao() {
+    public EmployeeDao() {
         this.em = DBConnect.getInstance().getEmf().createEntityManager();
     }
 
-    public List<Product> getAll() {
+    public List<Employee> getAll() {
         EntityTransaction tr = em.getTransaction();
         try {
             tr.begin();
 
-            List<Product> list = em.createNativeQuery("SELECT * from product where status = 2 OR status = 1 ORDER BY name", Product.class).getResultList();
+            List<Employee> list = em.createNativeQuery("SELECT * from employee ORDER BY full_name where status = 2 OR status = 1", Employee.class).getResultList();
 
             tr.commit();
             return list;
@@ -35,15 +35,15 @@ public class ProductDao {
     }
 
 
-    public Product searchById(long id){
+    public Employee searchById(long id){
         EntityTransaction tr = em.getTransaction();
         try {
             tr.begin();
 
-            Product product = em.find(Product.class, id);
+            Employee employee = em.find(Employee.class, id);
 
             tr.commit();
-            return product;
+            return employee;
         } catch (Exception e){
             logger.info(e.getMessage());
             tr.rollback();
@@ -52,7 +52,7 @@ public class ProductDao {
     }
 
 
-    public List<Product> getFromXToY(int x, int y){
+    public List<Employee> getFromXToY(int x, int y){
         EntityTransaction tr = em.getTransaction();
         try {
             tr.begin();
@@ -60,9 +60,9 @@ public class ProductDao {
             int from = y-x+1;
             int to = x-1;
 
-            String sql = "SELECT * FROM product  where status = 2 OR status = 1 ORDER BY name LIMIT "+from +" OFFSET "+to;
+            String sql = "SELECT * FROM employee ORDER BY full_name where status = 2 OR status = 1 LIMIT "+from +" OFFSET "+to;
 
-            List<Product> list = em.createNativeQuery(sql, Product.class).getResultList();
+            List<Employee> list = em.createNativeQuery(sql, Employee.class).getResultList();
 
             tr.commit();
             return list;
@@ -73,13 +73,13 @@ public class ProductDao {
         return null;
     }
 
-    public boolean add(Product product){
+    public boolean add(Employee employee){
         EntityTransaction tr = em.getTransaction();
-        Product temp = searchById(product.getId());
+        Employee temp = searchById(employee.getId());
         try {
             tr.begin();
 
-            em.merge(product);
+            em.merge(employee);
 
 //            if(temp!=null){
 //                em.merge(product);
@@ -99,29 +99,33 @@ public class ProductDao {
 
     public boolean updateField(long id, String nameField, String newValue){
         EntityTransaction tr = em.getTransaction();
-        Product product = searchById(id);
-        if(product==null) return false;
+        Employee employee = searchById(id);
+        if(employee==null) return false;
         try {
             tr.begin();
             switch (nameField){
-                case "name":
-                    product.setName(newValue);
+                case "address":
+                    employee.setAddress(newValue);
                     break;
-                case "description":
-                    product.setDescription(newValue);
+                case "dob":
+                    LocalDateTime dateTime = LocalDateTime.parse(newValue);
+                    employee.setDob(dateTime);
                     break;
-                case "unit":
-                    product.setUnit(newValue);
+                case "email":
+                    employee.setEmail(newValue);
                     break;
-                case "manufacturer":
-                    product.setManufacturer(newValue);
+                case "full_name":
+                    employee.setFullName(newValue);
+                    break;
+                case "phone":
+                    employee.setPhone(newValue);
                     break;
                 case "status":
                     if (newValue.equals("-1")) {
-                        product.setStatus(ProductStatus.terminal);
+                        employee.setStatus(EmployeeStatus.terminal);
                     } else if (newValue.equals("0")){
-                        product.setStatus(ProductStatus.noActive);
-                    } else product.setStatus(ProductStatus.active);
+                        employee.setStatus(EmployeeStatus.noActive);
+                    } else employee.setStatus(EmployeeStatus.active);
                     break;
             }
             tr.commit();
@@ -135,12 +139,12 @@ public class ProductDao {
 
     public boolean del(long id){
         EntityTransaction tr = em.getTransaction();
-        Product product = searchById(id);
-        if(product==null) return false;
+        Employee employee = searchById(id);
+        if(employee==null) return false;
         try {
             tr.begin();
 
-            product.setStatus(ProductStatus.terminal);
+            employee.setStatus(EmployeeStatus.terminal);
 
             tr.commit();
             return true;
@@ -150,6 +154,5 @@ public class ProductDao {
         }
         return false;
     }
-
 
 }

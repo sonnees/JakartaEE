@@ -1,5 +1,10 @@
 package vn.edu.iuh.fit.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import jakarta.persistence.*;
 import vn.edu.iuh.fit.enums.EmployeeStatus;
 
@@ -16,7 +21,10 @@ public class Employee {
     @Column(name = "address", columnDefinition = "varchar(250)")
     private String address;
 
-    @Column(name = "dob", columnDefinition = "datetime(6)")
+    @Column(name = "dob")
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime dob;
     @Column(name = "email", columnDefinition = "varchar(150)")
     private String email;
@@ -24,8 +32,8 @@ public class Employee {
     private String fullName;
     @Column(name = "phone", columnDefinition = "varchar(15)")
     private String phone;
-    @Column(name = "status", columnDefinition = "int(11)")
     @Enumerated(EnumType.ORDINAL)
+    @Column(columnDefinition="int")
     private EmployeeStatus status;
 
     public Employee() {

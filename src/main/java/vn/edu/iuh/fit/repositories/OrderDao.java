@@ -5,25 +5,30 @@ import jakarta.persistence.EntityTransaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import vn.edu.iuh.fit.enums.ProductStatus;
+import vn.edu.iuh.fit.models.Orders;
 import vn.edu.iuh.fit.models.Product;
 
+import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class ProductDao {
-
+public class OrderDao {
     private EntityManager em= null;
     Logger logger = LoggerFactory.getLogger(this.getClass().getName());
-
-    public ProductDao() {
+    private CustomerDao customerDao = new CustomerDao();
+    private EmployeeDao employeeDao = new EmployeeDao();
+    public OrderDao() {
         this.em = DBConnect.getInstance().getEmf().createEntityManager();
     }
 
-    public List<Product> getAll() {
+    public List<Orders> getAll() {
         EntityTransaction tr = em.getTransaction();
         try {
             tr.begin();
 
-            List<Product> list = em.createNativeQuery("SELECT * from product where status = 2 OR status = 1 ORDER BY name", Product.class).getResultList();
+            List<Orders> list = em.createNativeQuery("SELECT * from orders ORDER BY DESC order_date", Orders.class).getResultList();
 
             tr.commit();
             return list;
@@ -35,15 +40,15 @@ public class ProductDao {
     }
 
 
-    public Product searchById(long id){
+    public Orders searchById(long id){
         EntityTransaction tr = em.getTransaction();
         try {
             tr.begin();
 
-            Product product = em.find(Product.class, id);
+            Orders orders = em.find(Orders.class, id);
 
             tr.commit();
-            return product;
+            return orders;
         } catch (Exception e){
             logger.info(e.getMessage());
             tr.rollback();
@@ -52,7 +57,7 @@ public class ProductDao {
     }
 
 
-    public List<Product> getFromXToY(int x, int y){
+    public List<Orders> getFromXToY(int x, int y){
         EntityTransaction tr = em.getTransaction();
         try {
             tr.begin();
@@ -60,9 +65,9 @@ public class ProductDao {
             int from = y-x+1;
             int to = x-1;
 
-            String sql = "SELECT * FROM product  where status = 2 OR status = 1 ORDER BY name LIMIT "+from +" OFFSET "+to;
+            String sql = "SELECT * FROM orders ORDER BY order_date DESC LIMIT "+from +" OFFSET "+to;
 
-            List<Product> list = em.createNativeQuery(sql, Product.class).getResultList();
+            List<Orders> list = em.createNativeQuery(sql, Orders.class).getResultList();
 
             tr.commit();
             return list;
@@ -73,13 +78,38 @@ public class ProductDao {
         return null;
     }
 
-    public boolean add(Product product){
+    public Map<String,Integer> getAnalDay(LocalDateTime localDateTime){
         EntityTransaction tr = em.getTransaction();
-        Product temp = searchById(product.getId());
+        try {
+            tr.begin();
+            Map<String,Integer> map = new HashMap<>();
+            String sql = "SELECT DATE_FORMAT(order_date, '%Y-%m-%d') AS date, COUNT(order_id) AS quantity " +
+                    "FROM orders " +
+                    "where DATE_FORMAT(order_date, '%Y-%m') = DATE_FORMAT('"+localDateTime.toString()+"', '%Y-%m') " +
+                    "GROUP BY date;";
+            List<Object[]> resultList = em.createNativeQuery(sql, Object.class).getResultList();
+            System.out.println("1");
+            for (Object[] i : resultList){
+                String date = (String) i[0];
+                int quantity = Integer.parseInt(i[1].toString());
+                map.put(date,quantity);
+            }
+            tr.commit();
+            return map;
+        } catch (Exception e){
+            logger.info(e.getMessage());
+            tr.rollback();
+        }
+        return null;
+    }
+
+    public boolean add(Orders orders){
+        EntityTransaction tr = em.getTransaction();
+        Orders temp = searchById(orders.getId());
         try {
             tr.begin();
 
-            em.merge(product);
+            em.merge(orders);
 
 //            if(temp!=null){
 //                em.merge(product);
@@ -99,30 +129,21 @@ public class ProductDao {
 
     public boolean updateField(long id, String nameField, String newValue){
         EntityTransaction tr = em.getTransaction();
-        Product product = searchById(id);
-        if(product==null) return false;
+        Orders orders = searchById(id);
+        if(orders==null) return false;
         try {
             tr.begin();
             switch (nameField){
-                case "name":
-                    product.setName(newValue);
+                case "orderDate":
+                    orders.setOrderDate(LocalDateTime.parse(newValue));
                     break;
-                case "description":
-                    product.setDescription(newValue);
+                case "employee":
+                    orders.setEmployee(employeeDao.searchById(Long.parseLong(newValue)));
                     break;
-                case "unit":
-                    product.setUnit(newValue);
+                case "customer":
+                    orders.setCustomer(customerDao.searchById(Long.parseLong(newValue)));
                     break;
-                case "manufacturer":
-                    product.setManufacturer(newValue);
-                    break;
-                case "status":
-                    if (newValue.equals("-1")) {
-                        product.setStatus(ProductStatus.terminal);
-                    } else if (newValue.equals("0")){
-                        product.setStatus(ProductStatus.noActive);
-                    } else product.setStatus(ProductStatus.active);
-                    break;
+
             }
             tr.commit();
             return true;
@@ -135,12 +156,12 @@ public class ProductDao {
 
     public boolean del(long id){
         EntityTransaction tr = em.getTransaction();
-        Product product = searchById(id);
-        if(product==null) return false;
+        Orders orders = searchById(id);
+        if(orders==null) return false;
         try {
             tr.begin();
 
-            product.setStatus(ProductStatus.terminal);
+            em.remove(orders);
 
             tr.commit();
             return true;
@@ -150,6 +171,5 @@ public class ProductDao {
         }
         return false;
     }
-
 
 }

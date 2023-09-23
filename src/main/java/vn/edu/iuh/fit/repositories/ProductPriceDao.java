@@ -48,6 +48,8 @@ public class ProductPriceDao {
         return null;
     }
 
+
+
     public List<ProductPrice> getFromXToY(long id, int x, int y){
         EntityTransaction tr = em.getTransaction();
         try {

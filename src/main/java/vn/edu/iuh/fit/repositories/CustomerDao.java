@@ -130,7 +130,6 @@ public class CustomerDao {
 
     public boolean del(long id){
         EntityTransaction tr = em.getTransaction();
-        System.out.println(id);
         Customer customer = searchById(id);
         if(customer==null) return false;
         try {

@@ -95,6 +95,42 @@
    >> .../api/Customer/{id}  <br>
    >> .../api/Customer/delete-multiple  <br>
 
+5. Employee:
+   > GET <br>
+   >> .../api/Employee  <br>
+   >> .../api/Employee/{id}  <br>
+   >>.../api/Employee/{x}-{y}  <br>
+
+   > POST <br>
+   >> .../api/Employee  <br>
+   >> .../api/Employee/add-list  <br>
+
+   > PUT <br>
+   >> .../api/Employee/{id}  <br>
+   >> .../api/Employee/{id}/update-field  <br>
+
+   >DELETE <br>
+   >> .../api/Employee/{id}  <br>
+   >> .../api/Employee/delete-multiple  <br>
+
+6. Orders:
+   > GET <br>
+   >> .../api/Orders  <br>
+   >> .../api/Orders/{id}  <br>
+   >>.../api/Orders/{x}-{y}  <br>
+
+   > POST <br>
+   >> .../api/Orders  <br>
+   >> .../api/Orders/add-list  <br>
+
+   > PUT <br>
+   >> .../api/Orders/{id}  <br>
+   >> .../api/Orders/{id}/update-field  <br>
+
+   >DELETE <br>
+   >> .../api/Orders/{id}  <br>
+   >> .../api/Orders/delete-multiple  <br>
+
 
 
 
