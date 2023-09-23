@@ -77,7 +77,23 @@
    >> .../api/ProductImage/{id}  <br>
    >> .../api/ProductImage/delete-multiple  <br>
 
+4. Customer:
+   > GET <br>
+   >> .../api/Customer  <br>
+   >> .../api/Customer/{id}  <br>
+   >>.../api/Customer/{x}-{y}  <br>
 
+   > POST <br>
+   >> .../api/Customer  <br>
+   >> .../api/Customer/add-list  <br>
+
+   > PUT <br>
+   >> .../api/Customer/{id}  <br>
+   >> .../api/Customer/{id}/update-field  <br>
+
+   >DELETE <br>
+   >> .../api/Customer/{id}  <br>
+   >> .../api/Customer/delete-multiple  <br>
 
 
 
