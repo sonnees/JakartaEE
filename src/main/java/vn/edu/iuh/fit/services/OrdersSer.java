@@ -3,10 +3,13 @@ package vn.edu.iuh.fit.services;
 import jakarta.inject.Inject;
 import vn.edu.iuh.fit.models.Orders;
 import vn.edu.iuh.fit.models.Product;
+import vn.edu.iuh.fit.models.ReqObject3Field;
 import vn.edu.iuh.fit.repositories.OrderDao;
 import vn.edu.iuh.fit.repositories.ProductDao;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 public class OrdersSer {
     @Inject
@@ -27,8 +30,10 @@ public class OrdersSer {
 
     public List<Orders> getFromXToY(int x, int y){
         return dao.getFromXToY(x,y);
-    };
+    }
 
+    public Map<String,Integer> getAnalYearMonthDay(ReqObject3Field reqObject3Field){return dao.getAnalYearMonthDay(reqObject3Field);}
+    public Map<String,Integer> getAnalYearMonths(ReqObject3Field reqObject3Field){return dao.getAnalYearMonths(reqObject3Field);}
     public boolean add(Orders orders){
         return dao.add(orders);
     }

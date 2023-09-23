@@ -81,7 +81,7 @@
    > GET <br>
    >> .../api/Customer  <br>
    >> .../api/Customer/{id}  <br>
-   >>.../api/Customer/{x}-{y}  <br>
+   >> .../api/Customer/{x}-{y}  <br>
 
    > POST <br>
    >> .../api/Customer  <br>
@@ -99,7 +99,7 @@
    > GET <br>
    >> .../api/Employee  <br>
    >> .../api/Employee/{id}  <br>
-   >>.../api/Employee/{x}-{y}  <br>
+   >> .../api/Employee/{x}-{y}  <br>
 
    > POST <br>
    >> .../api/Employee  <br>
@@ -117,7 +117,24 @@
    > GET <br>
    >> .../api/Orders  <br>
    >> .../api/Orders/{id}  <br>
-   >>.../api/Orders/{x}-{y}  <br>
+   >> .../api/Orders/{x}-{y}  <br>
+   >> .../api/Orders/Anal-Year-Month-Day  <br>
+   
+   > POST <br>
+   >> .../api/Orders  <br>
+   >> .../api/Orders/add-list  <br>
+
+   > PUT <br>
+   >> .../api/Orders/{id}  <br>
+   >> .../api/Orders/{id}/update-field  <br>
+
+   > DELETE <br>
+   >> .../api/Orders/{id}  <br>
+   >> .../api/Orders/delete-multiple  <br>
+
+7. OrderDetail:
+   > GET <br>
+   >> .../api/OrderDetail/{id}  <br>
 
    > POST <br>
    >> .../api/Orders  <br>
@@ -127,11 +144,9 @@
    >> .../api/Orders/{id}  <br>
    >> .../api/Orders/{id}/update-field  <br>
 
-   >DELETE <br>
+   > DELETE <br>
    >> .../api/Orders/{id}  <br>
    >> .../api/Orders/delete-multiple  <br>
-
-
 
 
 

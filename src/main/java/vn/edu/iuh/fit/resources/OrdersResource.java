@@ -5,13 +5,14 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import vn.edu.iuh.fit.models.Orders;
-import vn.edu.iuh.fit.models.Product;
 import vn.edu.iuh.fit.models.ReqObject2Field;
+import vn.edu.iuh.fit.models.ReqObject3Field;
 import vn.edu.iuh.fit.services.OrdersSer;
-import vn.edu.iuh.fit.services.ProductSer;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Path("/Orders")
 public class OrdersResource {
@@ -55,6 +56,30 @@ public class OrdersResource {
 
         List<Orders> fromXToY = ordersSer.getFromXToY(x, y);
         return Response.ok(fromXToY).build();
+    }
+
+    @GET
+    @Path("/Anal-Year-Month-Day")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAnalYearMonthDay(ReqObject3Field reqObject3Field){
+        Map<String, Integer> analYearMonthDay = ordersSer.getAnalYearMonthDay(reqObject3Field);
+        if(analYearMonthDay==null)
+            return Response.status(Response.Status.BAD_REQUEST).build();
+
+        return Response.ok(analYearMonthDay).build();
+    }
+
+    @GET
+    @Path("/Anal-Years-Months")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAnalYearMonthDays(LocalDateTime localDateTime){
+        Map<String, Integer> analYearMonths = ordersSer.getAnalYearMonths(localDateTime);
+        if(analYearMonths==null)
+            return Response.status(Response.Status.BAD_REQUEST).build();
+
+        return Response.ok(analYearMonths).build();
     }
 
     @POST
@@ -127,3 +152,5 @@ public class OrdersResource {
         return  Response.ok(listDel).build();
     }
 }
+
+

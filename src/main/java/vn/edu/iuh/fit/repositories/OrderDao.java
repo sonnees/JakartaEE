@@ -4,11 +4,9 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import vn.edu.iuh.fit.enums.ProductStatus;
 import vn.edu.iuh.fit.models.Orders;
-import vn.edu.iuh.fit.models.Product;
+import vn.edu.iuh.fit.models.ReqObject3Field;
 
-import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
@@ -78,15 +76,14 @@ public class OrderDao {
         return null;
     }
 
-    public Map<String,Integer> getAnalDay(LocalDateTime localDateTime){
+    public Map<String,Integer> getAnalYearMonthDay(ReqObject3Field reqObject3Field){
         EntityTransaction tr = em.getTransaction();
+        String sql = getStringSqlAnal(reqObject3Field);
+        if(sql.equals("")) return null;
         try {
             tr.begin();
             Map<String,Integer> map = new HashMap<>();
-            String sql = "SELECT DATE_FORMAT(order_date, '%Y-%m-%d') AS date, COUNT(order_id) AS quantity " +
-                    "FROM orders " +
-                    "where DATE_FORMAT(order_date, '%Y-%m') = DATE_FORMAT('"+localDateTime.toString()+"', '%Y-%m') " +
-                    "GROUP BY date;";
+
             List<Object[]> resultList = em.createNativeQuery(sql, Object.class).getResultList();
             System.out.println("1");
             for (Object[] i : resultList){
@@ -101,6 +98,69 @@ public class OrderDao {
             tr.rollback();
         }
         return null;
+    }
+
+    private static String getStringSqlAnal(ReqObject3Field reqObject3Field) {
+        String sql = "";
+
+        if(reqObject3Field.getField_3().equals("0")){
+            LocalDateTime localDateTime = LocalDateTime.of();
+            sql = "SELECT DATE_FORMAT(order_date, '%Y-%m-%d') AS date, COUNT(order_id) AS quantity " +
+                    "FROM orders " +
+                    "where DATE_FORMAT(order_date, '%Y-%m-%d') = DATE_FORMAT('"+ localDateTime.toString()+"', '%Y-%m-%d') " +
+                    "GROUP BY date;";
+        } else if(reqObject3Field.getField_2().equals("0")){
+            sql = "SELECT DATE_FORMAT(order_date, '%Y-%m') AS date, COUNT(order_id) AS quantity " +
+                    "FROM orders " +
+                    "where DATE_FORMAT(order_date, '%Y-%m') = DATE_FORMAT('"+ localDateTime.toString()+"', '%Y-%m') " +
+                    "GROUP BY date;";
+        } else {
+            sql = "SELECT DATE_FORMAT(order_date, '%Y') AS date, COUNT(order_id) AS quantity " +
+                    "FROM orders " +
+                    "where DATE_FORMAT(order_date, '%Y') = DATE_FORMAT('"+ localDateTime.toString()+"', '%Y') " +
+                    "GROUP BY date;";
+        }
+        return sql;
+    }
+
+    public Map<String,Integer> getAnalYearMonths(LocalDateTime localDateTime){
+        EntityTransaction tr = em.getTransaction();
+        String sql = getStringSqlAnals(localDateTime);
+        try {
+            tr.begin();
+            Map<String,Integer> map = new HashMap<>();
+
+            List<Object[]> resultList = em.createNativeQuery(sql, Object.class).getResultList();
+            System.out.println("1");
+            for (Object[] i : resultList){
+                String date = (String) i[0];
+                int quantity = Integer.parseInt(i[1].toString());
+                map.put(date,quantity);
+            }
+            tr.commit();
+            return map;
+        } catch (Exception e){
+            logger.info(e.getMessage());
+            tr.rollback();
+        }
+        return null;
+    }
+
+    private static String getStringSqlAnals(LocalDateTime localDateTime) {
+        String sql = "";
+
+       if(localDateTime.getMonthValue()!=0){
+            sql = "SELECT DATE_FORMAT(order_date, '%Y-%m-%d') AS date, COUNT(order_id) AS quantity " +
+                    "FROM orders " +
+                    "where DATE_FORMAT(order_date, '%Y-%m') = DATE_FORMAT('"+ localDateTime.toString()+"', '%Y-%m') " +
+                    "GROUP BY date;";
+        } else {
+            sql = "SELECT DATE_FORMAT(order_date, '%Y-%m') AS date, COUNT(order_id) AS quantity " +
+                    "FROM orders " +
+                    "where DATE_FORMAT(order_date, '%Y') = DATE_FORMAT('"+ localDateTime.toString()+"', '%Y') " +
+                    "GROUP BY date;";
+        }
+        return sql;
     }
 
     public boolean add(Orders orders){

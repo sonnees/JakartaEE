@@ -15,7 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-@Path("/ProductPrice")
+@Path("/OrderDetail")
 public class OrderDetailResource {
     @Inject
     private OrderDetailSer orderDetailSer;
