@@ -54,7 +54,6 @@ public class OrderDao {
         return null;
     }
 
-
     public List<Orders> getFromXToY(int x, int y){
         EntityTransaction tr = em.getTransaction();
         try {
@@ -103,29 +102,49 @@ public class OrderDao {
     private static String getStringSqlAnal(ReqObject3Field reqObject3Field) {
         String sql = "";
 
-        if(reqObject3Field.getField_3().equals("0")){
-            LocalDateTime localDateTime = LocalDateTime.of();
-            sql = "SELECT DATE_FORMAT(order_date, '%Y-%m-%d') AS date, COUNT(order_id) AS quantity " +
-                    "FROM orders " +
-                    "where DATE_FORMAT(order_date, '%Y-%m-%d') = DATE_FORMAT('"+ localDateTime.toString()+"', '%Y-%m-%d') " +
-                    "GROUP BY date;";
-        } else if(reqObject3Field.getField_2().equals("0")){
-            sql = "SELECT DATE_FORMAT(order_date, '%Y-%m') AS date, COUNT(order_id) AS quantity " +
-                    "FROM orders " +
-                    "where DATE_FORMAT(order_date, '%Y-%m') = DATE_FORMAT('"+ localDateTime.toString()+"', '%Y-%m') " +
-                    "GROUP BY date;";
-        } else {
-            sql = "SELECT DATE_FORMAT(order_date, '%Y') AS date, COUNT(order_id) AS quantity " +
-                    "FROM orders " +
-                    "where DATE_FORMAT(order_date, '%Y') = DATE_FORMAT('"+ localDateTime.toString()+"', '%Y') " +
-                    "GROUP BY date;";
+        try {
+            if(!reqObject3Field.getField_3().equals("0")){
+                LocalDateTime localDateTime = LocalDateTime.of(
+                    Integer.parseInt(reqObject3Field.getField_1()),
+                    Integer.parseInt(reqObject3Field.getField_2()),
+                    Integer.parseInt(reqObject3Field.getField_3()), 0,0
+                );
+                sql = "SELECT DATE_FORMAT(order_date, '%Y-%m-%d') AS date, COUNT(order_id) AS quantity " +
+                        "FROM orders " +
+                        "where DATE_FORMAT(order_date, '%Y-%m-%d') = DATE_FORMAT('"+ localDateTime.toString()+"', '%Y-%m-%d') " +
+                        "GROUP BY date order by  quantity DESC ";
+            } else if(!reqObject3Field.getField_2().equals("0")){
+                LocalDateTime localDateTime = LocalDateTime.of(
+                        Integer.parseInt(reqObject3Field.getField_1()),
+                        Integer.parseInt(reqObject3Field.getField_2()),
+                        1, 0,0
+                );
+
+                sql = "SELECT DATE_FORMAT(order_date, '%Y-%m') AS date, COUNT(order_id) AS quantity " +
+                        "FROM orders " +
+                        "where DATE_FORMAT(order_date, '%Y-%m') = DATE_FORMAT('"+ localDateTime.toString()+"', '%Y-%m') " +
+                        "GROUP BY date order by  quantity DESC ";
+            } else {
+                LocalDateTime localDateTime = LocalDateTime.of(
+                        Integer.parseInt(reqObject3Field.getField_1()),
+                        1,
+                        1, 0,0
+                );
+                sql = "SELECT DATE_FORMAT(order_date, '%Y') AS date, COUNT(order_id) AS quantity " +
+                        "FROM orders " +
+                        "where DATE_FORMAT(order_date, '%Y') = DATE_FORMAT('"+ localDateTime.toString()+"', '%Y') " +
+                        "GROUP BY date order by  quantity DESC ";
+            }
+        } catch (Exception e){
+            return "";
         }
         return sql;
     }
 
-    public Map<String,Integer> getAnalYearMonths(LocalDateTime localDateTime){
+    public Map<String,Integer> getAnalYearMonths(ReqObject3Field reqObject3Field){
         EntityTransaction tr = em.getTransaction();
-        String sql = getStringSqlAnals(localDateTime);
+        String sql = getStringSqlAnals(reqObject3Field);
+        if(sql.equals("")) return null;
         try {
             tr.begin();
             Map<String,Integer> map = new HashMap<>();
@@ -146,19 +165,34 @@ public class OrderDao {
         return null;
     }
 
-    private static String getStringSqlAnals(LocalDateTime localDateTime) {
+    private static String getStringSqlAnals(ReqObject3Field reqObject3Field) {
         String sql = "";
 
-       if(localDateTime.getMonthValue()!=0){
-            sql = "SELECT DATE_FORMAT(order_date, '%Y-%m-%d') AS date, COUNT(order_id) AS quantity " +
-                    "FROM orders " +
-                    "where DATE_FORMAT(order_date, '%Y-%m') = DATE_FORMAT('"+ localDateTime.toString()+"', '%Y-%m') " +
-                    "GROUP BY date;";
-        } else {
-            sql = "SELECT DATE_FORMAT(order_date, '%Y-%m') AS date, COUNT(order_id) AS quantity " +
-                    "FROM orders " +
-                    "where DATE_FORMAT(order_date, '%Y') = DATE_FORMAT('"+ localDateTime.toString()+"', '%Y') " +
-                    "GROUP BY date;";
+        try {
+            if(!reqObject3Field.getField_2().equals("0")){
+                LocalDateTime localDateTime = LocalDateTime.of(
+                        Integer.parseInt(reqObject3Field.getField_1()),
+                        Integer.parseInt(reqObject3Field.getField_2()),
+                        1, 0,0
+                );
+
+                sql = "SELECT DATE_FORMAT(order_date, '%Y-%m-%d') AS date, COUNT(order_id) AS quantity " +
+                        "FROM orders " +
+                        "where DATE_FORMAT(order_date, '%Y-%m') = DATE_FORMAT('"+ localDateTime.toString()+"', '%Y-%m') " +
+                        "GROUP BY date order by  quantity DESC ";
+            } else {
+                LocalDateTime localDateTime = LocalDateTime.of(
+                        Integer.parseInt(reqObject3Field.getField_1()),
+                        1,
+                        1, 0,0
+                );
+                sql = "SELECT DATE_FORMAT(order_date, '%Y-%m') AS date, COUNT(order_id) AS quantity " +
+                        "FROM orders " +
+                        "where DATE_FORMAT(order_date, '%Y') = DATE_FORMAT('"+ localDateTime.toString()+"', '%Y') " +
+                        "GROUP BY date order by  quantity DESC ";
+            }
+        } catch (Exception e){
+            return "";
         }
         return sql;
     }
