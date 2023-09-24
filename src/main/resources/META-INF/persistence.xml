@@ -17,8 +17,8 @@
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/lab02?createDatabaseIfNotExist=true" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.MariaDBDialect" />
             <property name="jakarta.persistence.jdbc.user" value="root" />
-<!--            <property name="jakarta.persistence.jdbc.password" value="password" />-->
-            <property name="jakarta.persistence.jdbc.password" value="sapassword" />
+            <property name="jakarta.persistence.jdbc.password" value="password" />
+<!--            <property name="jakarta.persistence.jdbc.password" value="sapassword" />-->
             <property name="hibernate.show_sql" value="true" />
 <!--            <property name="hibernate.hbm2ddl.auto" value="create-drop" />-->
             <property name="hibernate.hbm2ddl.auto" value="update" />
