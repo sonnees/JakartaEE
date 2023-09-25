@@ -9,22 +9,28 @@
 
   <hr>
 
-- Ý tưởng: Lập 1 API cho trang web bán hàng.
-- Sử dụng: REST API Jakarta EE, CRUD JPA
-- Mô tả:
+**Ý tưởng:** Lập 1 API cho trang web bán hàng. <br><br>
+**Sử dụng:** REST API Jakarta EE, CRUD JPA <br><br>
+**Mô tả:** <br>
   > Các thao tác CRUD cho các đối tượng, lập order. <br>
   > Thống kê order theo ngày, theo khoảng thời gian.<br>
   > Thống kê order theo nhân viên bán hàng trong 1 khoảng thời gian.
--  Entity Relationship Diagram:
-  
-    ![ERD](/img/ERD_lab02.png)
+<br>
+
+**Entity Relationship Diagram:**
+
+  ![ERD](/img/ERD_lab02.png)
 <br> <br>
-> *[code tại đây](https://github.com/sonnees/JakartaEE/tree/Lab02)*
-> ```git
-> git clone -b Lab02 --single-branch https://github.com/sonnees/JakartaEE.git
-> ```
+*[code tại đây](https://github.com/sonnees/JakartaEE/tree/Lab02)*
+```git
+git clone -b Lab02 --single-branch https://github.com/sonnees/JakartaEE.git
+```
 
 <hr>
+
+<details>
+  <summary><h3>👇 BACKEND</h3> </summary>
+  <hr>
 
 1. Product:
     > GET <br>
@@ -147,6 +153,7 @@
    > DELETE <br>
    >> .../api/Orders/{id}  <br>
    >> .../api/Orders/delete-multiple  <br>
+</details>
 
 
 
