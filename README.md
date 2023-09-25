@@ -34,7 +34,7 @@
   <summary><h3>👇 Lab02</h3> </summary>
   <hr>
 
-1. **BackEnd**
+1. **BackEnd** <br>
    - Ý tưởng: Lập 1 API cho trang web bán hàng. <br>
    - Sử dụng: REST API Jakarta EE, CRUD JPA <br>
    - Mô tả:<br>
@@ -46,20 +46,20 @@
        ![ERD](/img/ERD_lab02.png)
 <br>
 
-2. **FrontEnd** <br>
-   - Ý tưởng: Tạo giao diện trang web bán hàng. <br><br>
-   - Sử dụng: Servlet Jakarta EE <br><br>
-   - Mô tả:<br><br>
+2. **FrontEnd** 
+   - Ý tưởng: Tạo giao diện trang web bán hàng. <br>
+   - Sử dụng: Servlet Jakarta EE <br>
+   - Mô tả:<br>
      > Chạy song song với phần backend ở trên để lấy dữ liệu <br>
      > Role Admin: CRUD các đối tượng, thống kê <br>
      > Role User: xem sản phẩm, bỏ sản phẩm vào giỏ hàng
-
-    <br>
+<br>
+    <hr>
     
-    > *[code tại đây](https://github.com/sonnees/JakartaEE/tree/Lab02)*
-    > ```git
-    > git clone -b Lab02 --single-branch https://github.com/sonnees/JakartaEE.git
-    > ```
+*[code tại đây](https://github.com/sonnees/JakartaEE/tree/Lab02)*
+```git
+git clone -b Lab02 --single-branch https://github.com/sonnees/JakartaEE.git
+ ```
 <br>
 </details>
 
