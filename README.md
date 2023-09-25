@@ -34,20 +34,33 @@
   <summary><h3>👇 Lab02</h3> </summary>
   <hr>
 
-- Ý tưởng: Lập 1 API cho trang web bán hàng.
-- Sử dụng: REST API Jakarta EE, CRUD JPA
-- Mô tả:
-  > Các thao tác CRUD cho các đối tượng, lập order.
-  > Thống kê order theo ngày, theo khoảng thời gian.
-  > Thống kê order theo nhân viên bán hàng trong 1 khoảng thời gian.
--  Entity Relationship Diagram:
+1. **BackEnd**
+   - Ý tưởng: Lập 1 API cho trang web bán hàng. <br>
+   - Sử dụng: REST API Jakarta EE, CRUD JPA <br>
+   - Mô tả:<br>
+     > Các thao tác CRUD cho các đối tượng, lập order. <br>
+     > Thống kê order theo ngày, theo khoảng thời gian.  <br>
+     > Thống kê order theo nhân viên bán hàng trong 1 khoảng thời gian. <br>
+    - Entity Relationship Diagram:
   
-    ![ERD](/img/ERD_lab02.png)
-<br> <br>
-> *[code tại đây](https://github.com/sonnees/JakartaEE/tree/Lab02)*
-> ```git
-> git clone -b Lab02 --single-branch https://github.com/sonnees/JakartaEE.git
-> ```
+       ![ERD](/img/ERD_lab02.png)
+<br>
+
+2. **FrontEnd** <br>
+   - Ý tưởng: Tạo giao diện trang web bán hàng. <br><br>
+   - Sử dụng: Servlet Jakarta EE <br><br>
+   - Mô tả:<br><br>
+     > Chạy song song với phần backend ở trên để lấy dữ liệu <br>
+     > Role Admin: CRUD các đối tượng, thống kê <br>
+     > Role User: xem sản phẩm, bỏ sản phẩm vào giỏ hàng
+
+    <br>
+    
+    > *[code tại đây](https://github.com/sonnees/JakartaEE/tree/Lab02)*
+    > ```git
+    > git clone -b Lab02 --single-branch https://github.com/sonnees/JakartaEE.git
+    > ```
+<br>
 </details>
 
 
