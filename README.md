@@ -1,6 +1,7 @@
 # REST API Jakarta EE
 - Sinh viên: **Nguyễn Văn Sơn**
 - Hướng dẫn: **TS. Võ Văn Hải**
+- Thời gian: từ **17/09/2023**  đến **01/10/2023**
 
 ![Gradle](https://img.shields.io/badge/Gradle-02303A.svg?style=for-the-badge&logo=Gradle&logoColor=black)
 ![Hibernate](https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=Hibernate&logoColor=white)
@@ -14,7 +15,8 @@
 **Mô tả:** <br>
   > Các thao tác CRUD cho các đối tượng, lập order. <br>
   > Thống kê order theo ngày, theo khoảng thời gian.<br>
-  > Thống kê order theo nhân viên bán hàng trong 1 khoảng thời gian.
+  > Thống kê order theo nhân viên bán hàng trong 1 khoảng thời gian.<br>
+  > Tạo giao diện đển tương tác dể hơn.
 <br>
 
 **Entity Relationship Diagram:**
@@ -159,12 +161,13 @@ git clone -b Lab02 --single-branch https://github.com/sonnees/JakartaEE.git
 <details>
   <summary><h3>👇 FRONTEND </h3> </summary>
   <hr>
-  - Ý tưởng: Tạo giao diện trang web bán hàng. <br>
-   - Sử dụng: Servlet Jakarta EE <br>
-   - Mô tả:<br>
-     > Chạy song song với phần backend ở trên để lấy dữ liệu <br>
-     > Role Admin: CRUD các đối tượng, thống kê <br>
-     > Role User: xem sản phẩm, bỏ sản phẩm vào giỏ hàng
+  
+- Ý tưởng: Tạo giao diện trang web bán hàng. <br>
+- Sử dụng: Servlet Jakarta EE <br>
+- Mô tả:<br>
+  > Chạy song song với phần backend ở trên để lấy dữ liệu <br>
+  > Role Admin: CRUD các đối tượng, thống kê <br>
+  > Role User: xem sản phẩm, bỏ sản phẩm vào giỏ hàng
 </details>
 
 
