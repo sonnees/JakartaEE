@@ -124,12 +124,12 @@ git clone -b Lab02 --single-branch https://github.com/sonnees/JakartaEE.git
    >> .../api/Orders  <br>
    >> .../api/Orders/{id}  <br>
    >> .../api/Orders/{x}-{y}  <br>
-   >> .../api/Orders/Anal-Year-Month-Day  <br>
    
    > POST <br>
    >> .../api/Orders  <br>
    >> .../api/Orders/add-list  <br>
-
+   >> .../api/Orders/Anal-Year-Month-Day  <br>
+   
    > PUT <br>
    >> .../api/Orders/{id}  <br>
    >> .../api/Orders/{id}/update-field  <br>
