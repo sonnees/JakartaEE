@@ -33,8 +33,8 @@
                     </li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Thống kê<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="ControlServlet?action=product_Anal-Year-Month-Day">Tổng số lượng hóa đơn theo Ngày-Tháng-Năm</a></li>
-                            <li><a href="#">...</a></li>
+                            <li><a href="ControlServlet?action=orders_Anal-Year-Month-Day">Tổng số lượng hóa đơn theo Ngày-Tháng-Năm</a></li>
+                            <li><a href="ControlServlet?action=orders_Anal-Years-Months">Số hóa đơn theo Ngày-Tháng-Năm</a></li>
                             <li><a href="#">...</a></li>
                         </ul>
                     </li>

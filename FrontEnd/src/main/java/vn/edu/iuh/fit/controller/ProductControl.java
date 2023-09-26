@@ -57,12 +57,13 @@ public class ProductControl extends HttpServlet {
         }
     }
 
-    private void analYearsMonths(HttpServletRequest req, HttpServletResponse resp) {
+    private void analYearsMonths(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, URISyntaxException, InterruptedException {
         String aFor = req.getParameter("for");
+        RequestDispatcher requestDispatcher = null;
         if(aFor==null){
             req.setAttribute("date","2023-09-01");
             req.setAttribute("list", new ArrayList<>());
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/product_Anals.jsp");
+            requestDispatcher = req.getRequestDispatcher("/WEB-INF/orders_Anals.jsp");
             requestDispatcher.forward(req,resp);
         }
 
@@ -70,17 +71,17 @@ public class ProductControl extends HttpServlet {
         List<ReqObject2Field> reqObject2Fields =null;
 
         if(aFor.equals("Day"))
-            reqObject2Fields = productModel.analYearMonthDay(new ReqObject3Field(
+            reqObject2Fields = productModel.analYearsMonths(new ReqObject3Field(
                     dates[0], dates[1], dates[2]));
         else if (aFor.equals("Month"))
-            reqObject2Fields = productModel.analYearMonthDay(new ReqObject3Field(
+            reqObject2Fields = productModel.analYearsMonths(new ReqObject3Field(
                     dates[0], dates[1], "0"));
         else
-            reqObject2Fields = productModel.analYearMonthDay(new ReqObject3Field(
+            reqObject2Fields = productModel.analYearsMonths(new ReqObject3Field(
                     dates[0], "0", "0"));
         req.setAttribute("date",req.getParameter("date"));
         req.setAttribute("list", reqObject2Fields);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/product_Anal.jsp");
+        requestDispatcher = req.getRequestDispatcher("/WEB-INF/orders_Anals.jsp");
         requestDispatcher.forward(req,resp);
     }
 
@@ -89,7 +90,7 @@ public class ProductControl extends HttpServlet {
         if(aFor==null){
             req.setAttribute("date","2023-09-01");
             req.setAttribute("list", new ArrayList<>());
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/product_Anal.jsp");
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/orders_Anal.jsp");
             requestDispatcher.forward(req,resp);
         }
 
@@ -107,7 +108,7 @@ public class ProductControl extends HttpServlet {
                     dates[0], "0", "0"));
         req.setAttribute("date",req.getParameter("date"));
         req.setAttribute("list", reqObject2Fields);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/product_Anal.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/orders_Anal.jsp");
         requestDispatcher.forward(req,resp);
     }
 

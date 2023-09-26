@@ -14,7 +14,7 @@
 <%@include file="dashboard_admin.jsp"%>
 <body>
     <div class="container" style="width: 50%">
-        <h3 style="text-align: center">Order Anal</h3>
+        <h3 style="text-align: center">Order Anals</h3>
         <div>
             <form action="/JakartaEE/ControlServlet">
                 <input type="date" name="date" value=${date}>

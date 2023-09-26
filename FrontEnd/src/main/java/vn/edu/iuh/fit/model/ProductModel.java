@@ -82,5 +82,26 @@ public class ProductModel {
 
         return objectMapper.readValue(response.body(), collectionType);
     }
+    public List<ReqObject2Field> analYearsMonths(ReqObject3Field reqObject3Field) throws URISyntaxException, IOException, InterruptedException {
+        String uri = "http://localhost:8080/JakartaEE/api/Orders/Anal-Years-Months";
+
+        String s = objectMapper.writeValueAsString(reqObject3Field);
+        System.out.println(s);
+        HttpRequest.BodyPublisher bodyPublisher = HttpRequest.BodyPublishers.ofString(s);
+
+        HttpRequest httpRequest = HttpRequest.newBuilder()
+                .uri(new URI(uri))
+                .POST(bodyPublisher)
+                .header("Content-Type", "application/json")
+                .build();
+
+        HttpClient httpClient = HttpClient.newHttpClient();
+
+        HttpResponse<String> response = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+        System.out.println(response.body());
+        CollectionType collectionType = objectMapper.getTypeFactory().constructCollectionType(List.class, ReqObject2Field.class);
+
+        return objectMapper.readValue(response.body(), collectionType);
+    }
 
 }
