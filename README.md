@@ -129,6 +129,7 @@ git clone -b Lab02 --single-branch https://github.com/sonnees/JakartaEE.git
    >> .../api/Orders  <br>
    >> .../api/Orders/add-list  <br>
    >> .../api/Orders/Anal-Year-Month-Day  <br>
+   >> .../api/Orders/Anal-Years-Months  <br>
    
    > PUT <br>
    >> .../api/Orders/{id}  <br>
@@ -153,6 +154,17 @@ git clone -b Lab02 --single-branch https://github.com/sonnees/JakartaEE.git
    > DELETE <br>
    >> .../api/Orders/{id}  <br>
    >> .../api/Orders/delete-multiple  <br>
+</details>
+
+<details>
+  <summary><h3>👇 FRONTEND </h3> </summary>
+  <hr>
+  - Ý tưởng: Tạo giao diện trang web bán hàng. <br>
+   - Sử dụng: Servlet Jakarta EE <br>
+   - Mô tả:<br>
+     > Chạy song song với phần backend ở trên để lấy dữ liệu <br>
+     > Role Admin: CRUD các đối tượng, thống kê <br>
+     > Role User: xem sản phẩm, bỏ sản phẩm vào giỏ hàng
 </details>
 
 
