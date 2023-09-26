@@ -34,15 +34,15 @@
         </c:forEach>
         <tr>
             <form action="/JakartaEE/ProductControl">
-                <td><input style="width: 200px" type="text" name="name"></td>
-                <td><input style="width: 200px" type="text" name="description"></td>
-                <td><input style="width: 200px" type="text" name="unit"></td>
-                <td><input style="width: 200px" type="text" name="manufacturer"></td>
+                <td><input style="width: 200px" type="text" name="name" value="Nguyen Thi Det"></td>
+                <td><input style="width: 200px" type="text" name="description" value="description here"></td>
+                <td><input style="width: 200px" type="text" name="unit" value="kg"></td>
+                <td><input style="width: 200px" type="text" name="manufacturer" value="manufacturer here"></td>
                 <td>
                     <select name="status">
                         <option value="-1">terminate</option>
                         <option value="0">No Active</option>
-                        <option value="1">Active</option>
+                        <option value="1" selected>Active</option>
                     </select>
                 </td>
                 <input style="width: 200px; display: none" type="text" name="action" value="insert">

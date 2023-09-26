@@ -30,6 +30,10 @@ public class ControlServlet extends HttpServlet {
                 requestDispatcher = req.getRequestDispatcher("/ProductControl?action=Anal-Years-Months");
                 requestDispatcher.forward(req,resp);
                 break;
+            case "orders":
+                requestDispatcher = req.getRequestDispatcher("/OrdersControl?action=");
+                requestDispatcher.forward(req,resp);
+                break;
         }
 
 
