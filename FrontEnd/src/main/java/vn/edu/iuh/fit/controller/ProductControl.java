@@ -45,6 +45,7 @@ public class ProductControl extends HttpServlet {
                     delete(req, resp);
                     break;
                 case "Anal-Year-Month-Day":
+                    System.out.println("2");
                     analYearMonthDay(req, resp);
                     break;
                 case "Anal-Years-Months":
@@ -86,8 +87,10 @@ public class ProductControl extends HttpServlet {
     }
 
     private void analYearMonthDay(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, URISyntaxException, InterruptedException {
+        System.out.println("3");
         String aFor = req.getParameter("for");
         if(aFor==null){
+            System.out.println("3.1");
             req.setAttribute("date","2023-09-01");
             req.setAttribute("list", new ArrayList<>());
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/orders_Anal.jsp");
@@ -96,7 +99,7 @@ public class ProductControl extends HttpServlet {
 
         String[] dates = req.getParameter("date").split("-");
         List<ReqObject2Field> reqObject2Fields =null;
-
+        System.out.println("3.2");
         if(aFor.equals("Day"))
             reqObject2Fields = productModel.analYearMonthDay(new ReqObject3Field(
                     dates[0], dates[1], dates[2]));

@@ -15,7 +15,6 @@ public class ControlServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
-        System.out.println(action);
         RequestDispatcher requestDispatcher = null;
         switch (action){
             case "product_crud":
@@ -23,6 +22,7 @@ public class ControlServlet extends HttpServlet {
                 requestDispatcher.forward(req,resp);
                 break;
             case "orders_Anal-Year-Month-Day":
+                System.out.println("1");
                 requestDispatcher = req.getRequestDispatcher("/ProductControl?action=Anal-Year-Month-Day");
                 requestDispatcher.forward(req,resp);
                 break;
