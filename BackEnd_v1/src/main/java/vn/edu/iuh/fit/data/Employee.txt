@@ -1,0 +1,182 @@
+[
+    {
+        "id": 1,
+        "address": "123 ABC Street, Cityville, USA",
+        "dob": "1990-05-15T10:30",
+        "email": "johnsmith@example.com",
+        "fullName": "John Smith",
+        "phone": "1234567890",
+        "status": 1
+    },
+    {
+        "id": 2,
+        "address": "456 XYZ Street, Townsville, USA",
+        "dob": "1985-08-20T14:45",
+        "email": "maryjohnson@example.com",
+        "fullName": "Mary Johnson",
+        "phone": "2345678901",
+        "status": 1
+    },
+    {
+        "id": 3,
+        "address": "789 DEF Street, Villageville, USA",
+        "dob": "1992-02-05T08:15",
+        "email": "robertwilliams@example.com",
+        "fullName": "Robert Williams",
+        "phone": "3456789012",
+        "status": 1
+    },
+    {
+        "id": 4,
+        "address": "101 GHI Street, Countryside, USA",
+        "dob": "1988-11-12T16:20",
+        "email": "lindajones@example.com",
+        "fullName": "Linda Jones",
+        "phone": "4567890123",
+        "status": 1
+    },
+    {
+        "id": 5,
+        "address": "222 KLM Street, Suburbia, USA",
+        "dob": "1995-04-30T12:00",
+        "email": "williamdavis@example.com",
+        "fullName": "William Davis",
+        "phone": "5678901234",
+        "status": 1
+    },
+    {
+        "id": 6,
+        "address": "333 NOP Street, Riverside, USA",
+        "dob": "1989-09-18T09:10",
+        "email": "patriciamiller@example.com",
+        "fullName": "Patricia Miller",
+        "phone": "6789012345",
+        "status": 1
+    },
+    {
+        "id": 7,
+        "address": "444 QRS Street, Lakeside, USA",
+        "dob": "1998-06-08T18:55",
+        "email": "michaelwilson@example.com",
+        "fullName": "Michael Wilson",
+        "phone": "7890123456",
+        "status": 1
+    },
+    {
+        "id": 8,
+        "address": "555 TUV Street, Mountainside, USA",
+        "dob": "1993-03-25T07:40",
+        "email": "elizabethbrown@example.com",
+        "fullName": "Elizabeth Brown",
+        "phone": "8901234567",
+        "status": 1
+    },
+    {
+        "id": 9,
+        "address": "666 WXY Street, Beachville, USA",
+        "dob": "1996-07-10T15:25",
+        "email": "davidlee@example.com",
+        "fullName": "David Lee",
+        "phone": "9012345678",
+        "status": 1
+    },
+    {
+        "id": 10,
+        "address": "777 LMN Street, Forestville, USA",
+        "dob": "1991-01-22T11:05",
+        "email": "susanclark@example.com",
+        "fullName": "Susan Clark",
+        "phone": "0123456789",
+        "status": 1
+    },
+    {
+        "id": 11,
+        "address": "888 XYZ Street, Cityville, USA",
+        "dob": "1987-12-04T17:30",
+        "email": "josephhall@example.com",
+        "fullName": "Joseph Hall",
+        "phone": "1234567890",
+        "status": 1
+    },
+    {
+        "id": 12,
+        "address": "999 ABC Street, Townsville, USA",
+        "dob": "1994-10-15T13:15",
+        "email": "sarahmartin@example.com",
+        "fullName": "Sarah Martin",
+        "phone": "2345678901",
+        "status": 1
+    },
+    {
+        "id": 13,
+        "address": "111 DEF Street, Villageville, USA",
+        "dob": "1997-08-28T08:30",
+        "email": "christophertaylor@example.com",
+        "fullName": "Christopher Taylor",
+        "phone": "3456789012",
+        "status": 1
+    },
+    {
+        "id": 14,
+        "address": "222 GHI Street, Countryside, USA",
+        "dob": "1990-06-17T14:55",
+        "email": "karenwhite@example.com",
+        "fullName": "Karen White",
+        "phone": "4567890123",
+        "status": 1
+    },
+    {
+        "id": 15,
+        "address": "333 KLM Street, Suburbia, USA",
+        "dob": "1986-04-09T10:10",
+        "email": "thomasharris@example.com",
+        "fullName": "Thomas Harris",
+        "phone": "5678901234",
+        "status": 1
+    },
+    {
+        "id": 16,
+        "address": "444 NOP Street, Riverside, USA",
+        "dob": "1999-02-20T12:45",
+        "email": "nancygarcia@example.com",
+        "fullName": "Nancy Garcia",
+        "phone": "6789012345",
+        "status": 1
+    },
+    {
+        "id": 17,
+        "address": "555 QRS Street, Lakeside, USA",
+        "dob": "1992-11-11T16:35",
+        "email": "paulmartinez@example.com",
+        "fullName": "Paul Martinez",
+        "phone": "7890123456",
+        "status": 1
+    },
+    {
+        "id": 18,
+        "address": "666 TUV Street, Mountainside, USA",
+        "dob": "1995-09-03T07:20",
+        "email": "deborahrobinson@example.com",
+        "fullName": "Deborah Robinson",
+        "phone": "8901234567",
+        "status": 1
+    },
+    {
+        "id": 19,
+        "address": "777 WXY Street, Beachville, USA",
+        "dob": "1998-03-07T15:05",
+        "email": "jameslewis@example.com",
+        "fullName": "James Lewis",
+        "phone": "9012345678",
+        "status": 1
+    },
+    {
+        "id": 20,
+        "address": "888 LMN Street, Forestville, USA",
+        "dob": "1993-07-19T11:40",
+        "email": "bettyturner@example.com",
+        "fullName": "Betty Turner",
+        "phone": "0123456789",
+        "status": 1
+    }
+]

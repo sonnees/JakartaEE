@@ -1,0 +1,162 @@
+[
+  {
+    "id":1,
+    "name":"a Onions",
+    "description":"Fresh Green Onions",
+    "unit":"kg",
+    "manufacturer":"Green Garden Farms",
+    "status":1
+  },
+  {
+    "id":2,
+    "name":"b Milk Bread",
+    "description":"Soft and Delicious Bread",
+    "unit":"piece",
+    "manufacturer":"ABC Bakery",
+    "status":1
+  },
+  {
+    "id":3,
+    "name":"c Orange Fruit Juice",
+    "description":"Natural Orange Fruit Juice",
+    "unit":"can",
+    "manufacturer":"Beverage Company",
+    "status":1
+  },
+  {
+    "id":4,
+    "name":"d Fresh Milk",
+    "description":"Delicious Fresh Milk",
+    "unit":"bottle",
+    "manufacturer":"Farm Fresh Dairy",
+    "status":1
+  },
+  {
+    "id":5,
+    "name":"e Dell XPS 13 Laptop",
+    "description":"Ultra-Thin and Lightweight Laptop",
+    "unit":"piece",
+    "manufacturer":"Dell Inc.",
+    "status":1
+  },
+  {
+    "id":6,
+    "name":"z White T-Shirt",
+    "description":"Round Neck White T-Shirt",
+    "unit":"piece",
+    "manufacturer":"Fashion World",
+    "status":1
+  },
+  {
+    "id":7,
+    "name":"z iPhone 13 Mobile Phone",
+    "description":"Top-Notch Mobile Phone",
+    "unit":"piece",
+    "manufacturer":"Apple Inc.",
+    "status":1
+  },
+  {
+    "id":8,
+    "name":"z Harry Potter Book",
+    "description":"Famous Wizard Book",
+    "unit":"book",
+    "manufacturer":"Bloomsbury Publishing",
+    "status":1
+  },
+  {
+    "id":9,
+    "name":"z Seafood Pizza",
+    "description":"Delicious Seafood Pizza",
+    "unit":"piece",
+    "manufacturer":"Pizza Hut",
+    "status":1
+  },
+  {
+    "id":10,
+    "name":"z Fleece Jacket",
+    "description":"Warm and Cozy Fleece Jacket",
+    "unit":"piece",
+    "manufacturer":"WarmCozy Apparel",
+    "status":1
+  },
+  {
+    "id":11,
+    "name":"z LG Washing Machine",
+    "description":"Modern Washing Machine",
+    "unit":"piece",
+    "manufacturer":"LG Electronics",
+    "status":1
+  },
+  {
+    "id":12,
+    "name":"z Samsung Galaxy Tab Tablet",
+    "description":"High-End Tablet",
+    "unit":"piece",
+    "manufacturer":"Samsung Electronics",
+    "status":1
+  },
+  {
+    "id":13,
+    "name":"z 500GB SSD Drive",
+    "description":"High-Speed SSD Drive",
+    "unit":"piece",
+    "manufacturer":"Western Digital",
+    "status":1
+  },
+  {
+    "id":14,
+    "name":"z Nike Sports Shoes",
+    "description":"Quality Sports Shoes",
+    "unit":"piece",
+    "manufacturer":"Nike Inc.",
+    "status":1
+  },
+  {
+    "id":15,
+    "name":"z Canon EOS 5D Mark IV Camera",
+    "description":"Professional Camera",
+    "unit":"piece",
+    "manufacturer":"Canon Inc.",
+    "status":1
+  },
+  {
+    "id":16,
+    "name":"z Men's Dress Shirt",
+    "description":"Stylish Men's Dress Shirt",
+    "unit":"piece",
+    "manufacturer":"StyleMe Clothing",
+    "status":1
+  },
+  {
+    "id":17,
+    "name":"z Ballpoint Pen",
+    "description":"Black Ink Ballpoint Pen",
+    "unit":"piece",
+    "manufacturer":"PenCo",
+    "status":1
+  },
+  {
+    "id":18,
+    "name":"z Dyson Air Purifier",
+    "description":"Advanced Air Purifier",
+    "unit":"piece",
+    "manufacturer":"Dyson Ltd.",
+    "status":1
+  },
+  {
+    "id":19,
+    "name":"z Chocolate Cookies",
+    "description":"Delicious Chocolate Cookies",
+    "unit":"box",
+    "manufacturer":"Chocolate Delights",
+    "status":1
+  },
+  {
+    "id":20,
+    "name":"z Chicken Meat",
+    "description":"100% Fresh Chicken Meat",
+    "unit":"kg",
+    "manufacturer":"Food Company",
+    "status":1
+  }
+]
