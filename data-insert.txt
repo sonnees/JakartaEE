@@ -1,0 +1,31 @@
+INSERT INTO `address` (`id`, `street`, `city`, `country`, `number`, `zipcode`) VALUES
+                                                                                   ('a1f47e3d-11b1-4eab-92c5-89db82728d87', '123 Main Street', 'Cityville', '100', 'A101', '12345'),
+                                                                                   ('d0b24853-6487-41e1-961c-22d85c8c6b8f', '456 Elm Street', 'Townsville', '50', 'B202', '67890');
+-- Add more rows as needed
+INSERT INTO `candidate` (`id`, `dob`, `email`, `full_name`, `phone`, `address`) VALUES
+                                                                                    ('9e166615-8c9c-4d79-9881-c30cb7389f21', '1990-01-15', 'candidate1@example.com', 'John Doe', '555-123-4567', 'a1f47e3d-11b1-4eab-92c5-89db82728d87'),
+                                                                                    ('0e17b8a7-4a85-44e3-a703-3c17695c408e', '1995-05-20', 'candidate2@example.com', 'Jane Smith', '555-987-6543', 'd0b24853-6487-41e1-961c-22d85c8c6b8f');
+-- Add more rows as needed
+INSERT INTO `company` (`comp_id`, `about`, `email`, `comp_name`, `phone`, `web_url`, `address`) VALUES
+                                                                                                    ('7b03bfdb-71a9-4eeb-803f-95c45e01c3a6', 'A software company', 'company1@example.com', 'Tech Solutions', '555-111-2222', 'https://techsolutions.com', 'a1f47e3d-11b1-4eab-92c5-89db82728d87'),
+                                                                                                    ('7264a676-0cf5-4df7-952e-e53a4640bf6d', 'An IT services provider', 'company2@example.com', 'IT Services Inc.', '555-333-4444', 'https://itservicesinc.com', 'd0b24853-6487-41e1-961c-22d85c8c6b8f');
+-- Add more rows as needed
+INSERT INTO `skill` (`skill_id`, `skill_description`, `skill_name`, `type`) VALUES
+                                                                                ('1c1a2cd7-1c52-41f0-8c6f-76a64eb37219', 'Java programming', 'Java', '1'),
+                                                                                ('c5029d71-2184-4f17-bc9c-67189ed17e18', 'Database management', 'Database', '2'),
+                                                                                ('8df17131-0169-4ea3-b4a7-9e8b32e8b392', 'Web development', 'Web Development', '1');
+-- Add more rows as needed
+INSERT INTO `job` (`job_id`, `job_desc`, `job_name`, `company`) VALUES
+
+                                                                    ('a950ff75-9a1d-4e6e-98c9-8546766a3f25', 'Java Developer', 'Java Developer', '7b03bfdb-71a9-4eeb-803f-95c45e01c3a6'),
+                                                                    ('5a9b8b6a-bdcb-45e4-a2b0-c0981879f6ed', 'Database Administrator', 'DB Administrator', '7264a676-0cf5-4df7-952e-e53a4640bf6d');
+-- Add more rows as needed
+INSERT INTO `candidate_skill` (`more_infos`, `skill_level`, `skill_id`, `can_id`) VALUES
+                                                                                      ('Java programming', '2', '1c1a2cd7-1c52-41f0-8c6f-76a64eb37219', '9e166615-8c9c-4d79-9881-c30cb7389f21'),
+                                                                                      ('Database management', '1', 'c5029d71-2184-4f17-bc9c-67189ed17e18', '9e166615-8c9c-4d79-9881-c30cb7389f21'),
+                                                                                      ('Web development', '2', '8df17131-0169-4ea3-b4a7-9e8b32e8b392', '0e17b8a7-4a85-44e3-a703-3c17695c408e');
+-- Add more rows as needed
+INSERT INTO `job_skill` (`more_infos`, `skill_level`, `job_id`, `skill_id`) VALUES
+                                                                                ('Java development experience required', '2', 'a950ff75-9a1d-4e6e-98c9-8546766a3f25', '1c1a2cd7-1c52-41f0-8c6f-76a64eb37219'),
+                                                                                ('Database management skills needed', '1', '5a9b8b6a-bdcb-45e4-a2b0-c0981879f6ed', 'c5029d71-2184-4f17-bc9c-67189ed17e18');
+-- Add more rows as needed
