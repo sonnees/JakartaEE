@@ -6,7 +6,7 @@
 ![Hibernate](https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=Hibernate&logoColor=white)
 ![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=black)
 ![Apache Tomcat](https://img.shields.io/badge/apache%20tomcat-%23F8DC75.svg?style=for-the-badge&logo=apache-tomcat&logoColor=black)
-
+![Spring Boot Badge](https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=springboot&logoColor=fff&style=for-the-badge)
 # Branchs
 <details>
   <summary><h3>👇 Lab01</h3> </summary>
@@ -61,6 +61,29 @@
 git clone -b Lab02 --single-branch https://github.com/sonnees/JakartaEE.git
  ```
 <br>
+</details>
+
+<details>
+  <summary><h3>👇 Lab03</h3> </summary>
+  <hr>
+
+- Ý tưởng: Quản lý đăng nhập.
+- Sử dụng: Spring Boot, Spring Data(JdbcTemplate).
+- Mô tả:
+  > Một trang html hiển thị cửa sổ đăng nhập. Nếu đăng nhập thành công và là quyền admin
+  thì hiển thị trang dashboard cho phép quản lý các account khác (bao gồm các quyền thêm,
+  xóa, sửa và cấp quyền). Còn không (không phải admin) thì hiển thị thông tin của người
+  đăng nhập cùng các quyền mà người đó có.
+  >
+  > Ghi log mỗi lần account đăng nhập, đăng xuất.
+-  Diagram:
+
+    ![ERD](/img/ERD_lab03.png)
+<br> <br>
+> *[code tại đây](https://github.com/sonnees/JakartaEE/tree/Lab03)*
+> ```git
+> git clone -b Lab03 --single-branch https://github.com/sonnees/JakartaEE.git
+> ```
 </details>
 
 
