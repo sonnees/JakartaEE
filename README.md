@@ -4,26 +4,26 @@
 - Thời gian: từ **17/09/2023**  đến **01/10/2023**
 
 ![Gradle](https://img.shields.io/badge/Gradle-02303A.svg?style=for-the-badge&logo=Gradle&logoColor=black)
-![Hibernate](https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=Hibernate&logoColor=white)
 ![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=black)
-![Apache Tomcat](https://img.shields.io/badge/apache%20tomcat-%23F8DC75.svg?style=for-the-badge&logo=apache-tomcat&logoColor=black)
+![Spring Boot Badge](https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=springboot&logoColor=fff&style=for-the-badge)
 
   <hr>
 
-**Ý tưởng:** Lập 1 API cho trang web bán hàng. <br><br>
-**Sử dụng:** REST API Jakarta EE, CRUD JPA <br><br>
+**Ý tưởng:** Làm quen với Spring Boot. <br><br>
+**Sử dụng:** Spring Boot, Spring Data - JdbcTemplate <br><br>
 **Mô tả:** <br>
-  > Các thao tác CRUD cho các đối tượng, lập order. <br>
-  > Thống kê order theo ngày, theo khoảng thời gian.<br>
-  > Thống kê order theo nhân viên bán hàng trong 1 khoảng thời gian.<br>
-  > Tạo giao diện đển tương tác dể hơn.
+  > Ánh xạ các entity. <br>
+  > Sử dụng JdbcTemplate để thao tác. Mục đích là hiểu được cốt lõi, sau này nếu Spring có sự thay đổi thì dể thích nghi hơn. <br>
+  > Làm quen với Unit Test. <br>
 <br>
 
-**Entity Relationship Diagram:**
+**Diagram:**
 
-  ![ERD](/img/ERD_lab02.png)
+  ![ERD](/img/ERD_lab03.png)
 <br> <br>
 *[code tại đây](https://github.com/sonnees/JakartaEE/tree/Lab03)*
 ```git
 git clone -b Lab03 --single-branch https://github.com/sonnees/JakartaEE.git
 ```
+
+
