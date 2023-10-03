@@ -67,15 +67,12 @@ git clone -b Lab02 --single-branch https://github.com/sonnees/JakartaEE.git
   <summary><h3>👇 Lab03</h3> </summary>
   <hr>
 
-- Ý tưởng: Quản lý đăng nhập.
-- Sử dụng: Spring Boot, Spring Data(JdbcTemplate).
+- Ý tưởng: Làm quen với Spring Boot.
+- Sử dụng: Spring Boot, Spring Data - JdbcTemplate.
 - Mô tả:
-  > Một trang html hiển thị cửa sổ đăng nhập. Nếu đăng nhập thành công và là quyền admin
-  thì hiển thị trang dashboard cho phép quản lý các account khác (bao gồm các quyền thêm,
-  xóa, sửa và cấp quyền). Còn không (không phải admin) thì hiển thị thông tin của người
-  đăng nhập cùng các quyền mà người đó có.
-  >
-  > Ghi log mỗi lần account đăng nhập, đăng xuất.
+  > Ánh xạ các entity. <br>
+  > Sử dụng JdbcTemplate để thao tác. Mục đích là hiểu được cốt lõi, sau này nếu Spring có sự thay đổi thì dể thích nghi hơn. <br>
+  > Làm quen với Unit Test. <br>
 -  Diagram:
 
     ![ERD](/img/ERD_lab03.png)
