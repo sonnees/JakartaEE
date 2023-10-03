@@ -19,7 +19,7 @@
 
 **Diagram:**
 
-  ![ERD](/img/ERD_lab03.png)
+  ![ERD](/img/ERD_lab02.png)
 <br> <br>
 *[code tại đây](https://github.com/sonnees/JakartaEE/tree/Lab03)*
 ```git
