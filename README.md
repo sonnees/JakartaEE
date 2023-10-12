@@ -83,6 +83,28 @@ git clone -b Lab02 --single-branch https://github.com/sonnees/JakartaEE.git
 > ```
 </details>
 
+<details>
+  <summary><h3>👇 Lab04</h3> </summary>
+  <hr>
+
+  - Ý tưởng: Làm quen với Spring Boot. <br>
+- Sử dụng: Spring Boot, Spring Data <br>
+- Mô tả: <br>
+  > Ánh xạ các entity, viết các lớp interface repository hiện thực từ interface JpaRepository  <br>
+  > Làm quen với Spring Boot - REST API  <br>
+  > (Đang hoàn thiện thêm các chức năng khác ...)  <br>
+<br>
+
+Diagram:
+
+  ![ERD](/img/ERD_lab04.png)
+<br> <br>
+*[code tại đây](https://github.com/sonnees/JakartaEE/tree/Lab04)*
+```git
+git clone -b Lab04 --single-branch https://github.com/sonnees/JakartaEE.git
+```
+</details>
+
 
 
 
