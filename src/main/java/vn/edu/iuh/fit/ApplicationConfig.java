@@ -11,5 +11,4 @@ public class ApplicationConfig {
     public static void main(String[] args) {
         SpringApplication.run(ApplicationConfig.class, args);
     }
-
 }

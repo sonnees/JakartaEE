@@ -1,5 +1,6 @@
 package vn.edu.iuh.fit.entity;
 
+import com.neovisionaries.i18n.CountryCode;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,7 +17,7 @@ public class Address {
     @Column(columnDefinition = "varchar(50)")
     private String city= null;
     @Column(columnDefinition = "smallint(6)")
-    private Integer country = null;
+    private CountryCode country = null;
     @Column(columnDefinition = "varchar(20)")
     private String number= null;
     @Column(columnDefinition = "varchar(7)")
