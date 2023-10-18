@@ -1,7 +1,7 @@
 # SPRING BOOT
 - Sinh viên: **Nguyễn Văn Sơn**
 - Hướng dẫn: **TS. Võ Văn Hải**
-- Thời gian: từ **08/10/2023**  đến **15/10/2023**
+- Thời gian: từ **08/10/2023**  đến **22/10/2023**
 
 ![Gradle](https://img.shields.io/badge/Gradle-02303A.svg?style=for-the-badge&logo=Gradle&logoColor=black)
 ![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=black)
@@ -12,8 +12,14 @@
 **Ý tưởng:** Làm quen với Spring Boot. <br><br>
 **Sử dụng:** Spring Boot, Spring Data<br><br>
 **Mô tả:** <br>
-  > Ánh xạ các entity, viết các lớp interface repository hiện thực từ interface JpaRepository  <br>
-  > Làm quen với Spring Boot - REST API  <br>
+- Back End
+  > Ánh xạ các entity, repository extent JpaRepository <br>
+  > Spring Boot - REST API  <br>
+- Front End
+  > Candidate page <br>
+  > Candidate add <br>
+  > Candidate delete <br>
+  > Candidate update <br> 
   > (Đang hoàn thiện thêm các chức năng khác ...)  <br>
 <br>
 
