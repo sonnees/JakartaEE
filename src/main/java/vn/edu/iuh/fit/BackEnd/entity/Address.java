@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Data @NoArgsConstructor @AllArgsConstructor
 public class Address {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(columnDefinition = "varchar(150)")
     private String street= null;
@@ -22,4 +23,16 @@ public class Address {
     private String number= null;
     @Column(columnDefinition = "varchar(7)")
     private String zipcode= null;
+
+    public Address(CountryCode country) {
+        this.country = country;
+    }
+
+    public Address(String street, String city, CountryCode country, String number, String zipcode) {
+        this.street = street;
+        this.city = city;
+        this.country = country;
+        this.number = number;
+        this.zipcode = zipcode;
+    }
 }

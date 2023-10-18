@@ -2,6 +2,7 @@ package vn.edu.iuh.fit.lab04;
 
 import com.neovisionaries.i18n.CountryCode;
 import net.bytebuddy.utility.RandomString;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,12 +26,12 @@ class ApplicationConfigTests {
     void addCandidate(){
         for (int i = 1; i <= 1000; i++) {
             Address address = new Address(
-                    i,"Street %s".formatted(i),"City %s".formatted(i), CountryCode.VN,
+                    "Street %s".formatted(i),"City %s".formatted(i), CountryCode.VN,
                     new Random().nextInt(10)+"", new Random().nextInt(10)+""
             );
             addressRepository.save(address);
             Candidate candidate = new Candidate(
-                    i,
+
                     LocalDate.now(),
                     "%s@gmail.com".formatted(i),
                     "Nguyen Van %s".formatted(i),
@@ -41,5 +42,10 @@ class ApplicationConfigTests {
 
             candidateRepository.save(candidate);
         }
+    }
+    @Test
+    void getCountryCodeBy(){
+        CountryCode countryCode = CountryCode.getByCode(CountryCode.VN.getAlpha2());
+        Assertions.assertNotNull(countryCode);
     }
 }

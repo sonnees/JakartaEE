@@ -28,12 +28,12 @@
                     <td th:text="${c.getId()}"></td>
                     <td th:text="${c.getFullName()}"></td>
                     <td th:text="${c.getDob()}"></td>
-                    <td th:text="${c.getAddress().getCountry()}"></td>
+                    <td th:text="${c.getAddress().getCountry().getName()}"></td>
                     <td th:text="${c.getPhone()}"></td>
                     <td th:text="${c.getEmail()}"></td>
                     <td>
-                        <form  th:action="@{/candidates/edit/{id}(id=${c.getId()})}" th:method="post">
-                            <button style="float: left" type="submit" class="btn btn-secondary" >Edit</button>
+                        <form  th:action="@{/candidates/form-update/{id}(id=${c.getId()})}" method="get">
+                            <button style="float: left" type="submit" class="btn btn-secondary" >Update</button>
                         </form>
                         <form  th:action="@{/candidates/delete/{id}(id=${c.getId()})}" th:method="post">
                             <button style="float: left" type="submit" class="btn btn-secondary">Delete</button>
@@ -43,7 +43,7 @@
             </tbody>
 
         </table>
-        <form th:action="@{/candidates/add}" th:method="post">
+        <form action="/candidates/form-add" method="get">
             <button type="submit" class="btn btn-success">Add</button>
         </form>
         <br>

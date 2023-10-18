@@ -1,22 +1,20 @@
 package vn.edu.iuh.fit.FrontEnd.Controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.neovisionaries.i18n.CountryCode;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import vn.edu.iuh.fit.BackEnd.entity.Address;
 import vn.edu.iuh.fit.BackEnd.entity.Candidate;
 import vn.edu.iuh.fit.BackEnd.repositories.AddressRepository;
 import vn.edu.iuh.fit.BackEnd.repositories.CandidateRepository;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.time.LocalDate;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -24,10 +22,11 @@ import java.util.stream.IntStream;
 @RequestMapping("/candidates")
 public class CandidateController {
     CandidateRepository candidateRepository;
-    private AddressRepository addressRepository;
+    AddressRepository addressRepository;
 
-    public CandidateController(CandidateRepository candidateRepository) {
+    public CandidateController(CandidateRepository candidateRepository, AddressRepository addressRepository) {
         this.candidateRepository = candidateRepository;
+        this.addressRepository = addressRepository;
     }
 
     @GetMapping("")
@@ -58,11 +57,78 @@ public class CandidateController {
         return "candidates/candidate_page";
     }
 
+    @GetMapping("/form-add")
+    public String getFormAdd(Model model){
+        List<CountryCode> listCountryCodes = Arrays.stream(CountryCode.values()).toList();
+        model.addAttribute("listCountryCodes", listCountryCodes);
+        return "candidates/add";
+    }
+    @GetMapping("/form-update/{id}")
+    public String getFormUpdate(Model model,
+        @PathVariable("id") long id
+    ){
+        Candidate candidate = candidateRepository.findById(id).orElse(null);
+        if(candidate==null) return "candidates/candidate_page";
+        model.addAttribute("candidate",candidate);
+
+        List<CountryCode> listCountryCodes = Arrays.stream(CountryCode.values()).toList();
+        model.addAttribute("listCountryCodes", listCountryCodes);
+
+        return "candidates/update";
+    }
+
     @PostMapping ("/delete/{id}")
     public String delete(@PathVariable("id") long id){
         candidateRepository.deleteById(id);
 
         System.out.println(candidateRepository.findById(0L).orElse(new Candidate()).getFullName());
+        return "redirect:/candidates/page";
+    }
+
+    @PostMapping ("/add")
+    public String delete(
+            @RequestParam("fullName") String fullName,
+            @RequestParam("email") String email,
+            @RequestParam("dob") LocalDate dob,
+            @RequestParam("phone") String phone,
+            @RequestParam("address") String address
+    ){
+        Address add = new Address(CountryCode.getByCode(address));
+        addressRepository.save(add);
+        Candidate candidate = new Candidate(
+                dob, email, fullName, phone,
+                add,
+                new ArrayList<>(),
+                new ArrayList<>()
+        );
+        candidateRepository.save(candidate);
+
+        return "redirect:/candidates/page";
+    }
+
+    @PostMapping ("/update")
+    public String update(
+            @RequestParam("fullName") String fullName,
+            @RequestParam("id") String id,
+            @RequestParam("idAdd") String idAdd,
+            @RequestParam("email") String email,
+            @RequestParam("dob") LocalDate dob,
+            @RequestParam("phone") String phone,
+            @RequestParam("address") String address
+    ){
+        Address add = addressRepository.findById(Long.parseLong(idAdd)).orElse(new Address());
+        add.setCountry(CountryCode.getByCode(address));
+        addressRepository.save(add);
+
+        Candidate candidate = new Candidate(
+                Long.parseLong(id),
+                dob, email, fullName, phone,
+                add,
+                new ArrayList<>(),
+                new ArrayList<>()
+        );
+        candidateRepository.save(candidate);
+
         return "redirect:/candidates/page";
     }
 }

@@ -11,6 +11,7 @@ import java.util.List;
 @NoArgsConstructor @AllArgsConstructor
 public class Candidate {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private LocalDate dob;
     private String email;
@@ -26,5 +27,13 @@ public class Candidate {
     @OneToMany(mappedBy = "candidate", fetch = FetchType.LAZY)
     private List<CandidateSkill> candidateSkills;
 
-
+    public Candidate(LocalDate dob, String email, String fullName, String phone, Address address, List<Experiences> experiences, List<CandidateSkill> candidateSkills) {
+        this.dob = dob;
+        this.email = email;
+        this.fullName = fullName;
+        this.phone = phone;
+        this.address = address;
+        this.experiences = experiences;
+        this.candidateSkills = candidateSkills;
+    }
 }
