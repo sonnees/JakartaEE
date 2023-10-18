@@ -9,7 +9,7 @@
 
   <hr>
 
-**Ý tưởng:** Làm quen với Spring Boot. <br><br>
+**Ý tưởng:** Trang Web Tìm Kiếm Việc Làm. <br><br>
 **Sử dụng:** Spring Boot, Spring Data<br><br>
 **Mô tả:** <br>
 - Back End
