@@ -1,4 +1,4 @@
-# SPRING BOOT
+# Trang Web Tìm Kiếm Việc Làm
 - Sinh viên: **Nguyễn Văn Sơn**
 - Hướng dẫn: **TS. Võ Văn Hải**
 - Thời gian: từ **08/10/2023**  đến **22/10/2023**
@@ -9,25 +9,21 @@
 
   <hr>
 
-**Ý tưởng:** Trang Web Tìm Kiếm Việc Làm. <br><br>
-**Sử dụng:** Spring Boot, Spring Data<br><br>
-**Mô tả:** <br>
-- Back End
-  > Ánh xạ các entity, repository extent JpaRepository <br>
-  > Spring Boot - REST API  <br>
-- Front End
-  > Candidate page <br>
-  > Candidate add <br>
-  > Candidate delete <br>
-  > Candidate update <br> 
-  > (Đang hoàn thiện thêm các chức năng khác ...)  <br>
+## Back End
+- Ánh xạ các entity, `repository` extent `JpaRepository`. <br>
+- `Spring Boot - REST API`.  <br>
+## Front End
+-  Candidate page <br>
+-  Candidate add <br>
+-  Candidate delete <br>
+-  Candidate update <br> 
+-  (Đang hoàn thiện thêm các chức năng khác ...)  <br>
 <br>
 
 **Diagram:**
 
   ![ERD](/img/Diagram.png)
-<br> <br>
-*[code tại đây](https://github.com/sonnees/JakartaEE/tree/Lab04)*
+<br>
 ```git
 git clone -b Lab04 --single-branch https://github.com/sonnees/JakartaEE.git
 ```
