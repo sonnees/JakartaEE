@@ -166,9 +166,9 @@ git clone -b Lab02 --single-branch https://github.com/sonnees/JakartaEE.git
 - Ý tưởng: Tạo giao diện trang web bán hàng. <br>
 - Sử dụng: `Servlet Jakarta EE` <br>
 - Mô tả:<br>
-  > Chạy song song với phần backend ở trên để lấy dữ liệu <br>
-  > Role Admin: `CRUD` các đối tượng, thống kê <br>
-  > Role User: xem sản phẩm, bỏ sản phẩm vào giỏ hàng
+  - Chạy song song với phần backend ở trên để lấy dữ liệu <br>
+  - Role Admin: `CRUD` các đối tượng, thống kê <br>
+  - Role User: xem sản phẩm, bỏ sản phẩm vào giỏ hàng
 </details>
 
 
