@@ -7,21 +7,19 @@
 ![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=black)
 ![Spring Boot Badge](https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=springboot&logoColor=fff&style=for-the-badge)
 
-  <hr>
+<hr>
 
-**Ý tưởng:** Làm quen với Spring Boot. <br><br>
-**Sử dụng:** Spring Boot, Spring Data - JdbcTemplate <br><br>
+**Ý tưởng:** Làm quen với `Spring Boot`. <br>
+**Sử dụng:** `Spring Boot`  `Spring Data - JdbcTemplate`. <br>
 **Mô tả:** <br>
-  > Ánh xạ các entity. <br>
-  > Sử dụng JdbcTemplate để thao tác. Mục đích là hiểu được cốt lõi, sau này nếu Spring có sự thay đổi thì dể thích nghi hơn. <br>
-  > Làm quen với Unit Test. <br>
+  - Ánh xạ các entity. <br>
+  - Sử dụng `JdbcTemplate` để thao tác. Mục đích là hiểu được cốt lõi, sau này nếu Spring có sự thay đổi thì dể thích nghi hơn. <br>
+  - Làm quen với `Unit Test`. <br>
 <br>
 
 **Diagram:**
-
   ![ERD](/img/ERD_lab02.png)
 <br> <br>
-*[code tại đây](https://github.com/sonnees/JakartaEE/tree/Lab03)*
 ```git
 git clone -b Lab03 --single-branch https://github.com/sonnees/JakartaEE.git
 ```
