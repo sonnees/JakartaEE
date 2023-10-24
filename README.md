@@ -10,7 +10,7 @@
   <hr>
 
 ## Back End
-- Ánh xạ các entity, `repository` extent `JpaRepository`. <br>
+- Ánh xạ các entity, `repository` extends `JpaRepository`. <br>
 - `Spring Boot - REST API`.  <br>
 ## Front End
 - `Spring MVC`.  <br>
