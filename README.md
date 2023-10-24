@@ -10,14 +10,15 @@
   <hr>
 
 ## Back End
-- Ánh xạ các entity, `repository` extent `JpaRepository`. <br>
+- Ánh xạ các entity, `repository` extends `JpaRepository`. <br>
 - `Spring Boot - REST API`.  <br>
 ## Front End
--  Candidate page <br>
--  Candidate add <br>
--  Candidate delete <br>
--  Candidate update <br> 
--  (Đang hoàn thiện thêm các chức năng khác ...)  <br>
+- `Spring MVC`. <br>
+  -  Candidate page <br>
+  -  Candidate add <br>
+  -  Candidate delete <br>
+  -  Candidate update <br> 
+  -  (Đang hoàn thiện thêm các chức năng khác ...)  <br>
 <br>
 
 **Diagram:**
