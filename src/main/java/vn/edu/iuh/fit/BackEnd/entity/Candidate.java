@@ -21,7 +21,7 @@ public class Candidate {
     @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private Address address;
 
-    @OneToMany(mappedBy = "candidate", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "candidate", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Experiences> experiences;
 
     @OneToMany(mappedBy = "candidate", fetch = FetchType.LAZY)

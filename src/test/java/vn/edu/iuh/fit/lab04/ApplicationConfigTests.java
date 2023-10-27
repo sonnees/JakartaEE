@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import vn.edu.iuh.fit.BackEnd.entity.Address;
 import vn.edu.iuh.fit.BackEnd.entity.Candidate;
+import vn.edu.iuh.fit.BackEnd.entity.Experiences;
 import vn.edu.iuh.fit.BackEnd.repositories.AddressRepository;
 import vn.edu.iuh.fit.BackEnd.repositories.CandidateRepository;
+import vn.edu.iuh.fit.BackEnd.repositories.ExperiencesRepository;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -21,6 +23,8 @@ class ApplicationConfigTests {
     CandidateRepository candidateRepository;
     @Autowired
     AddressRepository addressRepository;
+    @Autowired
+    ExperiencesRepository experiencesRepository;
 
     @Test
     void addCandidate(){
@@ -30,8 +34,8 @@ class ApplicationConfigTests {
                     new Random().nextInt(10)+"", new Random().nextInt(10)+""
             );
             addressRepository.save(address);
-            Candidate candidate = new Candidate(
 
+            Candidate candidate = new Candidate(
                     LocalDate.now(),
                     "%s@gmail.com".formatted(i),
                     "Nguyen Van %s".formatted(i),
@@ -39,8 +43,16 @@ class ApplicationConfigTests {
                     address,
                     new ArrayList<>(), new ArrayList<>()
             );
-
             candidateRepository.save(candidate);
+
+            for(int y = 0; y<3; y++){
+                Experiences experiences = new Experiences(
+                        LocalDate.now(), LocalDate.now(), "companyName",
+                        "user", "workDescription",
+                        candidate
+                );
+                experiencesRepository.save(experiences);
+            }
         }
     }
     @Test
