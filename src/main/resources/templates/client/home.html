@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Client</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+<body>
+    <div class="container">
+        <table class="table">
+            <tr>
+                <th>Img</th>
+                <th>Tên sản phẩm</th>
+                <th>Giá</th>
+                <th>Trạng thái</th>
+                <th>Đơn vị</th>
+                <th>Giá cập nhật ngày</th>
+                <th>Method</th>
+            </tr>
+            <tr th:each="p:${products}">
+                <td>
+                    <img style="width: 60px; height: 40px" th:src="${p.path}" alt="">
+                </td>
+                <td th:text="${p.name}"></td>
+                <td th:id="'price-'+${p.id}" th:text="${#numbers.formatDecimal(p.price,0,3)}"></td>
+                <td th:text="${p.status== T(vn.edu.iuh.fit.backend.enums.ProductStatus).ACTIVE ? 'Còn hàng' : 'Tạm hết hàng'}"></td>
+                <td th:text="${p.unit}"></td>
+                <td th:text="${p.price_date_time}"></td>
+                <td>
+                    <button class="btn" th:attr="onclick=|addCart('${p.id}','${p.path}','${p.name}','${p.unit}','${p.price}')|" >
+                        <i class="fas fa-cart-plus" ></i>
+                    </button>
+                </td>
+            </tr>
+        </table>
+        <div style="display: flex; justify-content: center; align-items: center">
+            <a  th:href="@{/product/by(page=${l}-1)}"  th:each="l:${pages}" th:text="${l}" style="text-decoration: none;width: 30px; border-radius: 3px;color: #fff; background: #8699ff; margin-left: 5px; text-align: center"></a>
+        </div>
+        <br>
+        <hr>
+        <br>
+       <div style="display: flex; align-items: center; justify-content: center;flex-direction: column">
+           <h3>Cart Here</h3>
+           <div style="display: flex; height: 50px; align-items: center">
+               <label for="customer">customer:&nbsp;</label>
+               <select id="customer" th:value="${customer}" >
+                   <option th:each="c:${customers}" th:value="${c}" th:text="${c.name}"></option>
+               </select>
+               <h1>&nbsp; | &nbsp;</h1>
+               <label for="employee">employee:&nbsp;</label>
+               <select id="employee" th:value="${employee}" >
+                   <option th:each="e:${employees}" th:value="${e}" th:text="${e.fullname}"></option>
+               </select>
+           </div>
+       </div>
+        <br>
+        <table class="table">
+            <tr>
+                <th>Img</th>
+                <th>Tên sản phẩm</th>
+                <th>Đơn vị</th>
+                <th>Số lượng</th>
+                <th>Giá</th>
+                <th>Method</th>
+            </tr>
+            <tbody id="tableCart">
+
+            </tbody>
+
+        </table>
+        <div style="float: right">
+            <p style="float: right">&nbsp;000 vnd</p>
+            <b id="total-price-all" style="float: right"> 0</b>
+            <p style="float: right">Total price: &nbsp;</p>
+
+        </div>
+
+
+    <hr style="clear: both">
+    <div style="display: flex; justify-content: center; align-items: center">
+        <button class="btn btn-success">
+            Đặt Hàng
+        </button>
+    </div>
+    </div>
+    <div style="height: 200px"></div>
+    <script>
+        function addCart(id, path, name,unit,price){
+
+            let table = document.getElementById("tableCart");
+            let IdQuantity = "quantity-"+id;
+            let IdPrice = "totalPrice-"+id;
+            let IdDeleteRow = id;
+            let newRow = table.insertRow();
+            newRow.id = "rowCart-"+id;
+            newRow.insertCell().innerHTML = "<img style='width: 60px; height: 40px' src="+path+">";
+            newRow.insertCell().innerHTML = name;
+            newRow.insertCell().innerHTML = unit;
+            newRow.insertCell().innerHTML = "<input onchange=changePrice('"+IdQuantity+"') type=number id='"+IdQuantity+"' min=1 max=100 value=1>";
+            newRow.insertCell().innerHTML = "<p id='"+IdPrice+"'> "+price+"</p>"
+            newRow.insertCell().innerHTML ="<button class='btn' onclick=deleteCart('"+IdDeleteRow+"')><i class='fas fa-trash-alt'></i></button>"
+
+            let totalPriceAll_old = document.getElementById("total-price-all").innerText;
+            let totalPriceAll_new = parseFloat(totalPriceAll_old)+parseFloat(price)
+            document.getElementById("total-price-all").innerText=totalPriceAll_new+"";
+
+        }
+
+        function changePrice(IdQuantity){
+            let arr = IdQuantity.split("-");
+            let value =document.getElementById(IdQuantity).value;
+            console.log(value);
+            console.log(arr);
+            let totalPrice_old = parseFloat(document.getElementById("totalPrice-"+arr[1]).innerText);
+            console.log(totalPrice_old);
+            let totalPrice_new = parseFloat(document.getElementById("price-"+arr[1]).innerText) * value;
+            console.log(totalPrice_new);
+            document.getElementById("totalPrice-"+arr[1]).innerText = totalPrice_new+"";
+
+            let totalPriceAll_old = document.getElementById("total-price-all").innerText;
+            let totalPriceAll_new = parseFloat(totalPriceAll_old)-totalPrice_old+totalPrice_new;
+            document.getElementById("total-price-all").innerText=totalPriceAll_new+"";
+
+        }
+
+        function  deleteCart(id){
+            let row = document.getElementById("rowCart-"+id);
+            let totalPrice_old = parseFloat(document.getElementById("totalPrice-"+id).innerText);
+            let totalPriceAll_old = document.getElementById("total-price-all").innerText;
+            let totalPriceAll_new = parseFloat(totalPriceAll_old)- totalPrice_old;
+            document.getElementById("total-price-all").innerText=totalPriceAll_new+"";
+            row.remove()
+        }
+    </script>
+</body>
+
+</html>
