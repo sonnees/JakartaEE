@@ -13,24 +13,17 @@
   <hr>
 
 # Quản lý đăng nhập
-  
-- **Sử dụng:** `Servlet Jakarta EE`  `JSP`  `CRUD JPA`.<br>
-- **Mô tả:**<br>
-  - Một trang `html` hiển thị cửa sổ đăng nhập.<br>
-  - Nếu đăng nhập thành công và là quyền admin, thì hiển thị trang dashboard cho phép quản lý các account khác (bao gồm các quyền thêm, xóa, sửa và cấp quyền).<br>
-  - Còn không (không phải admin) thì hiển thị thông tin của người đăng nhập cùng các quyền mà người đó có.<br>
-  - Ghi log mỗi lần account đăng nhập, đăng xuất.<br>
-
-**Diagram:**<br>
-  ![ERD](/img/ERD_lab01.png)
+  ![ERD](/img/Lab01.gif)
     
 <br>
 
-*[more](https://github.com/sonnees/JakartaEE/tree/Lab01)*
+[detail in branch lab01](https://github.com/sonnees/JakartaEE/tree/Lab01)
 ```git
 git clone -b Lab01 --single-branch https://github.com/sonnees/JakartaEE.git
 ```
+  <hr>
 </details>
+
 <details>
   <summary><h3>👇 Lab02</h3> </summary>
   <hr>
