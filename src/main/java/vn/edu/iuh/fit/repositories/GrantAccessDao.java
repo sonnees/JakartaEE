@@ -28,6 +28,18 @@ public class GrantAccessDao {
         }
     }
 
+    public void delete(String id){
+        EntityTransaction tr = em.getTransaction();
+        tr.begin();
+        try {
+            String sql = "delete from grant_access where account_id =\""+id+"\"";
+            tr.commit();
+        } catch (Exception e){
+            tr.rollback();
+            System.out.println(e.getMessage());
+        }
+    }
+
     public GrantAccess searchGrantAccessByAccountId(String id){
         EntityTransaction tr = em.getTransaction();
         tr.begin();

@@ -3,6 +3,8 @@ package vn.edu.iuh.fit.repositories;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import vn.edu.iuh.fit.entities.Account;
+import vn.edu.iuh.fit.entities.GrantAccess;
+import vn.edu.iuh.fit.entities.Role;
 
 import java.util.List;
 
@@ -18,6 +20,8 @@ public class AccountDao {
         tr.begin();
         try {
             em.merge(account);
+
+
             tr.commit();
         } catch (Exception e){
             tr.rollback();
