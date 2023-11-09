@@ -22,6 +22,10 @@
 -  Entity Relationship Diagram:
   
     ![ERD](/img/ERD_lab01.png)
+
+-  Demo chạy chương trình:
+  
+    ![GIF](/img/Lab01.gif)
 <br> <br>
 > *[code tại đây](https://github.com/sonnees/JakartaEE/tree/Lab01)*
 > ```git
