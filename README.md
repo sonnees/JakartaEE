@@ -13,7 +13,7 @@
   <hr>
 
 # Quản lý đăng nhập
-  ![ERD](/img/Lab01.gif)
+  ![gif](/img/Lab01.gif)
     
 <br>
 
