@@ -22,7 +22,7 @@
 
 **Demo chạy chương trình:**
 
-  ![ERD](/img/Lab01.gif)
+  ![ERD](/img/Lab02.gif)
 <br> <br>
 ```git
 git clone -b Lab02 --single-branch https://github.com/sonnees/JakartaEE.git
