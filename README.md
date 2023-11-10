@@ -24,7 +24,15 @@
 **Diagram:**
 
   ![ERD](/img/Diagram.png)
+
 <br>
+
+**Demo chạy chương trình:**
+  
+  ![GIF](/img/Lab04.gif)
+    
+<br>
+
 ```git
 git clone -b Lab04 --single-branch https://github.com/sonnees/JakartaEE.git
 ```
