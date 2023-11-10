@@ -17,7 +17,7 @@
     
 <br>
 
-[detail in branch lab01](https://github.com/sonnees/JakartaEE/tree/Lab01)
+[Detail in branch lab01](https://github.com/sonnees/JakartaEE/tree/Lab01)
 ```git
 git clone -b Lab01 --single-branch https://github.com/sonnees/JakartaEE.git
 ```
@@ -29,33 +29,15 @@ git clone -b Lab01 --single-branch https://github.com/sonnees/JakartaEE.git
   <hr>
 
 # Trang web bán hàng
+  ![gif](/img/Lab02.gif)
 
-## BackEnd
-- **Ý tưởng:** Lập 1 `API` cho trang web bán hàng. <br>
-- **Sử dụng:** `REST API Jakarta EE`  `CRUD JPA` <br>
-- **Mô tả:**<br>
-  - Các thao tác `CRUD` cho các đối tượng, lập order. <br>
-  - Thống kê order theo ngày, theo khoảng thời gian.  <br>
-  - Thống kê order theo nhân viên bán hàng trong 1 khoảng thời gian. <br>
+<br>
 
-**Diagram:**<br>
-  ![ERD](/img/ERD_lab02.png)
-<br><br>
-## FrontEnd
-- **Ý tưởng:** Tạo giao diện trang web bán hàng. <br>
-- **Sử dụng:** `Servlet Jakarta EE`. <br>
-- **Mô tả:**<br>
-  - Chạy song song với phần backend ở trên để lấy dữ liệu <br>
-  - Role Admin: `CRUD` các đối tượng, thống kê <br>
-  - Role User: xem sản phẩm, bỏ sản phẩm vào giỏ hàng
- 
-<br> 
-
-*[more](https://github.com/sonnees/JakartaEE/tree/Lab02)*
+[Detail in branch lab02](https://github.com/sonnees/JakartaEE/tree/Lab02)
 ```git
 git clone -b Lab02 --single-branch https://github.com/sonnees/JakartaEE.git
  ```
-<br>
+<hr>
 </details>
 
 <details>
