@@ -28,10 +28,10 @@ class ApplicationConfigTests {
 
     @Test
     void addCandidate(){
-        for (int i = 1; i <= 1000; i++) {
+        for (int i = 1; i <= 100; i++) {
             Address address = new Address(
                     "Street %s".formatted(i),"City %s".formatted(i), CountryCode.VN,
-                    new Random().nextInt(10)+"", new Random().nextInt(10)+""
+                    new Random().nextInt(100,999)+"", new Random().nextInt(10)+""
             );
             addressRepository.save(address);
 
@@ -39,7 +39,7 @@ class ApplicationConfigTests {
                     LocalDate.now(),
                     "%s@gmail.com".formatted(i),
                     "Nguyen Van %s".formatted(i),
-                    new Random().nextInt(10)+"",
+                    new Random().nextInt(100000000,999999999)+"",
                     address,
                     new ArrayList<>(), new ArrayList<>()
             );

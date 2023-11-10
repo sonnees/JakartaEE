@@ -48,11 +48,11 @@
         </form>
         <br>
         <div>
-            <div th:each="i: ${totalPage}" >
+            <div th:each="i: ${totalPage}">
                 <form th:action="@{/candidates/page}" th:method="get">
                     <input type="hidden" th:name="page" th:value="${i}">
                     <input type="hidden" th:name="size" th:value="7">
-                    <button th:text="${i}" type="submit" th:class="${curPage==i}?'active btn btn-secondary':'btn btn-secondary'" style="float: left"></button>
+                    <button th:text="${i}" type="submit" th:class="${curPage==i}?'active btn btn-secondary':'btn btn-secondary'" style="float: left; margin-left: 5px"></button>
                 </form>
             </div>
 
