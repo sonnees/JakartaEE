@@ -68,20 +68,7 @@ git clone -b Lab03 --single-branch https://github.com/sonnees/JakartaEE.git
   <hr>
 
 # Tạo trang web tìm kiếm việc làm
-
-## Back End
-- Ánh xạ các entity,  `repository` extends `JpaRepository` <br>
-- `Spring Boot - REST API`  <br>
-
-**Diagram:**
-  ![ERD](/img/ERD_lab04.png)
-<br>
-## Front End
-- Candidate page <br>
-- Candidate add <br>
-- Candidate delete <br>
-- Candidate update <br> 
-- (Đang hoàn thiện thêm các chức năng khác ...)  <br>
+  ![gif](/img/Lab04.gif)
 
 <br> 
 
@@ -89,6 +76,7 @@ git clone -b Lab03 --single-branch https://github.com/sonnees/JakartaEE.git
 ```git
 git clone -b Lab04 --single-branch https://github.com/sonnees/JakartaEE.git
 ```
+<hr>
 </details>
 
 <details>
