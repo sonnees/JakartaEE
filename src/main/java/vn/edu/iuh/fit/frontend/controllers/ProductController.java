@@ -8,12 +8,12 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StreamUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import vn.edu.iuh.fit.backend.dto.ProductDTO;
 import vn.edu.iuh.fit.backend.models.Customer;
 import vn.edu.iuh.fit.backend.models.Employee;
+import vn.edu.iuh.fit.backend.models.Order;
+import vn.edu.iuh.fit.backend.models.OrderDetail;
 import vn.edu.iuh.fit.backend.repositories.CustomerRepository;
 import vn.edu.iuh.fit.backend.repositories.EmployeeRepository;
 import vn.edu.iuh.fit.backend.repositories.ProductRepository;
@@ -47,13 +47,36 @@ public class ProductController {
         List<Customer> customers = customerRepository.findAll();
         List<Employee> employees = employeeRepository.findAll();
 
-
-        model.addAttribute("customer", new Customer());
-        model.addAttribute("employee", new Employee());
+        Order order = new Order();
+        model.addAttribute("listOrderDetail_size", 0);
         model.addAttribute("customers", customers);
         model.addAttribute("employees", employees);
         model.addAttribute("products", products);
         model.addAttribute("pages", pages);
+        model.addAttribute("order", order);
+
         return "client/home";
+    }
+
+    @PostMapping("/by")
+    public String byProduct(Model model,
+                            @ModelAttribute("order") Order order
+
+    ){
+        order.setEmployee(employeeRepository.findById(order.getCustomer().getId()).orElse(new Employee()));
+        order.setCustomer(customerRepository.findById(order.getCustomer().getId()).orElse(new Customer()));
+        System.out.println(order);
+        System.out.println(order.getOrderDetails().get(0).getProduct().getProduct_id());
+//        orderDetails.forEach(i-> {
+//            System.out.println("---");
+//
+//            System.out.println(i.getProduct().getName());
+//            System.out.println(i.getPrice());
+//            System.out.println(i.getQuantity());
+//
+//            System.out.println("---");
+//        });
+
+        return "redirect:/product/by";
     }
 }

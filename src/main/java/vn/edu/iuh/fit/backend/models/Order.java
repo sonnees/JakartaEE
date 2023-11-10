@@ -3,6 +3,7 @@ package vn.edu.iuh.fit.backend.models;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -28,6 +29,12 @@ public class Order {
     private List<OrderDetail> orderDetails;
 
     public Order() {
+        this.employee =new Employee();
+        this.customer =new Customer();
+        this.orderDetails = new ArrayList<>();
+        for (int i = 1; i <= 100; i++) {
+            this.orderDetails.add(new OrderDetail());
+        }
     }
 
     public Order(long order_id, LocalDateTime orderDate, Employee employee, Customer customer) {

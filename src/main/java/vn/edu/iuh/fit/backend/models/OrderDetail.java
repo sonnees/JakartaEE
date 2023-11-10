@@ -24,6 +24,7 @@ public class OrderDetail {
     private Product product;
 
     public OrderDetail() {
+        this.product = new Product();
     }
 
     public OrderDetail(double quantity, double price, String note, Order order, Product product) {

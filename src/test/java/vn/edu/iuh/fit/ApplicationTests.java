@@ -22,7 +22,6 @@ import java.util.concurrent.TimeUnit;
 class ApplicationTests {
     @Autowired
     ProductRepository productRepository;
-
     @Autowired
     CustomerRepository customerRepository;
     @Autowired
@@ -31,10 +30,11 @@ class ApplicationTests {
     OrderRepository orderRepository;
     @Autowired
     OrderDetailRepository orderDetailRepository;
-
     @Autowired
     ProductPriceRepository productPriceRepository;
     Faker faker = new Faker();
+
+
     @Test
     void add() throws InterruptedException {
         addProduct();
