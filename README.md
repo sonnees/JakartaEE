@@ -10,18 +10,19 @@
 
   <hr>
 
-- **Ý tưởng:** Lập 1 `REST API` cho trang web bán hàng. <br>
-- **Sử dụng:** `REST API Jakarta EE`  `CRUD JPA` <br>
-- **Mô tả:** <br>
-  - Các thao tác  `CRUD` cho các đối tượng, lập order. <br>
-  - Thống kê order theo ngày, theo khoảng thời gian.<br>
-  - Thống kê order theo nhân viên bán hàng trong 1 khoảng thời gian.<br>
-  - Tạo giao diện đển tương tác dể hơn.
+- **Ý tưởng:** Lập 1 trang web bán hàng. <br>
+- **Sử dụng:** `REST API Jakarta EE` , `JSP + JSTL` <br>
 <br>
 
 **Diagram:**
 
   ![ERD](/img/ERD_lab02.png)
+
+<br>
+
+**Demo chạy chương trình:**
+
+  ![ERD](/img/Lab01.gif)
 <br> <br>
 ```git
 git clone -b Lab02 --single-branch https://github.com/sonnees/JakartaEE.git
