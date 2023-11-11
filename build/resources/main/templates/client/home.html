@@ -12,99 +12,125 @@
 </head>
 <body>
     <div th:replace="~{/client/menu.html}"></div>
-    <div class="container" style="margin-top: 70px;">
-        <table class="table">
-            <tr>
-                <th>Img</th>
-                <th>Tên sản phẩm</th>
-                <th>Giá (nghìn vnd)</th>
-                <th>Trạng thái</th>
-                <th>Đơn vị</th>
-                <th>Giá cập nhật ngày</th>
-                <th>Method</th>
-            </tr>
-            <tr th:each="p:${products}">
-                <td>
-                    <img style="width: 60px; height: 40px" th:src="${p.path}" alt="">
-                </td>
-                <td th:text="${p.name}"></td>
-                <td th:id="'price-'+${p.id}" th:text="${#numbers.formatDecimal(p.price,0,3)}"></td>
-                <td th:text="${p.status== T(vn.edu.iuh.fit.backend.enums.ProductStatus).ACTIVE ? 'Còn hàng' : 'Tạm hết hàng'}"></td>
-                <td th:text="${p.unit}"></td>
-                <td th:text="${p.price_date_time}"></td>
-                <td th:if="${p.status==T(vn.edu.iuh.fit.backend.enums.ProductStatus).ACTIVE}">
-                    <button class="btn" th:attr="onclick=|addCart('${p.id}','${p.path}','${p.name}','${p.unit}','${p.price}')|" >
-                        <i class="fas fa-cart-plus" ></i>
-                    </button>
-                </td>
-            </tr>
-        </table>
-        <div style="display: flex; justify-content: center; align-items: center">
-            <a  th:href="@{/product/by(page=${l}-1)}"  th:each="l:${pages}" th:text="${l}" style="text-decoration: none;width: 30px; border-radius: 3px;color: #fff; background: #8699ff; margin-left: 5px; text-align: center"></a>
-        </div>
-        <br>
-        <hr>
-        <br>
-       <div>
-           <form action="/product/by" method="post" style="display: flex; align-items: center; justify-content: center;flex-direction: column">
+    <div class="container" >
+        <form action="/product/by" method="post" id="myForm">
+            <table class="table" style="margin-top: 70px;">
+                <tr>
+                    <th>Img</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Giá (nghìn vnd)</th>
+                    <th>Trạng thái</th>
+                    <th>Đơn vị</th>
+                    <th>Giá cập nhật ngày</th>
+                    <th>Method</th>
+                </tr>
+                <tr th:each="p:${products}">
+                    <td>
+                        <img style="width: 60px; height: 40px" th:src="${p.path}" alt="">
+                    </td>
+                    <td th:text="${p.name}"></td>
+                    <td th:id="'price-'+${p.id}" th:text="${#numbers.formatDecimal(p.price,0,3)}"></td>
+                    <td th:text="${p.status== T(vn.edu.iuh.fit.backend.enums.ProductStatus).ACTIVE ? 'Còn hàng' : 'Tạm hết hàng'}"></td>
+                    <td th:text="${p.unit}"></td>
+                    <td th:text="${p.price_date_time}"></td>
+                    <td th:if="${p.status==T(vn.edu.iuh.fit.backend.enums.ProductStatus).ACTIVE}">
+                        <button type="button" class="btn" th:attr="onclick=|addCart('${p.id}','${p.path}','${p.name}','${p.unit}','${p.price}')|" >
+                            <i class="fas fa-cart-plus" ></i>
+                        </button>
+                    </td>
+                </tr>
+            </table>
 
-               <h3>Cart Here</h3>
-               <div style="display: flex; height: 50px; align-items: center">
-                   <label for="customer">customer:&nbsp;</label>
-                   <select id="customer" th:field="*{order.customer.id}" >
-                       <option th:each="c:${customers}" th:value="${c.id}" th:text="${c.name}"></option>
-                   </select>
-                   <h1>&nbsp; | &nbsp;</h1>
-                   <label for="employee">employee:&nbsp;</label>
-                   <select id="employee" th:field="*{order.employee.id}" >
-                       <option th:each="e:${employees}" th:value="${e.id}" th:text="${e.fullname}"></option>
-                   </select>
-               </div>
-               <br>
-               <table class="table">
-                   <tr>
-                       <th>Img</th>
-                       <th>Tên sản phẩm</th>
-                       <th>Đơn vị</th>
-                       <th>Số lượng</th>
-                       <th>Giá (nghìn vnd)</th>
-                       <th>Method</th>
-                   </tr>
-                   <tbody id="tableCart">
+            <div style="display: flex; justify-content: center; align-items: center">
+                <button type="button" th:attr="onclick=|submitActionPage('${l}')|"  th:each="l:${pages}" th:text="${l}" style="text-decoration: none;width: 30px; border-radius: 3px;color: #fff; background: #8699ff; margin-left: 5px; text-align: center" >
+                    Đặt Hàng
+                </button>
+                <a  ></a>
+            </div>
 
-                   </tbody>
+            <br><hr> <br>
 
-               </table>
+            <div style="display: flex; align-items: center; justify-content: center;flex-direction: column">
+                <h3>Cart Here</h3>
+                <div style="display: flex; height: 50px; align-items: center">
+                    <label for="customer">customer:&nbsp;</label>
+                    <select id="customer" th:field="*{order.customer.id}" >
+                        <option th:each="c:${customers}" th:value="${c.id}" th:text="${c.name}"></option>
+                    </select>
+                    <h1>&nbsp; | &nbsp;</h1>
+                    <label for="employee">employee:&nbsp;</label>
+                    <select id="employee" th:field="*{order.employee.id}" >
+                        <option th:each="e:${employees}" th:value="${e.id}" th:text="${e.fullname}"></option>
+                    </select>
+                </div>
+                <br>
+                <table class="table">
+                    <tr>
+                        <th>Img</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Đơn vị</th>
+                        <th>Số lượng</th>
+                        <th>Giá (nghìn vnd)</th>
+                        <th>Method</th>
+                    </tr>
+                    <tbody id="tableCart" >
+                        <tr th:each="ot:${orderTemp}" th:id="'rowCart-'+${ot.product.product_id}">
+                            <td style="display: none" th:id="'price-'+${ot.product.product_id}" th:text="${#numbers.formatDecimal(ot.price,0,3)}"></td>
+                            <td>
+                               <img style='width: 60px; height: 40px' th:src="${ot.product.productImageList[0].path}">
+                            </td>
+                            <td th:text="${ot.product.name}"></td>
+                            <td th:text="${ot.product.unit}"></td>
+                            <td>
+                                <input th:attr="onchange=|changePrice('quantity-${ot.product.product_id}')|" type=number th:id="${'quantity-'+ot.product.product_id}" min=1 max=100 th:value="${ot.quantity}">
+                            </td>
+                            <td>
+                                <p th:id="${'totalPrice-'+ot.product.product_id}" th:text="${ot.price * ot.quantity}"></p>
+                            </td>
+                            <td>
+                                <button type='button' class='btn' th:attr="onclick=|deleteCart('${ot.product.product_id}')|"><i class='fas fa-trash-alt'></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
 
-               <div th:each="od,iterStat :${order.orderDetails}" th:id="${'listOrderDetail_'+listOrderDetail_size}">
-                   <input th:id="${'pId_'+od.product.product_id}"
-                          th:name="|orderDetails[${iterStat.index}].product.product_id|"
-                          th:value="${od.product.product_id}" >
-                   <input th:id="${'pQuantity_'+od.product.product_id}"
-                          th:name="|orderDetails[${iterStat.index}].quantity|"
-                          th:value="${od.quantity}" >
-               </div>
+                </table>
+                <input th:id="sizeList"
+                       th:value="${listOrderDetail_size}"
+                       th:name="|listOrderDetail_size|"
+                       type="number"
+                       style="display: none"
+                >
+                <div style="display: none" th:each="od,iterStat :${order.orderDetails}" th:id="${'listOrderDetail_'+iterStat.index}">
 
-               <button type="submit" class="btn btn-success">
-                   Đặt Hàng
-               </button>
-           </form>
+                    <input th:id="${'pId_'+iterStat.index}"
+                           th:name="|orderDetails[${iterStat.index}].product.product_id|"
+                           th:value="${od.product.product_id}" >
+                    <input th:id="${'pPrice_'+iterStat.index}"
+                           th:name="|orderDetails[${iterStat.index}].price|"
+                           th:value="${od.product.product_id}" >
+                    <input th:id="${'pQuantity_'+iterStat.index}"
+                           th:name="|orderDetails[${iterStat.index}].quantity|"
+                           th:value="${od.quantity}" >
+                </div>
 
-       </div>
+                <button onclick="submitActionBy()" type="button" class="btn btn-success">
+                    Đặt Hàng
+                </button>
+            </div>
+        </form>
+    </div>
         <br>
 
         <div style="float: right">
             <p style="float: right">&nbsp;000 vnd</p>
-            <b id="total-price-all" style="float: right"> 0</b>
+            <b id="total-price-all" style="float: right" th:text="${totalPrice}"> 0</b>
             <p style="float: right">Total price: &nbsp;</p>
 
         </div>
 
-    </div>
     <div style="height: 200px"></div>
     <script th:inline="javascript">
         function addCart(id, path, name,unit,price){
-            let size = /*[[${listOrderDetail_size}]]*/ 0;
 
             let table = document.getElementById("tableCart");
             let IdQuantity = "quantity-"+id;
@@ -113,31 +139,42 @@
             let newRow = table.insertRow();
             newRow.id = "rowCart-"+id;
 
-            document.getElementById("pId_"+size).value = id;
-
             newRow.insertCell().innerHTML = "<img style='width: 60px; height: 40px' src="+path+">";
             newRow.insertCell().innerHTML = name;
             newRow.insertCell().innerHTML = unit;
             newRow.insertCell().innerHTML = "<input onchange=changePrice('"+IdQuantity+"') type=number id='"+IdQuantity+"' min=1 max=100 value=1>";
             newRow.insertCell().innerHTML = "<p id='"+IdPrice+"'> "+price+"</p>"
-            newRow.insertCell().innerHTML ="<button class='btn' onclick=deleteCart('"+IdDeleteRow+"')><i class='fas fa-trash-alt'></i></button>"
+            newRow.insertCell().innerHTML ="<button type='button' class='btn' onclick=deleteCart('"+IdDeleteRow+"')><i class='fas fa-trash-alt'></i></button>"
 
             let totalPriceAll_old = document.getElementById("total-price-all").innerText;
             let totalPriceAll_new = parseFloat(totalPriceAll_old)+parseFloat(price)
             document.getElementById("total-price-all").innerText=totalPriceAll_new+"";
+
+            //java
+            let size = parseInt(document.getElementById("sizeList").value);
+            document.getElementById("pId_"+size).value = id;
+            document.getElementById("pPrice_"+size).value = price;
             document.getElementById("pQuantity_"+size).value = document.getElementById(IdQuantity).value;
-            size++;
+            document.getElementById("sizeList").value = size+1;
         }
 
         function changePrice(IdQuantity){
+
             let arr = IdQuantity.split("-");
-            let value =document.getElementById(IdQuantity).value;
-            console.log(value);
-            console.log(arr);
+
+            //java
+            for(let i =0;i<100;i++){
+                let value1 = document.getElementById("pId_"+i).value;
+                if(arr[1]===value1){
+                    document.getElementById("pQuantity_"+i).value = document.getElementById(IdQuantity).value;
+                    break;
+                }
+            }
+
+
+            let value =parseInt(document.getElementById(IdQuantity).value);
             let totalPrice_old = parseFloat(document.getElementById("totalPrice-"+arr[1]).innerText);
-            console.log(totalPrice_old);
             let totalPrice_new = parseFloat(document.getElementById("price-"+arr[1]).innerText) * value;
-            console.log(totalPrice_new);
             document.getElementById("totalPrice-"+arr[1]).innerText = totalPrice_new+"";
 
             let totalPriceAll_old = document.getElementById("total-price-all").innerText;
@@ -153,10 +190,25 @@
             let totalPriceAll_new = parseFloat(totalPriceAll_old)- totalPrice_old;
             document.getElementById("total-price-all").innerText=totalPriceAll_new+"";
             row.remove()
+
+            //java
+            for(let i =0;i<100;i++){
+                let value1 = document.getElementById("pId_"+i).value;
+                if(id===value1){
+                    document.getElementById("listOrderDetail_"+i).remove();
+                    break;
+                }
+
+            }
         }
 
-        function by(){
+        function  submitActionBy(){
+            document.getElementById("myForm").submit();
+        }
 
+        function  submitActionPage(page){
+            document.getElementById("myForm").action = "/product/by?page="+(page-1);
+            document.getElementById("myForm").submit();
         }
     </script>
 </body>

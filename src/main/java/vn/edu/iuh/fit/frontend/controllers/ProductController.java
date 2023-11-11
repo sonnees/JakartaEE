@@ -8,17 +8,16 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StreamUtils;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import vn.edu.iuh.fit.backend.dto.ProductDTO;
-import vn.edu.iuh.fit.backend.models.Customer;
-import vn.edu.iuh.fit.backend.models.Employee;
-import vn.edu.iuh.fit.backend.models.Order;
-import vn.edu.iuh.fit.backend.models.OrderDetail;
-import vn.edu.iuh.fit.backend.repositories.CustomerRepository;
-import vn.edu.iuh.fit.backend.repositories.EmployeeRepository;
-import vn.edu.iuh.fit.backend.repositories.ProductRepository;
+import vn.edu.iuh.fit.backend.models.*;
+import vn.edu.iuh.fit.backend.repositories.*;
+import vn.edu.iuh.fit.backend.services.OrderService;
 import vn.edu.iuh.fit.backend.services.ProductService;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -33,10 +32,39 @@ public class ProductController {
     ProductRepository productRepository;
     CustomerRepository customerRepository;
     EmployeeRepository employeeRepository;
+    OrderDetailRepository orderDetailRepository;
+    OrderRepository orderRepository;
+    OrderService orderService;
+
     @GetMapping("/by")
     public String getPageProduct(Model model,
-                                 @RequestParam("page") Optional<Integer> page
+                                 @RequestParam("page") Optional<Integer> page,
+                                 @ModelAttribute("order") Optional<Order> order
                                  ){
+        int listOrderDetail_size = 0;
+        List<OrderDetail> orderTemp = new ArrayList<>();
+        double totalPrice = 0.0;
+        if(order.isPresent()){
+            order.orElse(new Order()).getOrderDetails().forEach(i-> {
+               if(i.getProduct().getProduct_id()!=0){
+                   orderTemp.add(
+                           new OrderDetail(
+                                   i.getQuantity(),
+                                   i.getPrice(),
+                                   "",
+                                   order.orElse(new Order()),
+                                   productRepository.findById(Long.parseLong(i.getProduct().getProduct_id() + "")).orElse(new Product())
+                           )
+                   );
+               }
+            });
+            listOrderDetail_size = orderTemp.size();
+        }
+
+        for(OrderDetail orderDetail : orderTemp){
+            totalPrice += orderDetail.getPrice()*orderDetail.getQuantity();
+        }
+
         PageRequest pageable = PageRequest.of(page.orElse(0), 10, Sort.by("name"));
         Page<ProductDTO> products = productService.getProduct(pageable);
 
@@ -47,35 +75,66 @@ public class ProductController {
         List<Customer> customers = customerRepository.findAll();
         List<Employee> employees = employeeRepository.findAll();
 
-        Order order = new Order();
-        model.addAttribute("listOrderDetail_size", 0);
+
+        model.addAttribute("listOrderDetail_size", listOrderDetail_size);
         model.addAttribute("customers", customers);
         model.addAttribute("employees", employees);
         model.addAttribute("products", products);
         model.addAttribute("pages", pages);
-        model.addAttribute("order", order);
+        model.addAttribute("order", order.orElse(new Order()));
+        model.addAttribute("orderTemp", orderTemp);
+        model.addAttribute("totalPrice", totalPrice);
+
+
 
         return "client/home";
     }
 
     @PostMapping("/by")
     public String byProduct(Model model,
-                            @ModelAttribute("order") Order order
-
+                            @ModelAttribute("order") Order order,
+                            @RequestParam("page") Optional<Integer> page,
+                            RedirectAttributes redirectAttributes
     ){
+
+        if(page.isPresent()){
+            redirectAttributes.addFlashAttribute("order", order);
+            return "redirect:/product/by?page="+page.orElse(0);
+        }
+
         order.setEmployee(employeeRepository.findById(order.getCustomer().getId()).orElse(new Employee()));
         order.setCustomer(customerRepository.findById(order.getCustomer().getId()).orElse(new Customer()));
+
+        Order orderSaveTemp = new Order(
+                LocalDateTime.of(9999,1,1,1,1,1),
+                order.getEmployee(),
+                order.getCustomer()
+        );
+
+        orderRepository.save(orderSaveTemp);
+        Order orderSave = orderService.getOrderByDate();
+
+        orderSave.setOrderDate(LocalDateTime.now());
+        orderRepository.save(orderSave);
+
+        for(OrderDetail orderDetail : order.getOrderDetails()){
+            if(orderDetail.getProduct().getProduct_id()!=0){
+
+                OrderDetail orderDetail1 = new OrderDetail(
+                        orderDetail.getQuantity(),
+                        orderDetail.getPrice(),
+                        "",
+                        orderSave,
+                        productRepository.findById(orderDetail.getProduct().getProduct_id()).orElse(new Product())
+                );
+
+                orderDetailRepository.save(orderDetail1);
+
+            }
+        }
         System.out.println(order);
-        System.out.println(order.getOrderDetails().get(0).getProduct().getProduct_id());
-//        orderDetails.forEach(i-> {
-//            System.out.println("---");
-//
-//            System.out.println(i.getProduct().getName());
-//            System.out.println(i.getPrice());
-//            System.out.println(i.getQuantity());
-//
-//            System.out.println("---");
-//        });
+
+
 
         return "redirect:/product/by";
     }

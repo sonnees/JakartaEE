@@ -9,8 +9,15 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import vn.edu.iuh.fit.backend.dto.ProductDTO;
+import vn.edu.iuh.fit.backend.models.Order;
+import vn.edu.iuh.fit.backend.repositories.CustomerRepository;
+import vn.edu.iuh.fit.backend.repositories.EmployeeRepository;
+import vn.edu.iuh.fit.backend.repositories.OrderRepository;
 import vn.edu.iuh.fit.backend.repositories.ProductRepository;
 import vn.edu.iuh.fit.backend.services.ProductService;
+
+import java.time.LocalDateTime;
+import java.util.Optional;
 
 @SpringBootTest
 public class TestProductService {
@@ -18,6 +25,12 @@ public class TestProductService {
     ProductService productService;
     @Autowired
     ProductRepository productRepository;
+    @Autowired
+    OrderRepository orderRepository;
+    @Autowired
+    EmployeeRepository employeeRepository;
+    @Autowired
+    CustomerRepository customerRepository;
 
     @Test
     void getProduct(){
@@ -29,7 +42,21 @@ public class TestProductService {
 
     @Test
     void more(){
-        int size = productRepository.findAll().size()%10==0?productRepository.findAll().size()/10:productRepository.findAll().size()/10+1;
-        System.out.println(size);
+        Order orderSaveTemp = new Order(
+                LocalDateTime.of(9999,1,1,1,1,1),
+                employeeRepository.findById(1L).orElse(null),
+                customerRepository.findById(1L).orElse(null)
+        );
+        orderRepository.save(orderSaveTemp);
+
+
+    }
+
+    @Test
+    void more1(){
+        LocalDateTime minDateTime = LocalDateTime.MIN;
+
+        System.out.println("Minimum LocalDateTime: " + minDateTime);
+
     }
 }
