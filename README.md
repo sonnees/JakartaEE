@@ -57,7 +57,7 @@ git clone -b Lab02 --single-branch https://github.com/sonnees/JakartaEE.git
     ![ERD](/img/ERD_lab03.png)
 <br> 
 
-*[more](https://github.com/sonnees/JakartaEE/tree/Lab03)*
+[more](https://github.com/sonnees/JakartaEE/tree/Lab03)
 ```git
 git clone -b Lab03 --single-branch https://github.com/sonnees/JakartaEE.git
 ```
@@ -67,12 +67,12 @@ git clone -b Lab03 --single-branch https://github.com/sonnees/JakartaEE.git
   <summary><h3>👇 Lab04</h3> </summary>
   <hr>
 
-# Tạo trang web tìm kiếm việc làm
+# Tạo Trang Web Tìm Kiếm Việc Làm
   ![gif](/img/Lab04.gif)
 
 <br> 
 
-*[more](https://github.com/sonnees/JakartaEE/tree/Lab04)*
+[Detail in branch lab04](https://github.com/sonnees/JakartaEE/tree/Lab04)
 ```git
 git clone -b Lab04 --single-branch https://github.com/sonnees/JakartaEE.git
 ```
@@ -97,10 +97,26 @@ git clone -b Lab04 --single-branch https://github.com/sonnees/JakartaEE.git
   ![ERD](/img/ERD_lab05.png)
 <br>
 
-*[more](https://github.com/sonnees/JakartaEE/tree/Lab05)*
+[more](https://github.com/sonnees/JakartaEE/tree/Lab05)
 ```git
 git clone -b Lab05 --single-branch https://github.com/sonnees/JakartaEE.git
 ```
+</details>
+
+<details>
+  <summary><h3>👇 Lab06</h3> </summary>
+  <hr>
+
+# WebApp Bán Sản Phẩm
+  ![gif](/img/Lab06.gif)
+
+<br> 
+
+[Detail in branch lab06](https://github.com/sonnees/JakartaEE/tree/Lab06)
+```git
+git clone -b Lab06 --single-branch https://github.com/sonnees/JakartaEE.git
+```
+<hr>
 </details>
 
 
