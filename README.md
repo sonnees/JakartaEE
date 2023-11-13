@@ -1,176 +1,49 @@
-# REST API Jakarta EE
+# Webapp Mua Hàng | Không Dùng Session 
 - Sinh viên: **Nguyễn Văn Sơn**
 - Hướng dẫn: **TS. Võ Văn Hải**
-- Thời gian: từ **17/09/2023**  đến **01/10/2023**
+- Thời gian: từ **05/11/2023**  đến **12/11/2023**
 
 ![Gradle](https://img.shields.io/badge/Gradle-02303A.svg?style=for-the-badge&logo=Gradle&logoColor=black)
-![Hibernate](https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=Hibernate&logoColor=white)
-![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=black)
-![Apache Tomcat](https://img.shields.io/badge/apache%20tomcat-%23F8DC75.svg?style=for-the-badge&logo=apache-tomcat&logoColor=black)
+<img src="https://th.bing.com/th/id/R.d433e5db311d0fe02f52e4db3b5cc743?rik=sNF4YqL55B8yYQ&riu=http%3a%2f%2fh2database.com%2fhtml%2fimages%2fh2-logo-2.png&ehk=IBnDTb4FFDrxdQ3V3Pbd6ZLsqndsNau6X862s8MAijg%3d&risl=&pid=ImgRaw&r=0?style=for-the-badge&logo=mariadb&logoColor=black" alt="MariaDB Badge" height="28" width="100">
+![Spring Boot Badge](https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=springboot&logoColor=fff&style=for-the-badge)
 
   <hr>
 
 - **Ý tưởng:** Lập 1 trang web bán hàng. <br>
-- **Sử dụng:** `REST API Jakarta EE` , `JSP + JSTL` <br>
+- **Sử dụng:** `Spring Boot` , `Thymeleft` <br>
+- **Mô hình:** `MVC` <br>
 <br>
 
 **Diagram:**
 
-  ![ERD](/img/ERD_lab02.png)
+  ![ERD](/img/Diagram.png)
 
 <br>
 
 **Demo chạy chương trình:**
 
-  ![ERD](/img/Lab02.gif)
-<br> <br>
+  ![ERD](/img/Lab06.gif)
+
+
+
+# BACK-END
+- CRUD các đối tượng.
+- Product service.
+
+
+
+# FRONT-END 
+- Role User: xem sản phẩm, bỏ sản phẩm vào giỏ hàng, mua sản phẩm.<br>
+- Role Admin: Đang hoàn thiện... <br>
+
+
+<br>
+
 ```git
 git clone -b Lab02 --single-branch https://github.com/sonnees/JakartaEE.git
 ```
-
-<details>
-  <summary><h3>👇 Back end</h3> </summary>
-  <hr>
-  
-# BACK-END
-
-## 1. Product:
-  > GET <br>
-  >> .../api/Product  <br>
-  >> .../api/Product/{id}  <br>
-  >>.../api/Product/{x}-{y}  <br>
-
-  > POST <br>
-  >> .../api/Product  <br>
-  >> .../api/Product/add-list  <br>
-
-  > PUT <br>
-  >> .../api/Product/{id}  <br>
-  >> .../api/Product/{id}/update-field  <br>
-
-  >DELETE <br>
-  >> .../api/Product/{id}  <br>
-  >> .../api/Product/delete-multiple  <br>
-
-## 2. ProductPrice:
-  >GET <br>
-  >> .../api/ProductPrice/{product_id}  <br>
-  >> .../api/ProductPrice/{product_id}/{x}-{y}  <br>
-
-  >POST <br>
-  >> .../api/ProductPrice  <br>
-  >> .../api/ProductPrice/add-list  <br>
-
-  > PUT <br>
-  >> .../api/ProductPrice/{product_id}/update-field  <br>
-
-  >DELETE <br>
-  >> .../api/Product  <br>
-  >> .../api/Product/delete-multiple  <br>
-
-## 3. ProductImage:
-  > GET <br>
-  >> .../api/ProductImage  <br>
-  >> .../api/ProductImage/{id}  <br>
-
-  > POST <br>
-  >> .../api/ProductImage  <br>
-  >> .../api/ProductImage/add-list  <br>
-
-  > PUT <br>
-  >> .../api/ProductImage/{id}  <br>
-  >> .../api/ProductImage/{id}/update-field  <br>
-
-  >DELETE <br>
-  >> .../api/ProductImage/{id}  <br>
-  >> .../api/ProductImage/delete-multiple  <br>
-
-## 4. Customer:
-  > GET <br>
-  >> .../api/Customer  <br>
-  >> .../api/Customer/{id}  <br>
-  >> .../api/Customer/{x}-{y}  <br>
-
-  > POST <br>
-  >> .../api/Customer  <br>
-  >> .../api/Customer/add-list  <br>
-
-  > PUT <br>
-  >> .../api/Customer/{id}  <br>
-  >> .../api/Customer/{id}/update-field  <br>
-
-  >DELETE <br>
-  >> .../api/Customer/{id}  <br>
-  >> .../api/Customer/delete-multiple  <br>
-
-## 5. Employee:
-  > GET <br>
-  >> .../api/Employee  <br>
-  >> .../api/Employee/{id}  <br>
-  >> .../api/Employee/{x}-{y}  <br>
-
-  > POST <br>
-  >> .../api/Employee  <br>
-  >> .../api/Employee/add-list  <br>
-
-  > PUT <br>
-  >> .../api/Employee/{id}  <br>
-  >> .../api/Employee/{id}/update-field  <br>
-
-  >DELETE <br>
-  >> .../api/Employee/{id}  <br>
-  >> .../api/Employee/delete-multiple  <br>
-
-## 6. Orders:
-  > GET <br>
-  >> .../api/Orders  <br>
-  >> .../api/Orders/{id}  <br>
-  >> .../api/Orders/{x}-{y}  <br>
-   
-  > POST <br>
-  >> .../api/Orders  <br>
-  >> .../api/Orders/add-list  <br>
-  >> .../api/Orders/Anal-Year-Month-Day  <br>
-  >> .../api/Orders/Anal-Years-Months  <br>
-   
-  > PUT <br>
-  >> .../api/Orders/{id}  <br>
-  >> .../api/Orders/{id}/update-field  <br>
-
-  > DELETE <br>
-  >> .../api/Orders/{id}  <br>
-  >> .../api/Orders/delete-multiple  <br>
-
-## 7. OrderDetail:
-  > GET <br>
-  >> .../api/OrderDetail/{id}  <br>
-
-  > POST <br>
-  >> .../api/Orders  <br>
-  >> .../api/Orders/add-list  <br>
-
-  > PUT <br>
-  >> .../api/Orders/{id}  <br>
-  >> .../api/Orders/{id}/update-field  <br>
-
-  > DELETE <br>
-  >> .../api/Orders/{id}  <br>
-  >> .../api/Orders/delete-multiple  <br>
-</details>
-
-<details>
-  <summary><h3>👇 Front end </h3> </summary>
-  <hr>
-  
-# FRONT-END 
  
-- Ý tưởng: Tạo giao diện trang web bán hàng. <br>
-- Sử dụng: `Servlet Jakarta EE` <br>
-- Mô tả:<br>
-  - Chạy song song với phần backend ở trên để lấy dữ liệu <br>
-  - Role Admin: `CRUD` các đối tượng, thống kê <br>
-  - Role User: xem sản phẩm, bỏ sản phẩm vào giỏ hàng
-</details>
+
 
 
 
