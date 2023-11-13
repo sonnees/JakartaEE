@@ -1,7 +1,7 @@
-# Webapp Mua Hàng | Không Dùng Session 
+# Webapp Mua Hàng | Dùng Session
 - Sinh viên: **Nguyễn Văn Sơn**
 - Hướng dẫn: **TS. Võ Văn Hải**
-- Thời gian: từ **05/11/2023**  đến **12/11/2023**
+- Thời gian: từ **13/11/2023**  đến **19/11/2023**
 
 ![Gradle](https://img.shields.io/badge/Gradle-02303A.svg?style=for-the-badge&logo=Gradle&logoColor=black)
 <img src="https://th.bing.com/th/id/R.d433e5db311d0fe02f52e4db3b5cc743?rik=sNF4YqL55B8yYQ&riu=http%3a%2f%2fh2database.com%2fhtml%2fimages%2fh2-logo-2.png&ehk=IBnDTb4FFDrxdQ3V3Pbd6ZLsqndsNau6X862s8MAijg%3d&risl=&pid=ImgRaw&r=0?style=for-the-badge&logo=mariadb&logoColor=black" alt="MariaDB Badge" height="28" width="100">
@@ -22,8 +22,7 @@
 
 **Demo chạy chương trình:**
 
-  ![ERD](/img/Lab06.gif)
-
+  ![ERD](/img/Lab07.gif)
 
 
 # BACK-END
@@ -34,13 +33,17 @@
 
 # FRONT-END 
 - Role User: xem sản phẩm, bỏ sản phẩm vào giỏ hàng, mua sản phẩm.<br>
-- Role Admin: Đang hoàn thiện... <br>
-
+- Role Admin:
+  - Thống kê tổng hóa đơn theo ngày trong tháng <br>
+  - Thống kê tổng hóa đơn theo tháng trong năm <br>
+  - Thống kê tổng doanh thu theo ngày trong tháng <br>
+  - Thống kê tổng doanh thu theo tháng trong năm <br
+  
 
 <br>
 
 ```git
-git clone -b Lab02 --single-branch https://github.com/sonnees/JakartaEE.git
+git clone -b Lab07 --single-branch https://github.com/sonnees/JakartaEE.git
 ```
  
 
