@@ -40,7 +40,7 @@
 <br>
 
 ```git
-git clone -b Lab02 --single-branch https://github.com/sonnees/JakartaEE.git
+git clone -b Lab06 --single-branch https://github.com/sonnees/JakartaEE.git
 ```
  
 
