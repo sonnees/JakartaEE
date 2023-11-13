@@ -108,7 +108,7 @@ git clone -b Lab05 --single-branch https://github.com/sonnees/JakartaEE.git
   <summary><h3>👇 Lab06</h3> </summary>
   <hr>
 
-# WebApp Bán Sản Phẩm
+# WebApp Bán Sản Phẩm | Không Dùng Session
   ![gif](/img/Lab06.gif)
 
 <br> 
@@ -116,6 +116,22 @@ git clone -b Lab05 --single-branch https://github.com/sonnees/JakartaEE.git
 [Detail in branch lab06](https://github.com/sonnees/JakartaEE/tree/Lab06)
 ```git
 git clone -b Lab06 --single-branch https://github.com/sonnees/JakartaEE.git
+```
+<hr>
+</details>
+
+<details>
+  <summary><h3>👇 Lab07</h3> </summary>
+  <hr>
+
+# WebApp Bán Sản Phẩm | Dùng Session
+  ![gif](/img/Lab07.gif)
+
+<br> 
+
+[Detail in branch lab07](https://github.com/sonnees/JakartaEE/tree/Lab07)
+```git
+git clone -b Lab07 --single-branch https://github.com/sonnees/JakartaEE.git
 ```
 <hr>
 </details>
