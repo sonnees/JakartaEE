@@ -3364,3 +3364,18 @@ java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supporte
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-11-13 07:08:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table post (id bigint not null, content text, create_at date, meta_title varchar(100), published tinyint[*](1), published_at date, summary text, title varchar(75), update_at date, author_id bigint, parentid bigint, primary key (id))"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, NULL, AS, DEFAULT, GENERATED, ON UPDATE, NOT NULL, NULL, AUTO_INCREMENT, DEFAULT ON NULL, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, NULL, CHECK, REFERENCES, AUTO_INCREMENT, ,, )"; SQL statement:
+create table post (id bigint not null, content text, create_at date, meta_title varchar(100), published tinyint(1), published_at date, summary text, title varchar(75), update_at date, author_id bigint, parentid bigint, primary key (id)) [42001-214]
+2023-11-13 07:08:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table post_comment (id bigint not null, content text, create_at date, publish_at date, published tinyint[*](1), title varchar(100), parentid bigint, post_id bigint, userid bigint, primary key (id))"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, NULL, AS, DEFAULT, GENERATED, ON UPDATE, NOT NULL, NULL, AUTO_INCREMENT, DEFAULT ON NULL, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, NULL, CHECK, REFERENCES, AUTO_INCREMENT, ,, )"; SQL statement:
+create table post_comment (id bigint not null, content text, create_at date, publish_at date, published tinyint(1), title varchar(100), parentid bigint, post_id bigint, userid bigint, primary key (id)) [42001-214]
+2023-11-13 07:08:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table [*]user (id bigint not null, email varchar(50), first_name varchar(50), intro text, last_login date, last_name varchar(50), middle_name varchar(50), mobile varchar(15), password_hash varchar(64), profile text, registered_at date, primary key (id))"; expected "identifier"; SQL statement:
+create table user (id bigint not null, email varchar(50), first_name varchar(50), intro text, last_login date, last_name varchar(50), middle_name varchar(50), mobile varchar(15), password_hash varchar(64), profile text, registered_at date, primary key (id)) [42001-214]
+2023-11-13 07:08:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "alter table if exists post add constraint FK12njtf8e0jmyb45lqfpt6ad89 foreign key (author_id) references [*]user"; expected "identifier"; SQL statement:
+alter table if exists post add constraint FK12njtf8e0jmyb45lqfpt6ad89 foreign key (author_id) references user [42001-214]
+2023-11-13 07:08:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "alter table if exists post_comment add constraint FKs3aghegccqymxv96f9i4u4cm4 foreign key (userid) references [*]user"; expected "identifier"; SQL statement:
+alter table if exists post_comment add constraint FKs3aghegccqymxv96f9i4u4cm4 foreign key (userid) references user [42001-214]

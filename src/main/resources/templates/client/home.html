@@ -13,7 +13,7 @@
 <body>
     <div th:replace="~{/client/menu.html}"></div>
     <div class="container" >
-        <form action="/product/by" method="post" id="myForm">
+        <form action="/order/by" method="post" id="myForm">
             <table class="table" style="margin-top: 70px;">
                 <tr>
                     <th>Img</th>
@@ -207,7 +207,7 @@
         }
 
         function  submitActionPage(page){
-            document.getElementById("myForm").action = "/product/by?page="+(page-1);
+            document.getElementById("myForm").action = "/order/by?page="+(page-1);
             document.getElementById("myForm").submit();
         }
     </script>

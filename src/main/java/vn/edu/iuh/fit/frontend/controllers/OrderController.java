@@ -25,9 +25,9 @@ import java.util.Optional;
 import java.util.stream.IntStream;
 
 @Controller
-@RequestMapping("/product")
+@RequestMapping("/order")
 @AllArgsConstructor
-public class ProductController {
+public class OrderController {
     ProductService productService;
     ProductRepository productRepository;
     CustomerRepository customerRepository;
@@ -44,7 +44,7 @@ public class ProductController {
         int listOrderDetail_size = 0;
         List<OrderDetail> orderTemp = new ArrayList<>();
         double totalPrice = 0.0;
-        if(order.isPresent()){
+        if(order.orElse(null) !=null){
             order.orElse(new Order()).getOrderDetails().forEach(i-> {
                if(i.getProduct().getProduct_id()!=0){
                    orderTemp.add(
@@ -59,7 +59,20 @@ public class ProductController {
                }
             });
             listOrderDetail_size = orderTemp.size();
+
+            List<OrderDetail> orderTemp2 = new ArrayList<>();
+            if(!orderTemp.isEmpty()){
+                for(int i = 0; i< 100;i++){
+                    if(orderTemp.size()>i)
+                        orderTemp2.add(orderTemp.get(i));
+                    else orderTemp2.add(new OrderDetail());
+                }
+                order.get().setOrderDetails(orderTemp2);
+            }
+
+
         }
+
 
         for(OrderDetail orderDetail : orderTemp){
             totalPrice += orderDetail.getPrice()*orderDetail.getQuantity();
@@ -99,7 +112,7 @@ public class ProductController {
 
         if(page.isPresent()){
             redirectAttributes.addFlashAttribute("order", order);
-            return "redirect:/product/by?page="+page.orElse(0);
+            return "redirect:/order/by?page="+page.orElse(0);
         }
 
         order.setEmployee(employeeRepository.findById(order.getCustomer().getId()).orElse(new Employee()));
@@ -132,10 +145,7 @@ public class ProductController {
 
             }
         }
-        System.out.println(order);
 
-
-
-        return "redirect:/product/by";
+        return "redirect:/order/by";
     }
 }

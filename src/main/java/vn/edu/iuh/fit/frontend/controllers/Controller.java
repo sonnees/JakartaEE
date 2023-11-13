@@ -23,7 +23,7 @@ public class Controller {
         if(name.isEmpty() || password.isEmpty()) return "redirect:/login";
 
         if(name.equals("admin")) return "login";
-        else if(name.equals("user")) return "redirect:/product/by";
+        else if(name.equals("user")) return "redirect:/order/by";
         else return "redirect:/login";
     }
 }
