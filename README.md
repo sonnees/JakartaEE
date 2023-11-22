@@ -14,6 +14,8 @@
   <hr>
 
 # Quản lý đăng nhập
+  <h3>Vui lòng đợi load file demo</h3>
+  
   ![gif](/img/Lab01.gif)
     
 <br>
@@ -30,6 +32,8 @@ git clone -b Lab01 --single-branch https://github.com/sonnees/JakartaEE.git
   <hr>
 
 # Trang web bán hàng
+<h3>Vui lòng đợi load file demo</h3>
+
   ![gif](/img/Lab02.gif)
 
 <br>
@@ -69,6 +73,8 @@ git clone -b Lab03 --single-branch https://github.com/sonnees/JakartaEE.git
   <hr>
 
 # Tạo Trang Web Tìm Kiếm Việc Làm
+<h3>Vui lòng đợi load file demo</h3>
+
   ![gif](/img/Lab04.gif)
 
 <br> 
@@ -108,7 +114,9 @@ git clone -b Lab05 --single-branch https://github.com/sonnees/JakartaEE.git
   <summary><h3>👇 Lab06</h3> </summary>
   <hr>
 
-# WebApp Bán Sản Phẩm | Không Dùng Session
+# WebApp Bán Sản Phẩm | Dùng ModelAttribute cho giỏ hàng 
+<h3>Vui lòng đợi load file demo</h3>
+
   ![gif](/img/Lab06.gif)
 
 <br> 
@@ -124,7 +132,9 @@ git clone -b Lab06 --single-branch https://github.com/sonnees/JakartaEE.git
   <summary><h3>👇 Lab07</h3> </summary>
   <hr>
 
-# WebApp Bán Sản Phẩm | Dùng Session
+# WebApp Bán Sản Phẩm | Dùng Session cho giỏ hàng 
+<h3>Vui lòng đợi load file demo</h3>
+
   ![gif](/img/Lab07.gif)
 
 <br> 
