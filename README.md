@@ -114,7 +114,7 @@ git clone -b Lab05 --single-branch https://github.com/sonnees/JakartaEE.git
   <summary><h3>👇 Lab06</h3> </summary>
   <hr>
 
-# WebApp Bán Sản Phẩm | Dùng ModelAttribute cho giỏ hàng 
+# WebApp Bán Sản Phẩm | Dùng ModelAttribute
 <h3>Vui lòng đợi load file demo</h3>
 
   ![gif](/img/Lab06.gif)
@@ -132,7 +132,7 @@ git clone -b Lab06 --single-branch https://github.com/sonnees/JakartaEE.git
   <summary><h3>👇 Lab07</h3> </summary>
   <hr>
 
-# WebApp Bán Sản Phẩm | Dùng Session cho giỏ hàng 
+# WebApp Bán Sản Phẩm | Dùng Session
 <h3>Vui lòng đợi load file demo</h3>
 
   ![gif](/img/Lab07.gif)
