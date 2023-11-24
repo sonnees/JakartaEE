@@ -10,6 +10,7 @@ import java.time.LocalDate;
 @Entity @Table(name = "post_comment")
 public class PostComment {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(columnDefinition = "varchar(100)")
     private String title;
@@ -31,4 +32,15 @@ public class PostComment {
     @ManyToOne
     @JoinColumn(name = "userID")
     private User userID;
+
+    public PostComment(String title, int published, LocalDate createAt, LocalDate publishAt, String content, Post postId, PostComment parentID, User userID) {
+        this.title = title;
+        this.published = published;
+        this.createAt = createAt;
+        this.publishAt = publishAt;
+        this.content = content;
+        this.postId = postId;
+        this.parentID = parentID;
+        this.userID = userID;
+    }
 }

@@ -12,6 +12,7 @@ import java.util.List;
 @Table(name = "user")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(columnDefinition = "varchar(50)")
     private String firstName;
@@ -37,4 +38,19 @@ public class User {
 
     @OneToMany(mappedBy = "userID")
     private List<PostComment> postComments;
- }
+
+    public User(String firstName, String middleName, String lastName, String mobile, String email, String passwordHash, LocalDate registeredAt, LocalDate lastLogin, String intro, String profile, List<Post> posts, List<PostComment> postComments) {
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.mobile = mobile;
+        this.email = email;
+        this.passwordHash = passwordHash;
+        this.registeredAt = registeredAt;
+        this.lastLogin = lastLogin;
+        this.intro = intro;
+        this.profile = profile;
+        this.posts = posts;
+        this.postComments = postComments;
+    }
+}

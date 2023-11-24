@@ -11,6 +11,7 @@ import java.util.List;
 @Entity @Table(name = "post")
 public class Post {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(columnDefinition = "varchar(75)")
     private String title;
@@ -36,4 +37,18 @@ public class Post {
 
     @OneToMany(mappedBy = "postId")
     private List<PostComment> postComments;
+
+    public Post(String title, String metaTitle, String summary, int published, LocalDate createAt, LocalDate updateAt, LocalDate publishedAt, String content, User authorId, Post parentID, List<PostComment> postComments) {
+        this.title = title;
+        this.metaTitle = metaTitle;
+        this.summary = summary;
+        this.published = published;
+        this.createAt = createAt;
+        this.updateAt = updateAt;
+        this.publishedAt = publishedAt;
+        this.content = content;
+        this.authorId = authorId;
+        this.parentID = parentID;
+        this.postComments = postComments;
+    }
 }

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Home</title>
+    <link rel="SHORTCUT ICON" type="image/x-icon" href="../static/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+    <style>
+        body {
+            margin: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 25%;
+            background-color: #f1f1f1;
+            position: fixed;
+            height: 100%;
+            overflow: auto;
+        }
+
+        li a {
+            display: block;
+            color: #000;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+
+        li a.active {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #555;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <ul>
+        <li><a th:class="${status ==1? 'active':''}" th:href="@{/home/kham-pha}">Khám phá</a></li>
+        <li><a th:class="${status ==2? 'active':''}" th:href="@{/post/add}">Đăng bài</a></li>
+        <li><a th:class="${status ==3? 'active':''}" th:href="@{/home/profile}">Tường của bản thân</a></li>
+        <li><a th:class="${status ==4? 'active':''}" th:href="@{/home/lock-out}">Lock out</a></li>
+    </ul>
+
+    <div style="margin-left:25%;padding:1px 16px;height:1000px">
+        <section class="w-100 p-4 d-flex justify-content-center pb-4">
+            <form action="/comment/add" style="width: 95%" id="myForm" method="post">
+                <div style="margin-bottom: 20px; padding: 10px;">
+                    <h3 th:text="${'Title: '+post.title}"></h3>
+                    <h3 th:text="${'Author: '+post.authorId.middleName}"></h3>
+                    <h5 th:text="${'MetaTitle: '+post.metaTitle}"></h5>
+                    <h5 th:text="${'Summary: '+post.summary}"></h5>
+                    <h5 th:text="${'Content: '+post.content}"></h5>
+                    <h6 th:text="${'CreateAt: '+post.createAt}"></h6>
+                    <h6 th:text="${'UpdateAt: '+post.updateAt}"></h6>
+                </div>
+                <hr>
+                <h4>Comment</h4>
+                <div>
+                    <div class="form-group">
+                        <input style="display: none;" name="id" th:value="${post.id}">
+                        <label for="comment">Comment:</label>
+                        <textarea name="content" id="comment" class="form-control" rows="2" placeholder="Thêm bình luận"></textarea>
+                        <button type="submit" style="margin: 10px" class="btn btn-success">Add</button>
+                    </div>
+
+                    <div style="margin-bottom: 20px; margin-top:20px;background: #d9d9d9; border-radius: 10px; padding: 10px;margin-right: 50%" th:each="c:${post.postComments}">
+                        <p style="font-size: 11px; margin-bottom: -3px" th:text="${c.createAt}"></p>
+                        <div style="display: flex; flex-direction: row; align-items: flex-end; height: inherit">
+                            <p  style="font-weight: bold; align-self: flex-start; flex: 30%" th:text="${c.userID.middleName +': '}"></p>
+                            <p style="margin-left: 10px; height: inherit;flex: 70%;align-self: flex-start;" th:text="${c.content}"></p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+        <canvas id="myChart" width="400" height="200"></canvas>
+    </div>
+</div>
+
+<script th:inline="javascript">
+
+</script>
+
+</body>
+</html>

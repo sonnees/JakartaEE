@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Home</title>
+    <link rel="SHORTCUT ICON" type="image/x-icon" href="../static/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+    <style>
+        body {
+            margin: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 25%;
+            background-color: #f1f1f1;
+            position: fixed;
+            height: 100%;
+            overflow: auto;
+        }
+
+        li a {
+            display: block;
+            color: #000;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+
+        li a.active {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #555;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <ul>
+        <li><a th:class="${status ==1? 'active':''}" th:href="@{/home/kham-pha}">Khám phá</a></li>
+        <li><a th:class="${status ==2? 'active':''}" th:href="@{/post/add}">Đăng bài</a></li>
+        <li><a th:class="${status ==3? 'active':''}" th:href="@{/home/profile}">Tường của bản thân</a></li>
+        <li><a th:class="${status ==4? 'active':''}" th:href="@{/home/lock-out}">Lock out</a></li>
+    </ul>
+
+    <div style="margin-left:25%;padding:1px 16px;height:1000px">
+        <section class="w-100 p-4 d-flex justify-content-center pb-4">
+            <form style="width: 70%" id="myForm">
+                <div style="display: flex; justify-content: center; margin-bottom: 10px">
+                    <input name="page" th:value="${page}" style="display: none">
+                    <button type="button" class="btn btn-secondary" onclick="resetData()">reset</button>
+                </div>
+               <div th:each="p:${listPost}">
+                   <button th:attr="onclick=|detail('${p.id}')|" style="position: absolute; right: 15%; margin-top: 40px" type="button" class="btn btn-success">Xem</button>
+                    <div style="margin-bottom: 20px;background: #d9d9d9; border-radius: 10px; padding: 10px">
+                        <h3 th:text="${p.title}"></h3>
+                        <h6 th:text="${p.summary}"></h6>
+                        <p th:text="${p.nameU+' · ' + p.creTime}"></p>
+                    </div>
+               </div>
+                <div style="display: flex; justify-content: center">
+                    <input name="page" th:value="${page}" style="display: none">
+                    <button type="button" class="btn btn-secondary" onclick="loadMore()">Xem thêm</button>
+                </div>
+            </form>
+        </section>
+        <canvas id="myChart" width="400" height="200"></canvas>
+    </div>
+</div>
+
+
+<script th:inline="javascript">
+    function loadMore() {
+        let myForm = document.getElementById('myForm');
+        myForm.action = "/home/kham-pha";
+        myForm.method = 'get';
+        myForm.submit();
+    }
+
+    function  detail(id){
+        let myForm = document.getElementById('myForm');
+        myForm.action = "/home/kham-pha/detail/"+id;
+        myForm.method = 'post';
+        myForm.submit();
+    }
+
+    function resetData(){
+        let myForm = document.getElementById('myForm');
+        myForm.action = "/home/kham-pha-new";
+        myForm.method = 'get';
+        myForm.submit();
+    }
+</script>
+
+</body>
+</html>
