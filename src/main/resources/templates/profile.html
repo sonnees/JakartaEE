@@ -52,13 +52,14 @@
         <li><a th:class="${status ==1? 'active':''}" th:href="@{/home/kham-pha}">Khám phá</a></li>
         <li><a th:class="${status ==2? 'active':''}" th:href="@{/post/add}">Đăng bài</a></li>
         <li><a th:class="${status ==3? 'active':''}" th:href="@{/home/profile}">Tường của bản thân</a></li>
-        <li><a th:class="${status ==4? 'active':''}" th:href="@{/home/lock-out}">Lock out</a></li>
+        <li><a th:class="${status ==4? 'active':''}" th:href="@{/home/log-out}">Log out</a></li>
     </ul>
 
     <div style="margin-left:25%;padding:1px 16px;height:1000px">
         <section class="w-100 p-4 d-flex justify-content-center pb-4">
             <form style="width: 70%" id="myForm">
                <div th:each="p:${listPost}">
+                   <input name="page" th:value="${page}" style="display: none">
                    <button th:attr="onclick=|detail('${p.id}')|" style="position: absolute; right: 15%; margin-top: 40px" type="button" class="btn btn-success">Xem</button>
                     <div style="margin-bottom: 20px;background: #d9d9d9; border-radius: 10px; padding: 10px">
                         <h3 th:text="${p.title}"></h3>
@@ -80,11 +81,10 @@
 <script th:inline="javascript">
     function loadMore() {
         let myForm = document.getElementById('myForm');
-        myForm.action = "/home/kham-pha";
+        myForm.action = "/home/profile";
         myForm.method = 'get';
         myForm.submit();
     }
-
     function  detail(id){
         let myForm = document.getElementById('myForm');
         myForm.action = "/home/kham-pha/detail/"+id;

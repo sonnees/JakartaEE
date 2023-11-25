@@ -69,7 +69,8 @@ public class HomeController {
     }
 
     @GetMapping("/profile")
-    public String viewProfile(Model model
+    public String viewProfile(Model model,
+                              @RequestParam Optional<Integer> page
     )
     {
         if(userSingleton==null)
@@ -77,12 +78,13 @@ public class HomeController {
 
         List<PostDTO> listPost = postService.getByID(userSingleton.getUser().getId());
 
+        model.addAttribute("page",page.orElse(0)+1);
         model.addAttribute("status",3);
         model.addAttribute("listPost", listPost);
         return "profile";
     }
 
-    @GetMapping("/lock-out")
+    @GetMapping("/log-out")
     public String lockOut()
     {
         userSingleton.setUser(null);

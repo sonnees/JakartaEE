@@ -53,19 +53,19 @@ class InsertDataTest {
             }
         }
 
-        for (int i = 1; i<= 10; i++){
-            postComment = new PostComment(
-                    faker.artist().name(),
-                    1,
-                    LocalDate.now(),
-                    LocalDate.now(),
-                    faker.artist().name(),
-                    postRepository.findById(Long.parseLong(i+"")).get(),
-                    postCommentRepository.findById(Long.parseLong(i+"")).get(),
-                    userRepository.findById(faker.random().nextLong(1,20)).get()
-                    );
-            postCommentRepository.save(postComment);
-            }
+//        for (int i = 1; i<= 10; i++){
+//            postComment = new PostComment(
+//                    faker.artist().name(),
+//                    1,
+//                    LocalDate.now(),
+//                    LocalDate.now(),
+//                    faker.artist().name(),
+//                    postRepository.findById(Long.parseLong(i+"")).get(),
+//                    postCommentRepository.findById(Long.parseLong(i+"")).get(),
+//                    userRepository.findById(faker.random().nextLong(1,20)).get()
+//                    );
+//            postCommentRepository.save(postComment);
+//            }
     }
 
     void addPost(){
@@ -79,8 +79,8 @@ class InsertDataTest {
                         faker.address().fullAddress(),
                         1,
                         LocalDate.of(2023,
-                                faker.random().nextInt(1,10),
-                                faker.random().nextInt(1,28)
+                                faker.random().nextInt(1,11),
+                                faker.random().nextInt(1,25)
                                 ),
                         LocalDate.now(),
                         LocalDate.now(),

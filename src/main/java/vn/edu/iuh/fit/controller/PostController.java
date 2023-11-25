@@ -23,7 +23,6 @@ public class PostController {
     PostService postService;
     UserSingleton userSingleton;
 
-
     @GetMapping("/add")
     public String viewFormAdd(Model model){
         Post post = new Post();
