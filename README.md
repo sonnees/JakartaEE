@@ -91,17 +91,9 @@ git clone -b Lab04 --single-branch https://github.com/sonnees/JakartaEE.git
   <hr>
 
 # Trang Web Quản Lý Blog
-## Back End
-- Ánh xạ các entity, `repository` extends `JpaRepository`. <br>
-- `Spring Boot - REST API`.  <br>
-## Front End
-- `Spring MVC`.  <br>
-
-  <br>
-
-**Diagram:**
-
-  ![ERD](/img/ERD_lab05.png)
+<h3>Vui lòng đợi load file demo</h3>
+  
+  ![gif](/img/Lab05.gif)
 <br>
 
 [more](https://github.com/sonnees/JakartaEE/tree/Lab05)
