@@ -138,6 +138,29 @@ git clone -b Lab07 --single-branch https://github.com/sonnees/JakartaEE.git
 <hr>
 </details>
 
+<details>
+  <summary><h3>👇 Lab08</h3> </summary>
+  <hr>
+
+# Spring Security, Primary and Secondary Datasource
+## Spring Security
+- Làm quen với spring security.
+- Authentication: Bằng User name và User password lưu vào memory `inMemoryAuthentication` hoặc xuống database `jdbcAuthentication`.
+- Authorization: Khi đã xác thực thành công người dùng, dựa vào role, người dùng có thể sử dụng các dịch vụ được cấp từ trước.
+
+## Primary and Secondary Datasource
+- Secondary datasource (H2 database): Lưu các thực thể liên quan đến session và security.
+- Primary datasource (Maria database): Lưu các thực thể còn lại.
+
+<br> 
+
+[Detail in branch lab08](https://github.com/sonnees/JakartaEE/tree/Lab08)
+```git
+git clone -b Lab08 --single-branch https://github.com/sonnees/JakartaEE.git
+```
+<hr>
+</details>
+
 
 
 
