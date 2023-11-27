@@ -1,12 +1,14 @@
 package vn.edu.iuh.fit.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -47,7 +49,7 @@ public class SecurityConfig {
      */
     @Autowired
     public void globalConfig(AuthenticationManagerBuilder auth,
-                             PasswordEncoder encoder, DataSource dataSource) throws Exception {
+                             PasswordEncoder encoder, @Qualifier("tempDataSource") DataSource dataSource) throws Exception {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
                 .withDefaultSchema()
@@ -77,8 +79,6 @@ public class SecurityConfig {
                         .headers(h->h.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin));
 
         http.httpBasic(Customizer.withDefaults());
-
-
 
         return http.build();
     }

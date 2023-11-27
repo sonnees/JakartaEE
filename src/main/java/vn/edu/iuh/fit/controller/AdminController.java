@@ -29,6 +29,7 @@ public class AdminController {
             @RequestBody String newPass
 
     ){
+        System.out.println("newPass");
         return  jdbcUserService.changePass(principal.getName(), newPass);
     }
 }
